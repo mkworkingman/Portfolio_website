@@ -1,4 +1,4 @@
-import { type Language, type TextKey, isLanguage, isTextKey } from './values'
+import { type Language, type TextKey } from './values'
 
 const translations: Record<Language, Record<TextKey, string>> = {
     en: {
@@ -27,12 +27,7 @@ const translations: Record<Language, Record<TextKey, string>> = {
 // TODO: Maybe to remove all console.warn and checks when the site is ready
 function applyTexts(lang: Language) {
     document.querySelectorAll<HTMLElement>('[data-i18n]').forEach((el) => {
-        const key = el.dataset.i18n
-
-        if (!isTextKey(key)) {
-            console.warn(`Invalid or missing data-i18n key: "${key}"`)
-            return
-        }
+        const key = el.dataset.i18n as TextKey
 
         el.textContent = translations[lang][key]
     })
@@ -44,12 +39,7 @@ document.getElementById('lang-switcher')?.addEventListener('click', (event) => {
     const item = (event.target as Element).closest('li')
     if (!item) return
 
-    const lang = item.dataset.lang
-
-    if (!isLanguage(lang)) {
-        console.warn(`Invalid or missing data-lang: "${lang}"`)
-        return
-    }
+    const lang = item.dataset.lang as Language
 
     applyTexts(lang)
 })

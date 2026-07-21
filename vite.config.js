@@ -3,4 +3,7 @@ import { ViteMinifyPlugin } from 'vite-plugin-minify'
 
 export default defineConfig({
     plugins: [ViteMinifyPlugin({})],
+    test: {
+        environment: 'jsdom',
+    },
 })
