@@ -13,7 +13,7 @@ beforeAll(async () => {
 describe('HTML', () => {
     it('contains exactly one data-lang element for each language, no duplicates', () => {
         const langElements = Array.from(document.querySelectorAll<HTMLElement>('[data-lang]'))
-        const langValues = langElements.map((el) => el.getAttribute('data-lang'))
+        const langValues = langElements.map((el) => el.dataset.lang)
 
         const expected = [...LANGUAGES].sort()
         const actual = langValues.sort()
@@ -23,7 +23,7 @@ describe('HTML', () => {
 
     it('contains exactly one data-i18n element for each text key, no duplicates', () => {
         const i18nElements = Array.from(document.querySelectorAll<HTMLElement>('[data-i18n]'))
-        const i18nValues = i18nElements.map((el) => el.getAttribute('data-i18n'))
+        const i18nValues = i18nElements.map((el) => el.dataset.i18n)
 
         const expected = [...TEXT_KEYS].sort()
         const actual = i18nValues.sort()
