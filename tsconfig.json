@@ -18,6 +18,7 @@
         "noUncheckedIndexedAccess": true,
         "noImplicitReturns": true,
         "noFallthroughCasesInSwitch": true,
+        "moduleDetection": "force",
         "types": ["vite/client"]
     },
     "include": ["src"],
