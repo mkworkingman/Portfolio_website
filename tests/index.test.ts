@@ -1,13 +1,13 @@
 import { describe, it, expect, beforeAll } from 'vitest'
 import fs from 'fs'
 import path from 'path'
-import { LANGUAGES, TEXT_KEYS } from '../src/values'
+import { LANGUAGES, TEXT_KEYS } from '../src/scripts/values'
 
 const html = fs.readFileSync(path.resolve(__dirname, '../index.html'), 'utf8')
 
 beforeAll(async () => {
     document.body.innerHTML = html
-    await import('../src/script')
+    await import('../src/scripts/index')
 })
 
 describe('HTML', () => {

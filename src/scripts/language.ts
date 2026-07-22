@@ -24,7 +24,6 @@ const translations: Record<Language, Record<TextKey, string>> = {
     },
 }
 
-// TODO: Maybe to remove all console.warn and checks when the site is ready
 function applyTexts(lang: Language) {
     document.querySelectorAll<HTMLElement>('[data-i18n]').forEach((el) => {
         const key = el.dataset.i18n as TextKey
@@ -33,13 +32,14 @@ function applyTexts(lang: Language) {
     })
 }
 
-applyTexts('en')
+export function initLanguage() {
+    applyTexts('en')
 
-document.getElementById('lang-switcher')?.addEventListener('click', (event) => {
-    const item = (event.target as Element).closest('li')
-    if (!item) return
+    document.getElementById('lang-switcher')?.addEventListener('click', (event) => {
+        const item = (event.target as Element).closest('li')
+        if (!item) return
 
-    const lang = item.dataset.lang as Language
-
-    applyTexts(lang)
-})
+        const lang = item.dataset.lang as Language
+        applyTexts(lang)
+    })
+}
