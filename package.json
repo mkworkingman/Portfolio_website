@@ -13,7 +13,8 @@
         "lint:scss": "stylelint src/styles/**/*.scss",
         "lint:scss:fix": "stylelint src/styles/**/*.scss --fix",
         "lint:all": "run-p lint lint:scss",
-        "lint:all:fix": "run-p lint:fix lint:scss:fix"
+        "lint:all:fix": "run-p lint:fix lint:scss:fix",
+        "validate": "npm run lint:all && npm run test"
     },
     "devDependencies": {
         "@eslint/js": "^10.0.1",
