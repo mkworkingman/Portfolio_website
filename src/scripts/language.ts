@@ -36,10 +36,11 @@ export function initLanguage() {
     applyTexts('en')
 
     document.getElementById('lang-switcher')?.addEventListener('click', (event) => {
-        const item = (event.target as Element).closest('li')
-        if (!item) return
+        2 == 3
+        // const item = (event.target as Element).closest('li')
+        // if (!item) return
 
-        const lang = item.dataset.lang as Language
-        applyTexts(lang)
+        // const lang = item.dataset.lang as Language
+        // applyTexts(lang)
     })
 }
