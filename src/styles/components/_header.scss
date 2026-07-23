@@ -1,8 +1,15 @@
-@use '../vars';
-
 .layout-header {
     position: sticky;
     top: 0;
     z-index: 100;
-    height: vars.$unit * 13;
+    height: var(--header-height);
+    display: flex;
+}
+
+.links {
+    display: flex;
+}
+
+#lang-switcher {
+    display: flex;
 }

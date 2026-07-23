@@ -1,1 +1,35 @@
 $unit: 4px;
+
+$breakpoint-medium: 768px;
+$breakpoint-large: 1024px;
+$breakpoint-large-xl: 1440px;
+
+@mixin md {
+    @media (min-width: $breakpoint-medium) {
+        @content;
+    }
+}
+
+@mixin lg {
+    @media (min-width: $breakpoint-large) {
+        @content;
+    }
+}
+
+@mixin xl {
+    @media (min-width: $breakpoint-large-xl) {
+        @content;
+    }
+}
+
+:root {
+    --header-height: #{$unit * 14}; // 56px
+
+    @include md {
+        --header-height: #{$unit * 16}; // 64px
+    }
+
+    @include lg {
+        --header-height: #{$unit * 18}; // 72px
+    }
+}
