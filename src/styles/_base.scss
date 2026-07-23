@@ -12,3 +12,16 @@ body {
     min-height: 100vh;
     min-height: 100svh;
 }
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0s !important;
+        animation-delay: 0s !important;
+        transition-duration: 0.01ms !important;
+        transition-delay: 0s !important;
+        background-attachment: initial !important;
+        scroll-behavior: auto !important;
+    }
+}
