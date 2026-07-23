@@ -9,8 +9,8 @@
 }
 
 html {
-    -moz-text-size-adjust: none;
-    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+    text-size-adjust: none;
     text-size-adjust: none;
 }
 
@@ -27,11 +27,11 @@ ul {
     *,
     *::before,
     *::after {
+        scroll-behavior: auto !important;
+        background-attachment: initial !important;
+        transition-delay: 0s !important;
+        transition-duration: 0.01ms !important;
         animation-duration: 0s !important;
         animation-delay: 0s !important;
-        transition-duration: 0.01ms !important;
-        transition-delay: 0s !important;
-        background-attachment: initial !important;
-        scroll-behavior: auto !important;
     }
 }
