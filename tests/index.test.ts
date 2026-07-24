@@ -38,6 +38,11 @@ describe('HTML', () => {
             expect(document.getElementById(id!), `#${id} not found`).not.toBeNull()
         }
     })
+
+    it('has no duplicate ids', () => {
+        const ids = [...document.querySelectorAll('[id]')].map((el) => el.id)
+        expect(ids.length === new Set(ids).size).toBe(true)
+    })
 })
 
 describe('Runtime', () => {
