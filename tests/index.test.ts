@@ -31,7 +31,13 @@ describe('HTML', () => {
         expect(actual).toEqual(expected)
     })
 
-    //TODO: unique IDs, all hrefs go to the IDs
+    it('contain ids for each href="#..."', () => {
+        for (const link of document.querySelectorAll('a[href^="#"]')) {
+            const id = link.getAttribute('href')?.slice(1)
+            expect(id).toBeTruthy()
+            expect(document.getElementById(id!), `#${id} not found`).not.toBeNull()
+        }
+    })
 })
 
 describe('Runtime', () => {
