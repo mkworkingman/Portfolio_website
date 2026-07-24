@@ -12,8 +12,9 @@ beforeAll(async () => {
 
 describe('HTML', () => {
     it('contains exactly one data-lang element for each language, no duplicates', () => {
-        const langElements = [...document.querySelectorAll<HTMLElement>('[data-lang]')]
-        const langValues = langElements.map((el) => el.dataset.lang)
+        const langValues = [...document.querySelectorAll<HTMLElement>('[data-lang]')].map(
+            (el) => el.dataset.lang,
+        )
 
         const expected = [...LANGUAGES].sort()
         const actual = langValues.sort()
@@ -22,8 +23,9 @@ describe('HTML', () => {
     })
 
     it('contains exactly one data-i18n element for each text key, no duplicates', () => {
-        const i18nElements = [...document.querySelectorAll<HTMLElement>('[data-i18n]')]
-        const i18nValues = i18nElements.map((el) => el.dataset.i18n)
+        const i18nValues = [...document.querySelectorAll<HTMLElement>('[data-i18n]')].map(
+            (el) => el.dataset.i18n,
+        )
 
         const expected = [...TEXT_KEYS].sort()
         const actual = i18nValues.sort()
@@ -35,6 +37,7 @@ describe('HTML', () => {
         for (const link of document.querySelectorAll('a[href^="#"]')) {
             const id = link.getAttribute('href')?.slice(1)
             expect(id).toBeTruthy()
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             expect(document.getElementById(id!), `#${id} not found`).not.toBeNull()
         }
     })
@@ -53,8 +56,9 @@ describe('Runtime', () => {
 
     it('switches language when a lang item is clicked (event delegation check)', () => {
         const ruItem = document.querySelector<HTMLElement>('[data-lang="ru"]')
-        if (!ruItem) throw new Error('RU item not found')
+        expect(ruItem).toBeTruthy()
 
+        // @ts-expect-error expect(ruItem).toBeTruthy() guarantees that ruItem is a truthy value
         ruItem.click()
 
         const homeLink = document.querySelector<HTMLElement>('[data-i18n="navHome"]')
