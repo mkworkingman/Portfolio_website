@@ -20,15 +20,3 @@ $breakpoint-large-xl: 1440px;
         @content;
     }
 }
-
-:root {
-    --header-height: #{$unit * 14}; // 56px
-
-    @include md {
-        --header-height: #{$unit * 16}; // 64px
-    }
-
-    @include lg {
-        --header-height: #{$unit * 18}; // 72px
-    }
-}

@@ -1,4 +1,4 @@
-@use './vars';
+@use './vars' as *;
 
 *,
 *::before,
@@ -6,6 +6,18 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+}
+
+:root {
+    --header-height: #{$unit * 14}; // 56px
+
+    @include md {
+        --header-height: #{$unit * 16}; // 64px
+    }
+
+    @include lg {
+        --header-height: #{$unit * 18}; // 72px
+    }
 }
 
 html {
