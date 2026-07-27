@@ -1,15 +1,24 @@
+@use '../vars' as *;
+
 .layout-header {
     position: sticky;
     top: 0;
     z-index: 100;
     display: flex;
+    align-items: center;
     height: var(--header-height);
-}
+    padding: 0 #{$unit * 5};
+    background-color: #1e1e1e;
 
-.links {
-    display: flex;
-}
+    .logo {
+        color: #add8e6;
+    }
 
-#lang-switcher {
-    display: flex;
+    .links {
+        display: flex;
+    }
+
+    #lang-switcher {
+        display: flex;
+    }
 }
