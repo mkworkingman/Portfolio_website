@@ -1,7 +1,7 @@
 import { initLanguage } from './language'
 import { Language } from './values'
 
-interface Hander {
+interface Handler {
     selector: string
     fn: (match: HTMLElement) => void
 }
@@ -26,7 +26,7 @@ export function initClickHandler() {
         headerNavToggle?.classList.remove('is-open')
     }
 
-    const handlers: Hander[] = [
+    const handlers: Handler[] = [
         { selector: 'li[data-lang]', fn: handleLanguageSwitch },
         { selector: '.header-nav-toggle', fn: handleNavBarToggle },
         { selector: '.header-nav__link', fn: handleLinkClick },
