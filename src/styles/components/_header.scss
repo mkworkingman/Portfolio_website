@@ -1,6 +1,6 @@
 @use '../vars' as *;
 
-.layout-header {
+.header {
     position: sticky;
     top: 0;
     z-index: 100;
@@ -9,20 +9,40 @@
     height: var(--header-height);
     padding: 0 #{$unit * 5};
     background-color: #1e1e1e;
+}
 
-    .logo {
-        color: #304dc0;
+.header-logo {
+    color: #304dc0;
 
-        &__name {
-            color: #e8e8e8;
-        }
+    span {
+        color: #e8e8e8;
     }
+}
 
-    .links {
-        display: flex;
-    }
+// Navigation:
+#header-toggle {
+    display: none;
+}
 
-    #lang-switcher {
-        display: flex;
+label[for='header-toggle'] {
+    width: #{$unit * 5};
+    height: #{$unit * 5};
+    background: darkcyan;
+
+    #header-toggle:checked + & {
+        background: darkred;
     }
+}
+
+.header-nav {
+    display: none;
+
+    #header-toggle:checked ~ & {
+        display: block;
+    }
+}
+
+// Language Switcher
+#lang-switcher {
+    display: flex;
 }

@@ -11,12 +11,20 @@
     </head>
     <!-- TODO: Semantic, Accessibility -->
     <body>
-        <header class="layout-header">
-            <p class="logo" role="img" aria-label="MKalinin logo">
-                &lt;<span class="logo__name">MKalinin /</span>&gt;
+        <header class="header">
+            <p class="header-logo" role="img" aria-label="MKalinin logo">
+                &lt;<span>MKalinin /</span>&gt;
             </p>
-            <nav>
-                <ul class="links">
+            <button data-i18n="navContact"></button>
+            <ul id="lang-switcher">
+                <li data-lang="en">EN</li>
+                <li data-lang="ru">RU</li>
+                <li data-lang="sr">SR</li>
+            </ul>
+            <input type="checkbox" id="header-toggle" />
+            <label for="header-toggle"></label>
+            <nav class="header-nav">
+                <ul class="header-nav__links">
                     <!-- TODO: By default those texts should be in English. After adding it write test, compare initial English load and changing to English -->
                     <li><a href="#home" data-i18n="navHome"></a></li>
                     <li><a href="#about" data-i18n="navAbout"></a></li>
@@ -24,20 +32,14 @@
                     <li><a href="#projects" data-i18n="navProjects"></a></li>
                 </ul>
             </nav>
-            <button data-i18n="navContact"></button>
-            <ul id="lang-switcher">
-                <li data-lang="en">EN</li>
-                <li data-lang="ru">RU</li>
-                <li data-lang="sr">SR</li>
-            </ul>
         </header>
-        <main class="layout-main">
+        <main class="main">
             <h2>MAIN CONTENT</h2>
             <section id="home"></section>
             <section id="about"></section>
             <section id="skills"></section>
             <section id="projects"></section>
         </main>
-        <footer class="layout-footer">MK - 2026</footer>
+        <footer class="footer">MK - 2026</footer>
     </body>
 </html>
