@@ -29,7 +29,7 @@ export function initClickHandler() {
     const handlers: Hander[] = [
         { selector: 'li[data-lang]', fn: handleLanguageSwitch },
         { selector: '.header-nav-toggle', fn: handleNavBarToggle },
-        { selector: '.header-nav__links a', fn: handleLinkClick },
+        { selector: '.header-nav__link', fn: handleLinkClick },
     ]
 
     document.addEventListener('click', (e) => {
