@@ -37,7 +37,7 @@ function applyTexts(lang: Language) {
 export function initLanguage() {
     applyTexts('en')
 
-    document.getElementById('lang-switcher')?.addEventListener('click', (event) => {
+    document.querySelector('.lang__list')?.addEventListener('click', (event) => {
         const item = (event.target as Element).closest('li')
         if (!item) return
 

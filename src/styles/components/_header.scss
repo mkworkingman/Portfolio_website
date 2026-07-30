@@ -20,7 +20,7 @@
 }
 
 // Navigation:
-#header-nav-toggle {
+.header-nav-toggle {
     background-color: darkgreen;
 
     &.is-open {
@@ -28,7 +28,7 @@
     }
 }
 
-#header-nav {
+.header-nav {
     display: none;
 
     &.is-open {
@@ -40,13 +40,17 @@
     }
 }
 
-#header-nav-toggle {
+.header-nav-toggle {
     @include md {
         display: none;
     }
 }
 
 // Language Switcher
-#lang-switcher {
-    display: flex;
+.lang__list {
+    display: none;
+
+    &.is-open {
+        display: flex;
+    }
 }

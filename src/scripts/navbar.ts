@@ -1,13 +1,13 @@
 export function initToggleNavBar() {
-    const navBarToggle = document.getElementById('header-nav-toggle')
-    const headerNav = document.getElementById('header-nav')
+    const navBarToggle = document.querySelector('.header-nav-toggle')
+    const headerNav = document.querySelector('.header-nav')
 
     navBarToggle?.addEventListener('click', () => {
         headerNav?.classList.toggle('is-open')
         navBarToggle?.classList.toggle('is-open')
     })
 
-    document.getElementById('header-nav__links')?.addEventListener('click', (event) => {
+    document.querySelector('.header-nav__links')?.addEventListener('click', (event) => {
         const item = (event.target as Element).closest('li')
         if (!item) return
 

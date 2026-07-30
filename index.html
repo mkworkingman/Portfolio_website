@@ -16,14 +16,17 @@
                 &lt;<span>MKalinin /</span>&gt;
             </p>
             <button data-i18n="navContact"></button>
-            <ul id="lang-switcher">
-                <li data-lang="en">EN</li>
-                <li data-lang="ru">RU</li>
-                <li data-lang="sr">SR</li>
-            </ul>
-            <button id="header-nav-toggle">X</button>
-            <nav id="header-nav" class="header-nav--hide">
-                <ul id="header-nav__links">
+            <div className="lang">
+                <button class="lang__switcher">EN</button>
+                <ul class="lang__list">
+                    <li data-lang="en">EN</li>
+                    <li data-lang="ru">RU</li>
+                    <li data-lang="sr">SR</li>
+                </ul>
+            </div>
+            <button class="header-nav-toggle">X</button>
+            <nav class="header-nav">
+                <ul class="header-nav__links">
                     <!-- TODO: By default those texts should be in English. After adding it write test, compare initial English load and changing to English -->
                     <li><a href="#home" data-i18n="navHome"></a></li>
                     <li><a href="#about" data-i18n="navAbout"></a></li>
