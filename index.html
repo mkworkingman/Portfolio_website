@@ -21,10 +21,9 @@
                 <li data-lang="ru">RU</li>
                 <li data-lang="sr">SR</li>
             </ul>
-            <input type="checkbox" id="header-toggle" />
-            <label for="header-toggle"></label>
-            <nav class="header-nav">
-                <ul class="header-nav__links">
+            <button id="header-nav-toggle">X</button>
+            <nav id="header-nav" class="header-nav--hide">
+                <ul id="header-nav__links">
                     <!-- TODO: By default those texts should be in English. After adding it write test, compare initial English load and changing to English -->
                     <li><a href="#home" data-i18n="navHome"></a></li>
                     <li><a href="#about" data-i18n="navAbout"></a></li>

@@ -20,25 +20,29 @@
 }
 
 // Navigation:
-#header-toggle {
-    display: none;
-}
+#header-nav-toggle {
+    background-color: darkgreen;
 
-label[for='header-toggle'] {
-    width: #{$unit * 5};
-    height: #{$unit * 5};
-    background: darkcyan;
-
-    #header-toggle:checked + & {
-        background: darkred;
+    &.is-open {
+        background-color: darkred;
     }
 }
 
-.header-nav {
+#header-nav {
     display: none;
 
-    #header-toggle:checked ~ & {
+    &.is-open {
         display: block;
+    }
+
+    @include md {
+        display: block;
+    }
+}
+
+#header-nav-toggle {
+    @include md {
+        display: none;
     }
 }
 
