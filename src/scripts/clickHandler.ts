@@ -1,18 +1,33 @@
-export function initClickHandler() {
-    // TODO: like that?
-    // const handlers = [
-    //     // { selector: '.', fn: handle },
-    //     // { selector: '.', fn: handle },
-    // ]
+import { initLanguage } from './language'
+import { Language } from './values'
 
-    const langList = document.querySelector('.lang__list')
+interface Hander {
+    selector: string
+    fn: (match: HTMLElement) => void
+}
+
+const langList = document.querySelector('.lang__list')
+
+export function initClickHandler() {
+    function handleLanguageSwitch(match: HTMLElement) {
+        const lang = match.dataset.lang as Language
+        initLanguage(lang)
+    }
+
+    const handlers: Hander[] = [{ selector: 'li[data-lang]', fn: handleLanguageSwitch }]
 
     document.addEventListener('click', (e) => {
-        const langSwitcher = (e.target as Element).closest('.lang__switcher')
-        if (langSwitcher) {
+        const languageSwitcher = (e.target as HTMLElement).closest('.lang__switcher') as HTMLElement
+
+        if (languageSwitcher) {
             langList?.classList.toggle('is-open')
-        } else {
-            langList?.classList.remove('is-open')
+            return
+        }
+        langList?.classList.remove('is-open')
+
+        for (const { selector, fn } of handlers) {
+            const match = (e.target as HTMLElement).closest(selector) as HTMLElement | null
+            if (match) return fn(match)
         }
     })
 }

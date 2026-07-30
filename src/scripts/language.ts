@@ -26,22 +26,10 @@ const translations: Record<Language, Record<TextKey, string>> = {
     },
 }
 
-function applyTexts(lang: Language) {
+export function initLanguage(lang: Language = 'en') {
     document.querySelectorAll<HTMLElement>('[data-i18n]').forEach((el) => {
         const key = el.dataset.i18n as TextKey
 
         el.textContent = translations[lang][key]
-    })
-}
-
-export function initLanguage() {
-    applyTexts('en')
-
-    document.querySelector('.lang__list')?.addEventListener('click', (event) => {
-        const item = (event.target as Element).closest('li')
-        if (!item) return
-
-        const lang = item.dataset.lang as Language
-        applyTexts(lang)
     })
 }
