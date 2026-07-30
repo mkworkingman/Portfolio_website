@@ -7,6 +7,8 @@ interface Hander {
 }
 
 const langList = document.querySelector('.lang__list')
+const headerNavToggle = document.querySelector('.header-nav-toggle')
+const headerNav = document.querySelector('.header-nav')
 
 export function initClickHandler() {
     function handleLanguageSwitch(match: HTMLElement) {
@@ -14,7 +16,21 @@ export function initClickHandler() {
         initLanguage(lang)
     }
 
-    const handlers: Hander[] = [{ selector: 'li[data-lang]', fn: handleLanguageSwitch }]
+    function handleNavBarToggle() {
+        headerNav?.classList.toggle('is-open')
+        headerNavToggle?.classList.toggle('is-open')
+    }
+
+    function handleLinkClick() {
+        headerNav?.classList.remove('is-open')
+        headerNavToggle?.classList.remove('is-open')
+    }
+
+    const handlers: Hander[] = [
+        { selector: 'li[data-lang]', fn: handleLanguageSwitch },
+        { selector: '.header-nav-toggle', fn: handleNavBarToggle },
+        { selector: '.header-nav__links a', fn: handleLinkClick },
+    ]
 
     document.addEventListener('click', (e) => {
         const languageSwitcher = (e.target as HTMLElement).closest('.lang__switcher') as HTMLElement
