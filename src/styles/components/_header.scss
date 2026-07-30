@@ -11,7 +11,11 @@
     background-color: #1e1e1e;
 
     .logo {
-        color: #add8e6;
+        color: #304dc0;
+
+        &__name {
+            color: #e8e8e8;
+        }
     }
 
     .links {
