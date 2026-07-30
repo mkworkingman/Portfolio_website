@@ -4,10 +4,16 @@
         "order/order": [
             "dollar-variables",
             "custom-properties",
-            "at-rules",
+            {
+                "type": "at-rule",
+                "hasBlock": false
+            },
             "declarations",
             "rules",
-            "at-rules"
+            {
+                "type": "at-rule",
+                "hasBlock": true
+            }
         ]
     }
 }
