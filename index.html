@@ -15,8 +15,8 @@
             <p class="header-logo" role="img" aria-label="MKalinin logo">
                 &lt;<span>MKalinin /</span>&gt;
             </p>
-            <button data-i18n="navContact"></button>
-            <div className="lang">
+            <button class="header-contact" data-i18n="navContact">Contact Me</button>
+            <div class="lang">
                 <button class="lang__switcher">EN</button>
                 <ul class="lang__list">
                     <li data-lang="en">EN</li>
@@ -45,5 +45,14 @@
             <section id="projects"></section>
         </main>
         <footer class="footer">MK - 2026</footer>
+
+        <!-- TODO: Adds url parameters? And if they are here, then if it load the page with them, it is already open? -->
+        <div class="contact-modal">
+            <div class="contact-modal__background"></div>
+            <div class="contact-modal__card">
+                <h3>Contact me</h3>
+                <button class="contact-modal__close">X</button>
+            </div>
+        </div>
     </body>
 </html>

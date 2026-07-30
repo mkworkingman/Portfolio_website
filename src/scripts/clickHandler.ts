@@ -9,6 +9,7 @@ interface Handler {
 const langList = document.querySelector('.lang__list')
 const headerNavToggle = document.querySelector('.header-nav-toggle')
 const headerNav = document.querySelector('.header-nav')
+const contactModal = document.querySelector('.contact-modal')
 
 export function initClickHandler() {
     function handleLanguageSwitch(match: HTMLElement) {
@@ -26,10 +27,29 @@ export function initClickHandler() {
         headerNavToggle?.classList.remove('is-open')
     }
 
+    function handleEscClose(e: KeyboardEvent) {
+        if (e.key === 'Escape') {
+            handleCloseContactMeModal()
+        }
+    }
+
+    function handleShowContactMeModal() {
+        contactModal?.classList.add('is-open')
+        document.addEventListener('keydown', handleEscClose)
+    }
+
+    function handleCloseContactMeModal() {
+        contactModal?.classList.remove('is-open')
+        document.removeEventListener('keydown', handleEscClose)
+    }
+
     const handlers: Handler[] = [
         { selector: 'li[data-lang]', fn: handleLanguageSwitch },
         { selector: '.header-nav-toggle', fn: handleNavBarToggle },
         { selector: '.header-nav__link', fn: handleLinkClick },
+        { selector: '.header-contact', fn: handleShowContactMeModal },
+        { selector: '.contact-modal__background', fn: handleCloseContactMeModal },
+        { selector: '.contact-modal__close', fn: handleCloseContactMeModal },
     ]
 
     document.addEventListener('click', (e) => {

@@ -1,0 +1,26 @@
+.contact-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    display: none;
+    place-items: center;
+
+    &__background {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+
+    &__card {
+        width: 250px;
+        height: 500px;
+        background-color: rgb(141, 140, 140);
+        z-index: 3;
+    }
+
+    &.is-open {
+        display: grid;
+    }
+}
