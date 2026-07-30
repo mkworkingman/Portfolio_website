@@ -6,8 +6,12 @@ interface Handler {
     fn: (match: HTMLElement) => void
 }
 
+const header = document.querySelector('.header')
+const main = document.querySelector('.main')
+const footer = document.querySelector('.footer')
 const langList = document.querySelector('.lang__list')
 const headerNavToggle = document.querySelector('.header-nav-toggle')
+const headerContactButton = document.querySelector<HTMLElement>('.header-contact')
 const headerNav = document.querySelector('.header-nav')
 const contactModal = document.querySelector('.contact-modal')
 
@@ -35,12 +39,21 @@ export function initClickHandler() {
 
     function handleShowContactMeModal() {
         contactModal?.classList.add('is-open')
+        header?.setAttribute('inert', '')
+        main?.setAttribute('inert', '')
+        footer?.setAttribute('inert', '')
         document.addEventListener('keydown', handleEscClose)
+        // TODO: add focus on the first input
+        // TODO: save the state of the inputs
     }
 
     function handleCloseContactMeModal() {
         contactModal?.classList.remove('is-open')
+        header?.removeAttribute('inert')
+        main?.removeAttribute('inert')
+        footer?.removeAttribute('inert')
         document.removeEventListener('keydown', handleEscClose)
+        headerContactButton?.focus()
     }
 
     const handlers: Handler[] = [
