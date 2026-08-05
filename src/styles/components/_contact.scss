@@ -8,16 +8,16 @@
     &__background {
         position: absolute;
         inset: 0;
-        background: rgba(0, 0, 0, 0.7);
+        background: rgb(0 0 0 / 70%);
         backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
     }
 
     &__card {
+        z-index: 3;
         width: 250px;
         height: 500px;
-        background-color: rgb(141, 140, 140);
-        z-index: 3;
+        background-color: rgb(141 140 140);
     }
 
     &.is-open {
