@@ -8,6 +8,7 @@
         "build": "tsc && vite build",
         "preview": "vite preview",
         "test": "vitest",
+        "typecheck": "tsc --noEmit",
         "lint": "eslint src/scripts",
         "lint:fix": "eslint src/scripts --fix",
         "lint:scss": "stylelint src/styles/**/*.scss",
