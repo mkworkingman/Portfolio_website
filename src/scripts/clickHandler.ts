@@ -21,11 +21,6 @@ export function initClickHandler() {
         initLanguage(lang)
     }
 
-    function handleNavBarToggle() {
-        headerNav?.classList.toggle('is-open')
-        headerNavToggle?.classList.toggle('is-open')
-    }
-
     function handleLinkClick() {
         headerNav?.classList.remove('is-open')
         headerNavToggle?.classList.remove('is-open')
@@ -58,7 +53,6 @@ export function initClickHandler() {
 
     const handlers: Handler[] = [
         { selector: 'li[data-lang]', fn: handleLanguageSwitch },
-        { selector: '.header-nav-toggle', fn: handleNavBarToggle },
         { selector: '.header-nav__link', fn: handleLinkClick },
         { selector: '.header-contact', fn: handleShowContactMeModal },
         { selector: '.contact-modal__background', fn: handleCloseContactMeModal },
@@ -67,12 +61,22 @@ export function initClickHandler() {
 
     document.addEventListener('click', (e) => {
         const languageSwitcher = (e.target as HTMLElement).closest('.lang__switcher') as HTMLElement
+        const navSwitcher = (e.target as HTMLElement).closest('.header-nav-toggle') as HTMLElement
 
         if (languageSwitcher) {
             langList?.classList.toggle('is-open')
             return
         }
+
+        if (navSwitcher) {
+            headerNavToggle?.classList.toggle('is-open')
+            headerNav?.classList.toggle('is-open')
+            return
+        }
+
         langList?.classList.remove('is-open')
+        headerNavToggle?.classList.remove('is-open')
+        headerNav?.classList.remove('is-open')
 
         for (const { selector, fn } of handlers) {
             const match = (e.target as HTMLElement).closest(selector) as HTMLElement | null
