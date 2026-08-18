@@ -15,6 +15,16 @@ const headerContactButton = document.querySelector<HTMLElement>('.header-contact
 const headerNav = document.querySelector('.header-nav')
 const contactModal = document.querySelector('.contact-modal')
 
+function handleSelectNavClick(element?: 'languageSwitcher' | 'navSwitcher') {
+    if (element !== 'languageSwitcher') {
+        langList?.classList.remove('is-open')
+    }
+    if (element !== 'navSwitcher') {
+        headerNavToggle?.classList.remove('is-open')
+        headerNav?.classList.remove('is-open')
+    }
+}
+
 export function initClickHandler() {
     function handleLanguageSwitch(match: HTMLElement) {
         const lang = match.dataset.lang as Language
@@ -65,18 +75,18 @@ export function initClickHandler() {
 
         if (languageSwitcher) {
             langList?.classList.toggle('is-open')
+            handleSelectNavClick('languageSwitcher')
             return
         }
 
         if (navSwitcher) {
             headerNavToggle?.classList.toggle('is-open')
             headerNav?.classList.toggle('is-open')
+            handleSelectNavClick('navSwitcher')
             return
         }
 
-        langList?.classList.remove('is-open')
-        headerNavToggle?.classList.remove('is-open')
-        headerNav?.classList.remove('is-open')
+        handleSelectNavClick()
 
         for (const { selector, fn } of handlers) {
             const match = (e.target as HTMLElement).closest(selector) as HTMLElement | null
