@@ -1,4 +1,3 @@
-import '@fontsource/montserrat'
 import { initClickHandler } from './clickHandler'
 import { initLanguage } from './language'
 
