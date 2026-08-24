@@ -1,3 +1,10 @@
-.main {
-    margin-top: var(--header-height);
+@use '../vars' as *;
+
+.hero {
+    text-align: center;
+    background-color: grey;
+    max-width: $unit * 192;
+    margin-inline: auto;
+    border-radius: calc(2 * (100vw - 100%));
+    padding: $unit * 4;
 }
