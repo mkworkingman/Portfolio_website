@@ -47,17 +47,6 @@ body {
     background-color: #a9a9a9;
 }
 
-.background {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    background-image:
-        linear-gradient(rgb(0 0 0 / 10%) 1px, #0000 1px),
-        linear-gradient(90deg, rgb(0 0 0 / 10%) 1px, #0000 1px);
-    background-position-y: var(--header-height);
-    background-size: #{$unit * 10} #{$unit * 10};
-}
-
 ul {
     list-style: none;
 }
