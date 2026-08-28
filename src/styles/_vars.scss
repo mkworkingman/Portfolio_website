@@ -1,7 +1,10 @@
-$unit: 4px;
 $breakpoint-medium: 768px;
 $breakpoint-large: 1024px;
 $breakpoint-large-xl: 1440px;
+
+@function space($count: 1) {
+    @return 4px * $count;
+}
 
 @mixin md {
     @media (min-width: $breakpoint-medium) {

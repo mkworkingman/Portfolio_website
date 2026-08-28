@@ -34,14 +34,14 @@ $font-weights: 400, 700;
 }
 
 :root {
-    --header-height: #{$unit * 14}; // 56px
+    --header-height: #{space(14)}; // 56px
 
     @include md {
-        --header-height: #{$unit * 16}; // 64px
+        --header-height: #{space(16)}; // 64px
     }
 
     @include lg {
-        --header-height: #{$unit * 18}; // 72px
+        --header-height: #{space(18)}; // 72px
     }
 }
 

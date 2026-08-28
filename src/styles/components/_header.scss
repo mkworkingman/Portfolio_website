@@ -5,10 +5,10 @@
     top: 0;
     z-index: 1;
     display: flex;
-    gap: #{$unit * 4};
+    gap: space(4);
     align-items: center;
     height: var(--header-height);
-    padding: 0 #{$unit * 5};
+    padding: 0 space(5);
     background-color: #1e1e1e;
 }
 
@@ -40,7 +40,7 @@
     right: 0;
     left: 0;
     display: none;
-    padding: #{$unit * 4} #{$unit * 5};
+    padding: space(4) space(5);
     background-color: #1e1e1e;
 
     &.is-open {
@@ -57,11 +57,11 @@
 
 .header-nav__links {
     display: grid;
-    gap: #{$unit * 3};
+    gap: space(3);
 
     @include md {
         display: flex;
-        gap: #{$unit * 5};
+        gap: space(5);
     }
 }
 
@@ -78,8 +78,8 @@
     left: 0;
     z-index: 1;
     display: none;
-    gap: #{$unit * 3};
-    padding: #{$unit * 4} #{$unit * 5};
+    gap: space(3);
+    padding: space(4) space(5);
     background-color: #1e1e1e;
 
     &.is-open {
@@ -88,8 +88,8 @@
 
     @include md {
         left: auto;
-        gap: #{$unit * 2};
+        gap: space(2);
         min-width: 100%;
-        padding: #{$unit * 2};
+        padding: space(2);
     }
 }

@@ -3,7 +3,7 @@
 #home {
     display: flex;
     flex-direction: column;
-    gap: #{$unit * 8};
+    gap: space(8);
     align-items: center;
     justify-content: center;
 
@@ -14,7 +14,7 @@
 }
 
 .hero-canvas {
-    width: min(100%, #{$unit * 140});
+    width: min(100%, space(140));
     aspect-ratio: 1;
     background-color: #05060a;
 }
