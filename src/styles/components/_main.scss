@@ -2,8 +2,21 @@
 
 #home {
     display: flex;
+    flex-direction: column;
+    gap: #{$unit * 8};
     align-items: center;
     justify-content: center;
+
+    // Text beside the canvas once there is room for both.
+    @include md {
+        flex-direction: row;
+    }
+}
+
+.hero-canvas {
+    width: min(100%, #{$unit * 140});
+    aspect-ratio: 1;
+    background-color: #05060a;
 }
 
 .hello {
