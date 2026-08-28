@@ -44,6 +44,9 @@ export function initClickHandler() {
 
     function handleShowContactMeModal() {
         contactModal?.classList.add('is-open')
+        const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
+        document.documentElement.style.setProperty('--scrollbar-width', `${scrollbarWidth}px`)
+        document.documentElement.classList.add('is-modal-open')
         header?.setAttribute('inert', '')
         main?.setAttribute('inert', '')
         footer?.setAttribute('inert', '')
@@ -54,6 +57,8 @@ export function initClickHandler() {
 
     function handleCloseContactMeModal() {
         contactModal?.classList.remove('is-open')
+        document.documentElement.classList.remove('is-modal-open')
+        document.documentElement.style.removeProperty('--scrollbar-width')
         header?.removeAttribute('inert')
         main?.removeAttribute('inert')
         footer?.removeAttribute('inert')

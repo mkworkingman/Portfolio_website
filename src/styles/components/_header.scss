@@ -5,6 +5,7 @@
     top: 0;
     z-index: 1;
     display: flex;
+    gap: #{$unit * 4};
     align-items: center;
     height: var(--header-height);
     padding: 0 #{$unit * 5};
@@ -12,6 +13,7 @@
 }
 
 .header-logo {
+    margin-inline-end: auto;
     color: #304dc0;
 
     span {
@@ -26,31 +28,68 @@
     &.is-open {
         background-color: darkred;
     }
-}
 
-.header-nav {
-    display: none;
-
-    &.is-open {
-        display: block;
-    }
-
-    @include md {
-        display: block;
-    }
-}
-
-.header-nav-toggle {
     @include md {
         display: none;
     }
 }
 
-// Language Switcher
-.lang__list {
+.header-nav {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
     display: none;
+    padding: #{$unit * 4} #{$unit * 5};
+    background-color: #1e1e1e;
 
     &.is-open {
+        display: block;
+    }
+
+    @include md {
+        position: static;
+        display: block;
+        padding: 0;
+        background-color: transparent;
+    }
+}
+
+.header-nav__links {
+    display: grid;
+    gap: #{$unit * 3};
+
+    @include md {
         display: flex;
+        gap: #{$unit * 5};
+    }
+}
+
+.lang {
+    @include md {
+        position: relative;
+    }
+}
+
+.lang__list {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    display: none;
+    gap: #{$unit * 3};
+    padding: #{$unit * 4} #{$unit * 5};
+    background-color: #1e1e1e;
+
+    &.is-open {
+        display: grid;
+    }
+
+    @include md {
+        left: auto;
+        gap: #{$unit * 2};
+        min-width: 100%;
+        padding: #{$unit * 2};
     }
 }

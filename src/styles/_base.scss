@@ -47,6 +47,12 @@ $font-weights: 400, 700;
 
 html {
     text-size-adjust: none;
+    scroll-padding-top: var(--header-height);
+
+    &.is-modal-open {
+        padding-right: var(--scrollbar-width, 0);
+        overflow: hidden;
+    }
 }
 
 body,

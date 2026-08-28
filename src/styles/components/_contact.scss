@@ -1,3 +1,5 @@
+@use '../vars' as *;
+
 .contact-modal {
     position: fixed;
     inset: 0;
@@ -14,8 +16,9 @@
 
     &__card {
         z-index: 3;
-        width: 250px;
-        height: 500px;
+        width: min(250px, calc(100% - #{$unit * 8}));
+        height: min(500px, calc(100% - #{$unit * 16}));
+        overflow-y: auto;
         background-color: rgb(141 140 140);
     }
 
