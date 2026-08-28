@@ -13,16 +13,44 @@ interface Planet {
 const TAU = Math.PI * 2
 
 const ORBIT_COLOR = 'rgb(255 255 255 / 18%)'
-const GLOW_COLOR = '97 218 251'
-/** Drawn until the logo loads, so the centre is never empty. */
-const CORE_COLOR = '#61dafb'
 
-// BASE_URL keeps this correct if the site is ever served from a subpath.
-const LOGO_SRC = import.meta.env.BASE_URL + 'react-logo.svg'
+interface Logo {
+    /** Resolved against BASE_URL, so a subpath deploy still finds it. */
+    src: string
+    /** From the file's own viewBox, rather than trusting naturalWidth on an SVG. */
+    aspect: number
+    /** Glow tint behind it, as rgb channels, so it can be interpolated. */
+    glow: [number, number, number]
+    /** A disc in this colour stands in until the image loads. */
+    core: string
+}
+
+const REACT_LOGO: Logo = {
+    src: 'react-logo.svg',
+    aspect: 23 / 20.46348,
+    glow: [97, 218, 251],
+    core: '#61dafb',
+}
+
+const VUE_LOGO: Logo = {
+    src: 'vue-logo.svg',
+    aspect: 128 / 128,
+    glow: [65, 184, 131],
+    core: '#41b883',
+}
+
 /** Logo width as a fraction of the canvas' shortest side. */
 const LOGO_SCALE = 0.16
-/** From the logo's own viewBox, rather than trusting naturalWidth on an SVG. */
-const LOGO_ASPECT = 23 / 20.46348
+/** Seconds each logo holds the centre before the other takes over. */
+const LOGO_INTERVAL = 5
+/** Length of the crossfade, taken out of the end of each interval. */
+const LOGO_FADE = 0.6
+
+type LogoState = Logo & { image: HTMLImageElement; ready: boolean }
+
+const mix = (from: number, to: number, t: number) => from + (to - from) * t
+/** Smoothstep, so the fade eases in and out instead of running linearly. */
+const ease = (t: number) => t * t * (3 - 2 * t)
 
 const PLANETS: Planet[] = [
     { orbit: 0.22, size: 0.011, color: '#b8b0a8', speed: 0.9, phase: 0.4 },
@@ -47,8 +75,37 @@ export function initSolarSystem() {
     let width = 0
     let height = 0
 
-    const logo = new Image()
-    let logoReady = false
+    const reactLogo: LogoState = { ...REACT_LOGO, image: new Image(), ready: false }
+    const vueLogo: LogoState = { ...VUE_LOGO, image: new Image(), ready: false }
+
+    const drawLogo = (logo: LogoState, alpha: number, scale: number) => {
+        if (alpha <= 0.002) return
+
+        const centerX = width / 2
+        const centerY = height / 2
+        const logoWidth = Math.min(width, height) * LOGO_SCALE * scale
+        const logoHeight = logoWidth / logo.aspect
+
+        ctx.globalAlpha = alpha
+
+        if (logo.ready) {
+            ctx.drawImage(
+                logo.image,
+                centerX - logoWidth / 2,
+                centerY - logoHeight / 2,
+                logoWidth,
+                logoHeight,
+            )
+        } else {
+            // Stand-in until the image loads, so the centre is never empty.
+            ctx.fillStyle = logo.core
+            ctx.beginPath()
+            ctx.arc(centerX, centerY, logoWidth * 0.09, 0, TAU)
+            ctx.fill()
+        }
+
+        ctx.globalAlpha = 1
+    }
 
     const resize = () => {
         const dpr = window.devicePixelRatio || 1
@@ -70,7 +127,18 @@ export function initSolarSystem() {
         // Leave room for the outermost planet to sit on its orbit.
         const maxOrbit = shortestSide / 2 - shortestSide * 0.04
         const logoWidth = shortestSide * LOGO_SCALE
-        const logoHeight = logoWidth / LOGO_ASPECT
+
+        // Alternate the centre logo. `seconds` only advances while the loop is
+        // running, so the cycle pauses along with everything else off screen.
+        const interval = Math.floor(seconds / LOGO_INTERVAL)
+        const current = interval % 2 === 0 ? reactLogo : vueLogo
+        const next = interval % 2 === 0 ? vueLogo : reactLogo
+
+        // The crossfade sits at the tail of each interval, so it finishes exactly
+        // on the boundary where `current` flips to `next`.
+        const elapsed = seconds - interval * LOGO_INTERVAL
+        const holdFor = LOGO_INTERVAL - LOGO_FADE
+        const fade = elapsed <= holdFor ? 0 : ease((elapsed - holdFor) / LOGO_FADE)
 
         ctx.clearRect(0, 0, width, height)
 
@@ -91,28 +159,23 @@ export function initSolarSystem() {
             centerY,
             glowRadius,
         )
-        glow.addColorStop(0, 'rgb(' + GLOW_COLOR + ' / 42%)')
-        glow.addColorStop(0.55, 'rgb(' + GLOW_COLOR + ' / 14%)')
-        glow.addColorStop(1, 'rgb(' + GLOW_COLOR + ' / 0%)')
+        const tint = [
+            Math.round(mix(current.glow[0], next.glow[0], fade)),
+            Math.round(mix(current.glow[1], next.glow[1], fade)),
+            Math.round(mix(current.glow[2], next.glow[2], fade)),
+        ].join(' ')
+
+        glow.addColorStop(0, 'rgb(' + tint + ' / 42%)')
+        glow.addColorStop(0.55, 'rgb(' + tint + ' / 14%)')
+        glow.addColorStop(1, 'rgb(' + tint + ' / 0%)')
         ctx.fillStyle = glow
         ctx.beginPath()
         ctx.arc(centerX, centerY, glowRadius, 0, TAU)
         ctx.fill()
 
-        if (logoReady) {
-            ctx.drawImage(
-                logo,
-                centerX - logoWidth / 2,
-                centerY - logoHeight / 2,
-                logoWidth,
-                logoHeight,
-            )
-        } else {
-            ctx.fillStyle = CORE_COLOR
-            ctx.beginPath()
-            ctx.arc(centerX, centerY, logoWidth * 0.09, 0, TAU)
-            ctx.fill()
-        }
+        // Outgoing shrinks away, incoming grows into place.
+        drawLogo(current, 1 - fade, 1 - 0.25 * fade)
+        drawLogo(next, fade, 0.75 + 0.25 * fade)
 
         for (const planet of PLANETS) {
             const angle = planet.phase + seconds * planet.speed
@@ -194,12 +257,14 @@ export function initSolarSystem() {
         start()
     })
 
-    logo.addEventListener('load', () => {
-        logoReady = true
-        // The running loop picks this up on its own; a frozen one needs a nudge.
-        repaint()
-    })
-    logo.src = LOGO_SRC
+    for (const logo of [reactLogo, vueLogo]) {
+        logo.image.addEventListener('load', () => {
+            logo.ready = true
+            // The running loop picks this up on its own; a frozen one needs a nudge.
+            repaint()
+        })
+        logo.image.src = import.meta.env.BASE_URL + logo.src
+    }
 
     // No start() here: the IntersectionObserver fires on observe and drives it.
     resize()
