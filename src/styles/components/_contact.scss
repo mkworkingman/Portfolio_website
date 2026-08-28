@@ -14,9 +14,9 @@
         backdrop-filter: blur(12px);
     }
 
+    // TODO: normal values (with "space(n)")
     &__card {
         z-index: 3;
-        // TODO: normal values (with "space(n)")
         width: min(250px, calc(100% - space(8)));
         height: min(500px, calc(100% - space(16)));
         overflow-y: auto;
