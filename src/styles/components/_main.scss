@@ -1,10 +1,1 @@
 @use '../vars' as *;
-
-.hero {
-    max-width: $unit * 192;
-    padding: $unit * 4;
-    margin-inline: auto;
-    text-align: center;
-    background-color: grey;
-    border-radius: calc(2 * (100vw - 100%));
-}
