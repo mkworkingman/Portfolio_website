@@ -12,9 +12,17 @@ interface Planet {
 
 const TAU = Math.PI * 2
 
-const SUN_COLOR = '#ffcf5c'
-const SUN_GLOW = '255 196 84'
 const ORBIT_COLOR = 'rgb(255 255 255 / 18%)'
+const GLOW_COLOR = '97 218 251'
+/** Drawn until the logo loads, so the centre is never empty. */
+const CORE_COLOR = '#61dafb'
+
+// BASE_URL keeps this correct if the site is ever served from a subpath.
+const LOGO_SRC = import.meta.env.BASE_URL + 'react-logo.svg'
+/** Logo width as a fraction of the canvas' shortest side. */
+const LOGO_SCALE = 0.16
+/** From the logo's own viewBox, rather than trusting naturalWidth on an SVG. */
+const LOGO_ASPECT = 23 / 20.46348
 
 const PLANETS: Planet[] = [
     { orbit: 0.22, size: 0.011, color: '#b8b0a8', speed: 0.9, phase: 0.4 },
@@ -39,6 +47,9 @@ export function initSolarSystem() {
     let width = 0
     let height = 0
 
+    const logo = new Image()
+    let logoReady = false
+
     const resize = () => {
         const dpr = window.devicePixelRatio || 1
         const rect = canvas.getBoundingClientRect()
@@ -58,7 +69,8 @@ export function initSolarSystem() {
         const shortestSide = Math.min(width, height)
         // Leave room for the outermost planet to sit on its orbit.
         const maxOrbit = shortestSide / 2 - shortestSide * 0.04
-        const sunRadius = shortestSide * 0.05
+        const logoWidth = shortestSide * LOGO_SCALE
+        const logoHeight = logoWidth / LOGO_ASPECT
 
         ctx.clearRect(0, 0, width, height)
 
@@ -70,26 +82,37 @@ export function initSolarSystem() {
             ctx.stroke()
         }
 
-        const glowRadius = sunRadius * 3.4
+        const glowRadius = logoWidth * 1.7
         const glow = ctx.createRadialGradient(
             centerX,
             centerY,
-            sunRadius * 0.6,
+            logoWidth * 0.12,
             centerX,
             centerY,
             glowRadius,
         )
-        glow.addColorStop(0, 'rgb(' + SUN_GLOW + ' / 45%)')
-        glow.addColorStop(1, 'rgb(' + SUN_GLOW + ' / 0%)')
+        glow.addColorStop(0, 'rgb(' + GLOW_COLOR + ' / 42%)')
+        glow.addColorStop(0.55, 'rgb(' + GLOW_COLOR + ' / 14%)')
+        glow.addColorStop(1, 'rgb(' + GLOW_COLOR + ' / 0%)')
         ctx.fillStyle = glow
         ctx.beginPath()
         ctx.arc(centerX, centerY, glowRadius, 0, TAU)
         ctx.fill()
 
-        ctx.fillStyle = SUN_COLOR
-        ctx.beginPath()
-        ctx.arc(centerX, centerY, sunRadius, 0, TAU)
-        ctx.fill()
+        if (logoReady) {
+            ctx.drawImage(
+                logo,
+                centerX - logoWidth / 2,
+                centerY - logoHeight / 2,
+                logoWidth,
+                logoHeight,
+            )
+        } else {
+            ctx.fillStyle = CORE_COLOR
+            ctx.beginPath()
+            ctx.arc(centerX, centerY, logoWidth * 0.09, 0, TAU)
+            ctx.fill()
+        }
 
         for (const planet of PLANETS) {
             const angle = planet.phase + seconds * planet.speed
@@ -113,6 +136,7 @@ export function initSolarSystem() {
     let seconds = 0
     let lastFrame = 0
     let frameId = 0
+    let onScreen = false
 
     const frame = (now: number) => {
         // Accumulate real time so the orbits keep their speed on any refresh rate.
@@ -124,12 +148,17 @@ export function initSolarSystem() {
     }
 
     const start = () => {
+        // Nothing to run while scrolled away, and never two loops at once.
+        if (!onScreen || frameId) return
+
         if (reducedMotion.matches) {
             // Still render the system, just frozen at its starting positions.
             draw(seconds)
             return
         }
 
+        // Resuming from a pause: drop the stale timestamp so the elapsed clock
+        // does not jump by however long the canvas was off screen.
         lastFrame = 0
         frameId = requestAnimationFrame(frame)
     }
@@ -139,10 +168,25 @@ export function initSolarSystem() {
         frameId = 0
     }
 
+    /** Repaint once when the loop is not the thing driving updates. */
+    const repaint = () => {
+        if (!frameId && onScreen) draw(seconds)
+    }
+
+    // requestAnimationFrame already stops for a hidden tab; this covers the
+    // other case - the canvas scrolled out of view on a tab still in front.
+    new IntersectionObserver((entries) => {
+        for (const entry of entries) {
+            onScreen = entry.isIntersecting
+        }
+
+        if (onScreen) start()
+        else stop()
+    }).observe(canvas)
+
     new ResizeObserver(() => {
         resize()
-        // Repaint immediately when the loop is not running.
-        if (!frameId) draw(seconds)
+        repaint()
     }).observe(canvas)
 
     reducedMotion.addEventListener('change', () => {
@@ -150,6 +194,13 @@ export function initSolarSystem() {
         start()
     })
 
+    logo.addEventListener('load', () => {
+        logoReady = true
+        // The running loop picks this up on its own; a frozen one needs a nudge.
+        repaint()
+    })
+    logo.src = LOGO_SRC
+
+    // No start() here: the IntersectionObserver fires on observe and drives it.
     resize()
-    start()
 }
