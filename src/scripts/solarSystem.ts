@@ -1,3 +1,5 @@
+// TODO:  After some time (my tab was open but I did not visit her) the proportions of canvas content was shrinked. Fix it
+
 interface Planet {
     /** Orbit radius as a fraction of the largest orbit that fits the canvas. */
     orbit: number
