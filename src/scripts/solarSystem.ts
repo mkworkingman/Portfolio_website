@@ -15,29 +15,19 @@ const TAU = Math.PI * 2
 const ORBIT_COLOR = 'rgb(255 255 255 / 18%)'
 
 interface Logo {
-    /** Resolved against BASE_URL, so a subpath deploy still finds it. */
-    src: string
-    /** From the file's own viewBox, rather than trusting naturalWidth on an SVG. */
-    aspect: number
     /** Glow tint behind it, as rgb channels, so it can be interpolated. */
     glow: [number, number, number]
-    /** A disc in this colour stands in until the image loads. */
-    core: string
+    /** Width of the source viewBox. The drawing is scaled up from these units. */
+    unit: number
 }
 
-const REACT_LOGO: Logo = {
-    src: 'react-logo.svg',
-    aspect: 23 / 20.46348,
-    glow: [97, 218, 251],
-    core: '#61dafb',
-}
+const REACT_LOGO: Logo = { glow: [97, 218, 251], unit: 23 }
+const VUE_LOGO: Logo = { glow: [65, 184, 131], unit: 128 }
 
-const VUE_LOGO: Logo = {
-    src: 'vue-logo.svg',
-    aspect: 128 / 128,
-    glow: [65, 184, 131],
-    core: '#41b883',
-}
+// Pasted verbatim from public/vue-logo.svg. Path2D speaks SVG path syntax, so
+// these need no conversion.
+const VUE_DARK = 'M25.997 9.393l23.002.009L64.035 34.36 79.018 9.404 102 9.398 64.15 75.053z'
+const VUE_GREEN = 'M.91 9.569l25.067-.172 38.15 65.659L101.98 9.401l25.11.026-62.966 108.06z'
 
 /** Logo width as a fraction of the canvas' shortest side. */
 const LOGO_SCALE = 0.16
@@ -46,7 +36,8 @@ const LOGO_INTERVAL = 5
 /** Length of the crossfade, taken out of the end of each interval. */
 const LOGO_FADE = 0.6
 
-type LogoState = Logo & { image: HTMLImageElement; ready: boolean }
+/** `paint` draws in the logo's own viewBox units, centred on the origin. */
+type LogoState = Logo & { paint: () => void }
 
 const mix = (from: number, to: number, t: number) => from + (to - from) * t
 /** Smoothstep, so the fade eases in and out instead of running linearly. */
@@ -75,36 +66,57 @@ export function initSolarSystem() {
     let width = 0
     let height = 0
 
-    const reactLogo: LogoState = { ...REACT_LOGO, image: new Image(), ready: false }
-    const vueLogo: LogoState = { ...VUE_LOGO, image: new Image(), ready: false }
+    // Built here rather than at module scope: Path2D is not implemented in jsdom,
+    // and the test suite imports this file. Past the ctx guard it is never reached.
+    const vueDark = new Path2D(VUE_DARK)
+    const vueGreen = new Path2D(VUE_GREEN)
+
+    const reactLogo: LogoState = {
+        ...REACT_LOGO,
+        // viewBox "-11.5 -10.23174 23 20.46348" is already centred on the origin.
+        paint: () => {
+            ctx.fillStyle = '#61dafb'
+            ctx.beginPath()
+            ctx.arc(0, 0, 2.05, 0, TAU)
+            ctx.fill()
+
+            // lineWidth 1 in viewBox units matches the SVG's stroke-width="1":
+            // the transform scales the stroke exactly as the viewBox would.
+            ctx.strokeStyle = '#61dafb'
+            ctx.lineWidth = 1
+            for (const degrees of [0, 60, 120]) {
+                ctx.beginPath()
+                ctx.ellipse(0, 0, 11, 4.2, (degrees * Math.PI) / 180, 0, TAU)
+                ctx.stroke()
+            }
+        },
+    }
+
+    const vueLogo: LogoState = {
+        ...VUE_LOGO,
+        paint: () => {
+            // viewBox "0 0 128 128" measures from a corner, so recentre it.
+            ctx.translate(-64, -64)
+
+            ctx.fillStyle = '#35495e'
+            ctx.fill(vueDark)
+            ctx.fillStyle = '#41b883'
+            ctx.fill(vueGreen)
+        },
+    }
 
     const drawLogo = (logo: LogoState, alpha: number, scale: number) => {
         if (alpha <= 0.002) return
 
-        const centerX = width / 2
-        const centerY = height / 2
         const logoWidth = Math.min(width, height) * LOGO_SCALE * scale
-        const logoHeight = logoWidth / logo.aspect
 
+        // save/restore also puts back the device-pixel-ratio transform set in resize().
+        ctx.save()
         ctx.globalAlpha = alpha
-
-        if (logo.ready) {
-            ctx.drawImage(
-                logo.image,
-                centerX - logoWidth / 2,
-                centerY - logoHeight / 2,
-                logoWidth,
-                logoHeight,
-            )
-        } else {
-            // Stand-in until the image loads, so the centre is never empty.
-            ctx.fillStyle = logo.core
-            ctx.beginPath()
-            ctx.arc(centerX, centerY, logoWidth * 0.09, 0, TAU)
-            ctx.fill()
-        }
-
-        ctx.globalAlpha = 1
+        ctx.translate(width / 2, height / 2)
+        ctx.scale(logoWidth / logo.unit, logoWidth / logo.unit)
+        logo.paint()
+        ctx.restore()
     }
 
     const resize = () => {
@@ -256,15 +268,6 @@ export function initSolarSystem() {
         stop()
         start()
     })
-
-    for (const logo of [reactLogo, vueLogo]) {
-        logo.image.addEventListener('load', () => {
-            logo.ready = true
-            // The running loop picks this up on its own; a frozen one needs a nudge.
-            repaint()
-        })
-        logo.image.src = import.meta.env.BASE_URL + logo.src
-    }
 
     // No start() here: the IntersectionObserver fires on observe and drives it.
     resize()
