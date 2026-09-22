@@ -1,19 +1,18 @@
 import { initLanguage } from './language'
-import { Language } from './values'
 
 interface Handler {
     selector: string
     fn: (match: HTMLElement) => void
 }
 
-const header = document.querySelector('.header')
-const main = document.querySelector('.main')
-const footer = document.querySelector('.footer')
-const langList = document.querySelector('.lang__list')
-const headerNavToggle = document.querySelector('.header-nav-toggle')
+const header = document.querySelector<HTMLElement>('.header')
+const main = document.querySelector<HTMLElement>('.main')
+const footer = document.querySelector<HTMLElement>('.footer')
+const langList = document.querySelector<HTMLElement>('.lang__list')
+const headerNavToggle = document.querySelector<HTMLElement>('.header-nav-toggle')
 const headerContactButton = document.querySelector<HTMLElement>('.header-contact')
-const headerNav = document.querySelector('.header-nav')
-const contactModal = document.querySelector('.contact-modal')
+const headerNav = document.querySelector<HTMLElement>('.header-nav')
+const contactModal = document.querySelector<HTMLElement>('.contact-modal')
 
 function handleSelectNavClick(element?: 'languageSwitcher' | 'navSwitcher') {
     if (element !== 'languageSwitcher') {
@@ -27,7 +26,7 @@ function handleSelectNavClick(element?: 'languageSwitcher' | 'navSwitcher') {
 
 export function initClickHandler() {
     function handleLanguageSwitch(match: HTMLElement) {
-        const lang = match.dataset.lang as Language
+        const lang = match.dataset.lang
         initLanguage(lang)
     }
 
@@ -75,8 +74,8 @@ export function initClickHandler() {
     ]
 
     document.addEventListener('click', (e) => {
-        const languageSwitcher = (e.target as HTMLElement).closest('.lang__switcher') as HTMLElement
-        const navSwitcher = (e.target as HTMLElement).closest('.header-nav-toggle') as HTMLElement
+        const languageSwitcher = (e.target as HTMLElement).closest('.lang__switcher')
+        const navSwitcher = (e.target as HTMLElement).closest('.header-nav-toggle')
 
         if (languageSwitcher) {
             langList?.classList.toggle('is-open')
@@ -94,7 +93,7 @@ export function initClickHandler() {
         handleSelectNavClick()
 
         for (const { selector, fn } of handlers) {
-            const match = (e.target as HTMLElement).closest(selector) as HTMLElement | null
+            const match = (e.target as HTMLElement).closest(selector) as HTMLElement
             if (match) return fn(match)
         }
     })

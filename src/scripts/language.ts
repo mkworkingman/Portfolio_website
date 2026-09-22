@@ -28,7 +28,8 @@ const translations: Record<Language, Record<TextKey, string>> = {
 
 export function initLanguage(lang: Language = 'en') {
     document.querySelectorAll<HTMLElement>('[data-i18n]').forEach((el) => {
-        const key = el.dataset.i18n as TextKey
+        const key = el.dataset.i18n
+        if (!key) return
 
         el.textContent = translations[lang][key]
     })
