@@ -73,9 +73,11 @@ export function initClickHandler() {
         { selector: '.contact-modal__close', fn: handleCloseContactMeModal },
     ]
 
-    document.addEventListener('click', (e) => {
-        const languageSwitcher = (e.target as HTMLElement).closest('.lang__switcher')
-        const navSwitcher = (e.target as HTMLElement).closest('.header-nav-toggle')
+    document.addEventListener('click', ({ target }) => {
+        if (!(target instanceof Element)) return
+
+        const languageSwitcher = target.closest('.lang__switcher')
+        const navSwitcher = target.closest('.header-nav-toggle')
 
         if (languageSwitcher) {
             langList?.classList.toggle('is-open')
@@ -93,8 +95,8 @@ export function initClickHandler() {
         handleSelectNavClick()
 
         for (const { selector, fn } of handlers) {
-            const match = (e.target as HTMLElement).closest(selector) as HTMLElement
-            if (match) return fn(match)
+            const match = target.closest(selector)
+            if (match instanceof HTMLElement) return fn(match)
         }
     })
 }
