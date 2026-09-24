@@ -6,6 +6,8 @@
     gap: space(8);
     align-items: center;
     justify-content: center;
+    background-color: darkcyan;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80%);
 
     // Text beside the canvas once there is room for both.
     @include md {
