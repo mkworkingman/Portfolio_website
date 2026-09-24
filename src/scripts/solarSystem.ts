@@ -1,18 +1,20 @@
 // TODO:  After some time (my tab was open but I did not visit her) the proportions of canvas content was shrinked. Fix it
 
-interface Planet {
+interface Orbit {
     /** Orbit radius as a fraction of the largest orbit that fits the canvas. */
-    orbit: number
-    /** Body radius as a fraction of the canvas' shortest side. */
-    size: number
-    color: string
-    /** Radians per second. */
+    radius: number
+    /** Radians per second, shared by every planet on the orbit. */
     speed: number
-    /** Starting angle, so the planets do not all line up on load. */
+    /** Starting angle, so the orbits do not all line up on load. */
     phase: number
+    /** One per planet; the planets sit evenly spaced around the orbit. */
+    colors: string[]
 }
 
 const TAU = Math.PI * 2
+
+/** Planet radius as a fraction of the canvas' shortest side. */
+const PLANET_SIZE = 0.018
 
 const ORBIT_COLOR = 'rgb(255 255 255 / 18%)'
 
@@ -45,13 +47,10 @@ const mix = (from: number, to: number, t: number) => from + (to - from) * t
 /** Smoothstep, so the fade eases in and out instead of running linearly. */
 const ease = (t: number) => t * t * (3 - 2 * t)
 
-const PLANETS: Planet[] = [
-    { orbit: 0.22, size: 0.011, color: '#b8b0a8', speed: 0.9, phase: 0.4 },
-    { orbit: 0.35, size: 0.017, color: '#e0a86a', speed: 0.66, phase: 2.1 },
-    { orbit: 0.48, size: 0.019, color: '#4f8fd8', speed: 0.5, phase: 3.8 },
-    { orbit: 0.61, size: 0.015, color: '#c05a3a', speed: 0.4, phase: 5.2 },
-    { orbit: 0.8, size: 0.032, color: '#d8a878', speed: 0.26, phase: 1.2 },
-    { orbit: 0.95, size: 0.026, color: '#e3d2a2', speed: 0.19, phase: 4.6 },
+const ORBITS: Orbit[] = [
+    { radius: 0.4, speed: 0.5, phase: 3.8, colors: ['#4f8fd8', '#b8b0a8', '#e0a86a'] },
+    { radius: 0.67, speed: 0.34, phase: 5.2, colors: ['#c05a3a', '#e3d2a2', '#4f8fd8'] },
+    { radius: 0.95, speed: 0.22, phase: 1.2, colors: ['#d8a878', '#c05a3a', '#b8b0a8'] },
 ]
 
 export function initSolarSystem() {
@@ -138,8 +137,9 @@ export function initSolarSystem() {
         const centerX = width / 2
         const centerY = height / 2
         const shortestSide = Math.min(width, height)
-        // Leave room for the outermost planet to sit on its orbit.
-        const maxOrbit = shortestSide / 2 - shortestSide * 0.04
+        const planetRadius = shortestSide * PLANET_SIZE
+        // Leave room for a planet to sit on the outermost orbit.
+        const maxOrbit = shortestSide / 2 - planetRadius
         const logoWidth = shortestSide * LOGO_SCALE
 
         // Alternate the centre logo. `seconds` only advances while the loop is
@@ -158,9 +158,9 @@ export function initSolarSystem() {
 
         ctx.lineWidth = 1
         ctx.strokeStyle = ORBIT_COLOR
-        for (const planet of PLANETS) {
+        for (const orbit of ORBITS) {
             ctx.beginPath()
-            ctx.arc(centerX, centerY, planet.orbit * maxOrbit, 0, TAU)
+            ctx.arc(centerX, centerY, orbit.radius * maxOrbit, 0, TAU)
             ctx.stroke()
         }
 
@@ -191,20 +191,24 @@ export function initSolarSystem() {
         drawLogo(current, 1 - fade, 1 - 0.25 * fade)
         drawLogo(next, fade, 0.75 + 0.25 * fade)
 
-        for (const planet of PLANETS) {
-            const angle = planet.phase + seconds * planet.speed
-            const orbitRadius = planet.orbit * maxOrbit
+        for (const orbit of ORBITS) {
+            const orbitRadius = orbit.radius * maxOrbit
 
-            ctx.fillStyle = planet.color
-            ctx.beginPath()
-            ctx.arc(
-                centerX + Math.cos(angle) * orbitRadius,
-                centerY + Math.sin(angle) * orbitRadius,
-                planet.size * shortestSide,
-                0,
-                TAU,
-            )
-            ctx.fill()
+            orbit.colors.forEach((color, index) => {
+                const angle =
+                    orbit.phase + seconds * orbit.speed + (index * TAU) / orbit.colors.length
+
+                ctx.fillStyle = color
+                ctx.beginPath()
+                ctx.arc(
+                    centerX + Math.cos(angle) * orbitRadius,
+                    centerY + Math.sin(angle) * orbitRadius,
+                    planetRadius,
+                    0,
+                    TAU,
+                )
+                ctx.fill()
+            })
         }
     }
 
