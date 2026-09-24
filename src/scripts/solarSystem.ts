@@ -225,8 +225,9 @@ export function initSolarSystem() {
     }
 
     const start = () => {
-        // Nothing to run while scrolled away, and never two loops at once.
-        if (!onScreen || frameId) return
+        // Nothing to run while scrolled away or in a background tab, and never
+        // two loops at once.
+        if (!onScreen || document.hidden || frameId) return
 
         if (reducedMotion.matches) {
             // Still render the system, just frozen at its starting positions.
@@ -250,8 +251,14 @@ export function initSolarSystem() {
         if (!frameId && onScreen) draw(seconds)
     }
 
-    // requestAnimationFrame already stops for a hidden tab; this covers the
-    // other case - the canvas scrolled out of view on a tab still in front.
+    // Stop outright in a background tab. requestAnimationFrame would throttle on
+    // its own, but the loop would keep its stale timestamp and jump on return.
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) stop()
+        else start()
+    })
+
+    // Covers the other case - the canvas scrolled out of view on a tab still in front.
     new IntersectionObserver((entries) => {
         for (const entry of entries) {
             onScreen = entry.isIntersecting
