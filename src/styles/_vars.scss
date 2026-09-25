@@ -4,13 +4,14 @@ $breakpoint-large-xl: 1440px;
 
 // Colors - 60-30-10 rule:
 // 60% base (page ground), 30% surface (header, hero, footer, text), 10% accent (calls to action, highlights).
-$color-base: #eef1f5;
+$color-base: #dfe4eb;
 $color-surface: #1b2432;
 $color-accent: #f2a93b;
 
 // Text
 $color-text: $color-surface;
 $color-text-inverse: #e7ebf1; // text on $color-surface
+$color-text-inverse-soft: #c3ccd8; // large headings on $color-surface, toned down from $color-text-inverse
 $color-text-inverse-muted: #9aa6b8;
 
 // Overlays
