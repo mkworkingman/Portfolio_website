@@ -66,12 +66,30 @@ select {
 body {
     min-height: 100vh;
     min-height: 100svh;
-    color: #111;
-    background-color: #a9a9a9;
+    line-height: 1.5;
+    color: $color-text;
+    background-color: $color-base;
 }
 
 ul {
     list-style: none;
+}
+
+a {
+    color: inherit;
+}
+
+button {
+    font-size: inherit;
+    color: inherit;
+    cursor: pointer;
+    background: none;
+    border: 0;
+}
+
+:focus-visible {
+    outline: space(0.5) solid $color-accent;
+    outline-offset: space(0.5);
 }
 
 @media (prefers-reduced-motion: reduce) {

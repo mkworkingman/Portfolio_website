@@ -1,4 +1,7 @@
+@use '../vars' as *;
+
 .footer {
-    color: #d0d0d0;
-    background-color: #1e1e1e;
+    padding: space(4) space(5);
+    color: $color-text-inverse-muted;
+    background-color: $color-surface;
 }

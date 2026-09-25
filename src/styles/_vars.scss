@@ -2,6 +2,20 @@ $breakpoint-medium: 768px;
 $breakpoint-large: 1024px;
 $breakpoint-large-xl: 1440px;
 
+// Colors - 60-30-10 rule:
+// 60% base (page ground), 30% surface (header, hero, footer, text), 10% accent (calls to action, highlights).
+$color-base: #eef1f5;
+$color-surface: #1b2432;
+$color-accent: #f2a93b;
+
+// Text
+$color-text: $color-surface;
+$color-text-inverse: #e7ebf1; // text on $color-surface
+$color-text-inverse-muted: #9aa6b8;
+
+// Overlays
+$color-overlay: rgb(27 36 50 / 70%);
+
 @function space($count: 1) {
     @return 4px * $count;
 }

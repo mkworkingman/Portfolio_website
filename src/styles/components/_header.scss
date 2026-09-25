@@ -9,24 +9,37 @@
     align-items: center;
     height: var(--header-height);
     padding: 0 space(5);
-    background-color: #1e1e1e;
+    color: $color-text-inverse;
+    background-color: $color-surface;
 }
 
 .header-logo {
     margin-inline-end: auto;
-    color: #304dc0;
+    color: $color-accent;
 
     span {
-        color: #e8e8e8;
+        color: $color-text-inverse;
     }
+}
+
+.header-contact {
+    padding: space(2) space(4);
+    font-weight: 700;
+    color: $color-surface;
+    background-color: $color-accent;
+    border-radius: space(1);
 }
 
 // Navigation:
 .header-nav-toggle {
-    background-color: darkgreen;
+    width: space(9);
+    height: space(9);
+    border: space(0.25) solid $color-text-inverse-muted;
+    border-radius: space(1);
 
     &.is-open {
-        background-color: darkred;
+        color: $color-accent;
+        border-color: $color-accent;
     }
 
     @include md {
@@ -41,7 +54,7 @@
     left: 0;
     display: none;
     padding: space(4) space(5);
-    background-color: #1e1e1e;
+    background-color: $color-surface;
 
     &.is-open {
         display: block;
@@ -65,6 +78,15 @@
     }
 }
 
+.header-nav__link {
+    color: $color-text-inverse-muted;
+    text-decoration: none;
+
+    &:hover {
+        color: $color-text-inverse;
+    }
+}
+
 .lang {
     @include md {
         position: relative;
@@ -80,7 +102,16 @@
     display: none;
     gap: space(3);
     padding: space(4) space(5);
-    background-color: #1e1e1e;
+    background-color: $color-surface;
+
+    li {
+        color: $color-text-inverse-muted;
+        cursor: pointer;
+
+        &:hover {
+            color: $color-text-inverse;
+        }
+    }
 
     &.is-open {
         display: grid;

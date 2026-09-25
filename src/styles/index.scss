@@ -1,4 +1,4 @@
-@use './vars';
+@use './vars' as *;
 @use './base';
 @use './components/header';
 @use './components/main';
@@ -6,5 +6,5 @@
 @use './components/contact';
 
 .under-construction {
-    color: darkred;
+    color: $color-accent;
 }

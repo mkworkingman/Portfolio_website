@@ -1,11 +1,40 @@
 @use '../vars' as *;
 
+.main {
+    section {
+        padding: space(10) space(5);
+
+        @include md {
+            padding: space(16) space(10);
+        }
+    }
+
+    h2 {
+        margin-bottom: space(4);
+    }
+
+    h3 {
+        margin-block: space(4) space(2);
+    }
+
+    p,
+    ul {
+        max-width: space(170);
+    }
+
+    p + p {
+        margin-top: space(3);
+    }
+}
+
 #home {
     display: flex;
     flex-direction: column;
     gap: space(8);
     justify-content: center;
-    background-color: darkcyan;
+    min-height: space(90);
+    color: $color-text-inverse;
+    background-color: $color-surface;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80%);
 
     // Text beside the canvas once there is room for both.
@@ -16,17 +45,34 @@
 
 .hero-greeting {
     align-self: center;
+
+    h1 {
+        font-size: space(10);
+        line-height: 1.1;
+
+        @include md {
+            font-size: space(14);
+        }
+    }
 }
 
+.hero-subtitle {
+    font-size: space(4.5);
+    font-weight: 400;
+    color: $color-text-inverse-muted;
+}
+
+// The canvas element is removed from the markup for now; styles kept for when it returns.
 .hero-canvas {
     width: min(100%, space(140));
     aspect-ratio: 1;
-    background-color: #05060a;
+    background-color: $color-surface;
 }
 
 .hello {
+    color: $color-accent;
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(space(-5));
     animation: fade-slide-down 0.6s ease-out forwards;
 }
 

@@ -10,17 +10,20 @@
     &__background {
         position: absolute;
         inset: 0;
-        background: rgb(0 0 0 / 70%);
-        backdrop-filter: blur(12px);
+        background: $color-overlay;
+        backdrop-filter: blur(space(3));
     }
 
-    // TODO: normal values (with "space(n)")
     &__card {
         z-index: 3;
-        width: min(250px, calc(100% - space(8)));
-        height: min(500px, calc(100% - space(16)));
+        width: min(space(100), calc(100% - space(8)));
+        height: min(space(125), calc(100% - space(16)));
+        padding: space(6);
         overflow-y: auto;
-        background-color: rgb(141 140 140);
+        color: $color-text;
+        background-color: $color-base;
+        border-top: space(1) solid $color-accent;
+        border-radius: space(2);
     }
 
     &.is-open {
