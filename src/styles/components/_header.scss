@@ -11,6 +11,8 @@
     padding: 0 space(5);
     color: $color-text-inverse;
     background-color: $color-surface;
+    border-bottom: 1px solid $color-edge-highlight;
+    box-shadow: 0 2px space(4) $color-shadow;
 }
 
 .header-logo {

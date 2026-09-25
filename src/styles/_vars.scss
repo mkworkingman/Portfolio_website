@@ -18,6 +18,8 @@ $color-overlay: rgb(27 36 50 / 70%);
 
 // Decoration
 $color-grid-line: rgb(231 235 241 / 5%); // barely visible lines on $color-surface
+$color-edge-highlight: rgb(231 235 241 / 14%); // light hairline, sits on top of $color-shadow
+$color-shadow: rgb(8 12 18 / 45%); // darker than $color-surface, so it still shows over the hero
 
 @function space($count: 1) {
     @return 4px * $count;
