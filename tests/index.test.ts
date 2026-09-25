@@ -64,4 +64,14 @@ describe('Runtime', () => {
         const homeLink = document.querySelector<HTMLElement>('[data-i18n="navHome"]')
         expect(homeLink?.textContent).toBe('Главная')
     })
+
+    it('shows the current language on the switcher button', () => {
+        const switcher = document.querySelector<HTMLElement>('.lang__switcher')
+
+        document.querySelector<HTMLElement>('[data-lang="sr"]')?.click()
+        expect(switcher?.textContent).toBe('SR')
+
+        document.querySelector<HTMLElement>('[data-lang="en"]')?.click()
+        expect(switcher?.textContent).toBe('EN')
+    })
 })

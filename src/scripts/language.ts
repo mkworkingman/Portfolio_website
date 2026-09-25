@@ -33,4 +33,7 @@ export function initLanguage(lang: Language = 'en') {
 
         el.textContent = translations[lang][key]
     })
+
+    const switcher = document.querySelector<HTMLElement>('.lang__switcher')
+    if (switcher) switcher.textContent = lang.toUpperCase()
 }
