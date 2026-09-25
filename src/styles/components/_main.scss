@@ -28,12 +28,13 @@
 }
 
 #home {
+    --hero-min-height: #{space(75)};
     position: relative;
     display: flex;
     flex-direction: column;
     gap: space(8);
     justify-content: center;
-    min-height: space(90);
+    min-height: var(--hero-min-height);
     color: $color-text-inverse;
     background-color: $color-surface;
 
@@ -44,9 +45,38 @@
     background-size: space(10) space(10);
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80%);
 
+    &::after {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        height: 40%;
+        pointer-events: none;
+        content: '';
+        background: darkgrey;
+        background: linear-gradient(
+            atan2(calc(var(--hero-min-height) * 0.2), 100cqw),
+            $color-inner-shadow 0%,
+            $color-inner-shadow 40%,
+            transparent 60%
+        );
+        clip-path: polygon(0 0, 100% 50%, 100% 100%, 0% 100%);
+    }
+
     // Text beside the canvas once there is room for both.
     @include md {
+        --hero-min-height: #{space(80)}; // 320px
+
         flex-direction: row;
+    }
+
+    @include lg {
+        --hero-min-height: #{space(85)}; // 340px
+    }
+
+    @include xl {
+        --hero-min-height: #{space(90)}; // 360px
     }
 }
 
