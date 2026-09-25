@@ -16,6 +16,9 @@ $color-text-inverse-muted: #9aa6b8;
 // Overlays
 $color-overlay: rgb(27 36 50 / 70%);
 
+// Decoration
+$color-grid-line: rgb(231 235 241 / 5%); // barely visible lines on $color-surface
+
 @function space($count: 1) {
     @return 4px * $count;
 }

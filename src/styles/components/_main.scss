@@ -36,6 +36,12 @@
     min-height: space(90);
     color: $color-text-inverse;
     background-color: $color-surface;
+
+    // Faint grid: a 1px line every 40px, horizontal and vertical.
+    background-image:
+        linear-gradient($color-grid-line 1px, transparent 1px),
+        linear-gradient(90deg, $color-grid-line 1px, transparent 1px);
+    background-size: space(10) space(10);
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80%);
 
     // Text beside the canvas once there is room for both.
