@@ -80,6 +80,11 @@
     width: min(100%, space(140));
     aspect-ratio: 1;
     pointer-events: none;
+
+    // solarSystem.ts also skips drawing under reduced motion.
+    @media (prefers-reduced-motion: reduce) {
+        display: none;
+    }
 }
 
 .hello {

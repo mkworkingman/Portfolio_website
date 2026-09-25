@@ -233,11 +233,8 @@ export function initSolarSystem() {
         // two loops at once.
         if (!onScreen || document.hidden || frameId) return
 
-        if (reducedMotion.matches) {
-            // Still render the system, just frozen at its starting positions.
-            draw(seconds)
-            return
-        }
+        // Reduced motion: the canvas is hidden in CSS, so nothing is drawn at all.
+        if (reducedMotion.matches) return
 
         // Resuming from a pause: drop the stale timestamp so the elapsed clock
         // does not jump by however long the canvas was off screen.
@@ -252,7 +249,7 @@ export function initSolarSystem() {
 
     /** Repaint once when the loop is not the thing driving updates. */
     const repaint = () => {
-        if (!frameId && onScreen) draw(seconds)
+        if (!frameId && onScreen && !reducedMotion.matches) draw(seconds)
     }
 
     // Stop outright in a background tab. requestAnimationFrame would throttle on
