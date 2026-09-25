@@ -12,14 +12,23 @@ $font-subsets: (
 );
 $font-weights: 400, 700;
 
+// latin is preloaded, so `optional` avoids any swap. latin-ext/cyrillic only load
+// once RU/SR text is on the page (often after a language switch), so they need
+// `swap` - with `optional` they would miss the ~100ms window and stay Arial.
 @each $subset, $range in $font-subsets {
+    $display: swap;
+
+    @if $subset == 'latin' {
+        $display: optional;
+    }
+
     @each $weight in $font-weights {
         @font-face {
             font-family: Montserrat;
             font-style: normal;
             font-weight: $weight;
             src: url('/fonts/montserrat-#{$subset}-#{$weight}-normal.woff2') format('woff2');
-            font-display: optional;
+            font-display: $display;
             unicode-range: #{$range};
         }
     }

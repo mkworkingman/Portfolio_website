@@ -28,6 +28,7 @@
 }
 
 #home {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: space(8);
@@ -62,11 +63,16 @@
     color: $color-text-inverse-muted;
 }
 
-// The canvas element is removed from the markup for now; styles kept for when it returns.
+// Solar system sits behind the hero content, pinned to the bottom right.
+// z-index: -1 stays inside #home, since its clip-path creates a stacking context.
 .hero-canvas {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
     width: min(100%, space(140));
     aspect-ratio: 1;
-    background-color: $color-surface;
+    pointer-events: none;
 }
 
 .hello {
