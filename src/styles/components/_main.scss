@@ -19,7 +19,7 @@
 
     p,
     ul {
-        max-width: space(170);
+        max-width: $measure;
     }
 
     p + p {
@@ -36,13 +36,13 @@
     gap: space(8);
     justify-content: center;
     min-height: var(--hero-min-height);
-    color: $color-text-inverse;
-    background-color: $color-surface;
+    color: color(text-inverse);
+    background-color: color(surface);
 
-    // Faint grid: a 1px line every 40px, horizontal and vertical.
+    // Faint grid: a hairline every space(10), horizontal and vertical.
     background-image:
-        linear-gradient($color-grid-line 1px, transparent 1px),
-        linear-gradient(90deg, $color-grid-line 1px, transparent 1px);
+        linear-gradient(color(grid-line) $border-width, transparent $border-width),
+        linear-gradient(90deg, color(grid-line) $border-width, transparent $border-width);
     background-size: space(10) space(10);
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80%);
 
@@ -51,15 +51,14 @@
         right: 0;
         bottom: 0;
         left: 0;
-        z-index: -1;
+        z-index: z(behind);
         height: 40%;
         pointer-events: none;
         content: '';
-        background: darkgrey;
         background: linear-gradient(
             atan2(calc(var(--hero-min-height) * 0.2), 100cqw),
-            $color-inner-shadow 0%,
-            $color-inner-shadow 40%,
+            color(inner-shadow) 0%,
+            color(inner-shadow) 40%,
             transparent 60%
         );
         clip-path: polygon(0 0, 100% 50%, 100% 100%, 0% 100%);
@@ -67,17 +66,17 @@
 
     // Text beside the canvas once there is room for both.
     @include md {
-        --hero-min-height: #{space(80)}; // 320px
+        --hero-min-height: #{space(80)};
 
         flex-direction: row;
     }
 
     @include lg {
-        --hero-min-height: #{space(85)}; // 340px
+        --hero-min-height: #{space(85)};
     }
 
     @include xl {
-        --hero-min-height: #{space(90)}; // 360px
+        --hero-min-height: #{space(90)};
     }
 }
 
@@ -85,29 +84,25 @@
     align-self: center;
 
     h1 {
-        font-size: space(10);
-        line-height: 1.1;
-        color: $color-text-inverse-soft;
-
-        @include md {
-            font-size: space(14);
-        }
+        font-size: font-size(display);
+        line-height: line-height(tight);
+        color: color(text-inverse-soft);
     }
 }
 
 .hero-subtitle {
-    font-size: space(4.5);
-    font-weight: 400;
-    color: $color-text-inverse-muted;
+    font-size: font-size(lg);
+    font-weight: font-weight(regular);
+    color: color(text-inverse-muted);
 }
 
 // Solar system sits behind the hero content, pinned to the bottom right.
-// z-index: -1 stays inside #home, since its clip-path creates a stacking context.
+// z(behind) stays inside #home, since its clip-path creates a stacking context.
 .hero-canvas {
     position: absolute;
     right: 0;
     bottom: 0;
-    z-index: -1;
+    z-index: z(behind);
     width: min(100%, space(140));
     aspect-ratio: 1;
     pointer-events: none;
@@ -119,10 +114,10 @@
 }
 
 .hello {
-    color: $color-accent;
+    color: color(accent);
     opacity: 0;
     transform: translateY(space(-5));
-    animation: fade-slide-down 0.6s ease-out forwards;
+    animation: fade-slide-down duration(slow) ease(out) forwards;
 }
 
 @keyframes fade-slide-down {

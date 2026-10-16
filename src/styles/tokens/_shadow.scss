@@ -1,0 +1,11 @@
+@use 'functions' as *;
+@use 'space' as *;
+@use 'color' as *;
+
+$-shadows: (
+    header: 0 2px space(4) color(shadow),
+);
+
+@function shadow($name) {
+    @return token($-shadows, $name, 'shadow');
+}

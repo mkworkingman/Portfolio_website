@@ -1,0 +1,13 @@
+@use 'functions' as *;
+@use 'space' as *;
+
+$-radii: (
+    sm: space(1),
+    md: space(2),
+    lg: space(4),
+    pill: 999rem,
+);
+
+@function radius($name) {
+    @return token($-radii, $name, 'radius');
+}

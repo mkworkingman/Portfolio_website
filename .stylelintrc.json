@@ -20,6 +20,29 @@
       {
         "message": "For BEM naming convention"
       }
+    ],
+    "unit-disallowed-list": [
+      ["px"],
+      {
+        "message": "Use space(), font-size() or another token. Hairlines use $border-width / $focus-ring-width"
+      }
+    ],
+    "color-no-hex": [true, { "message": "Use color(<name>) from tokens/_color.scss" }],
+    "color-named": ["never", { "message": "Use color(<name>) from tokens/_color.scss" }],
+    "function-disallowed-list": [
+      ["rgb", "rgba", "hsl", "hsla", "hwb", "lab", "lch", "oklab", "oklch"],
+      { "message": "Use color(<name>) from tokens/_color.scss" }
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["src/styles/tokens/**/*.scss"],
+      "rules": {
+        "unit-disallowed-list": null,
+        "color-no-hex": null,
+        "color-named": null,
+        "function-disallowed-list": null
+      }
+    }
+  ]
 }

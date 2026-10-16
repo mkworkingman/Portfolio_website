@@ -1,0 +1,14 @@
+@use 'functions' as *;
+
+// `behind` and `raised` are relative to the nearest stacking context;
+// `header` and `modal` are page-level layers.
+$-layers: (
+    behind: -1,
+    raised: 1,
+    header: 1,
+    modal: 2,
+);
+
+@function z($name) {
+    @return token($-layers, $name, 'z-index');
+}

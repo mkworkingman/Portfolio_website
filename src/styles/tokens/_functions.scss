@@ -1,0 +1,11 @@
+@use 'sass:map';
+
+// Reads a token from a map, failing the build on an unknown key instead of
+// silently emitting nothing.
+@function token($map, $key, $category) {
+    @if map.has-key($map, $key) {
+        @return map.get($map, $key);
+    } @else {
+        @error 'Unknown #{$category} token `#{$key}`. Available: #{map.keys($map)}';
+    }
+}

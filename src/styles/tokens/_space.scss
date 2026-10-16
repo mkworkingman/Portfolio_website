@@ -1,0 +1,5 @@
+// 4px grid in rem: space() = 0.25rem, space(4) = 1rem (16px at the browser default).
+// rem follows the visitor's font-size setting; never shrink the root font size.
+@function space($count: 1) {
+    @return 0.25rem * $count;
+}

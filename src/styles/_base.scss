@@ -43,14 +43,16 @@ $font-weights: 400, 700;
 }
 
 :root {
-    --header-height: #{space(14)}; // 56px
+    --header-height: #{space(14)}; // 3.5rem
+
+    @include color-custom-properties;
 
     @include md {
-        --header-height: #{space(16)}; // 64px
+        --header-height: #{space(16)}; // 4rem
     }
 
     @include lg {
-        --header-height: #{space(18)}; // 72px
+        --header-height: #{space(18)}; // 4.5rem
     }
 }
 
@@ -69,15 +71,15 @@ input,
 button,
 textarea,
 select {
-    font-family: Montserrat, Arial, sans-serif;
+    font-family: $font-family-sans;
 }
 
 body {
     min-height: 100vh;
     min-height: 100svh;
-    line-height: 1.5;
-    color: $color-text;
-    background-color: $color-base;
+    line-height: line-height(normal);
+    color: color(text);
+    background-color: color(base);
 }
 
 ul {
@@ -97,8 +99,8 @@ button {
 }
 
 :focus-visible {
-    outline: space(0.5) solid $color-accent;
-    outline-offset: space(0.5);
+    outline: $focus-ring-width solid color(accent);
+    outline-offset: $focus-ring-offset;
 }
 
 @media (prefers-reduced-motion: reduce) {

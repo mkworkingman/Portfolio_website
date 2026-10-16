@@ -1,0 +1,41 @@
+@use 'sass:color';
+@use 'functions' as *;
+
+// Primitives: the raw palette. Private (`$-`), so components can't reach them.
+$-slate-50: #e7ebf1;
+$-slate-100: #dfe4eb;
+$-slate-300: #c3ccd8;
+$-slate-400: #9aa6b8;
+$-navy-800: #1b2432;
+$-navy-950: #080c12;
+$-amber-400: #f2a93b;
+
+// Semantic: what components use. 60-30-10 rule:
+// 60% base (page ground), 30% surface (header, hero, footer, text), 10% accent.
+$-colors: (
+    base: $-slate-100,
+    surface: $-navy-800,
+    accent: $-amber-400,
+    text: $-navy-800,
+    text-inverse: $-slate-50, // text on surface
+    text-inverse-soft: $-slate-300, // large headings on surface
+    text-inverse-muted: $-slate-400,
+    overlay: color.change($-navy-800, $alpha: 0.7),
+    grid-line: color.change($-slate-50, $alpha: 0.05), // barely visible lines on surface
+    edge-highlight: color.change($-slate-50, $alpha: 0.14), // light hairline, sits on top of shadow
+    shadow: color.change($-navy-950, $alpha: 0.45), // darker than surface, so it still shows over the hero
+    inner-shadow: color.change($-navy-950, $alpha: 0.75), // hero bottom edge, strong enough to read on surface
+);
+
+// Emitted once on :root, so a theme can override them in one block.
+@mixin color-custom-properties {
+    @each $name, $value in $-colors {
+        --color-#{$name}: #{$value};
+    }
+}
+
+@function color($name) {
+    $value: token($-colors, $name, 'color'); // fails the build on an unknown name
+
+    @return var(--color-#{$name});
+}

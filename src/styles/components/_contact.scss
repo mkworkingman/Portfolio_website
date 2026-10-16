@@ -3,27 +3,27 @@
 .contact-modal {
     position: fixed;
     inset: 0;
-    z-index: 2;
+    z-index: z(modal);
     display: none;
     place-items: center;
 
     &__background {
         position: absolute;
         inset: 0;
-        background: $color-overlay;
+        background: color(overlay);
         backdrop-filter: blur(space(3));
     }
 
     &__card {
-        z-index: 3;
+        z-index: z(raised);
         width: min(space(100), calc(100% - space(8)));
         height: min(space(125), calc(100% - space(16)));
         padding: space(6);
         overflow-y: auto;
-        color: $color-text;
-        background-color: $color-base;
-        border-top: space(1) solid $color-accent;
-        border-radius: space(2);
+        color: color(text);
+        background-color: color(base);
+        border-top: $border-width-accent solid color(accent);
+        border-radius: radius(md);
     }
 
     &.is-open {

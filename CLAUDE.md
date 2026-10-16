@@ -7,11 +7,18 @@ Read this before making any changes.
 - Write all styles in **SCSS** (`src/styles/`). No plain CSS files, inline styles, or CSS-in-JS.
   - Exception: critical CSS may be inlined (e.g. a `<style>` block in `index.html`) when it's genuinely needed for first paint.
 - New component partials go in `src/styles/components/_name.scss`, start with `@use '../vars' as *;`, and get registered in `src/styles/index.scss`.
-- **All sizes** (padding, margin, gap, width/height, offsets, etc.) use the `space()` function from `src/styles/_vars.scss`:
-  - `space()` = 4px, `space(2)` = 8px, `space(4)` = 16px, `space(0.5)` = 2px
+- **Every value comes from a design token** in `src/styles/tokens/` (see its `README.md`). `@use '../vars' as *;` exposes them all. Stylelint rejects raw px, hex, named colors and `rgb()`/`hsl()` outside `tokens/`.
+- **Sizes** (padding, margin, gap, width/height, offsets, etc.) use `space()`, which returns rem on a 4px grid:
+  - `space()` = 0.25rem (4px), `space(2)` = 0.5rem, `space(4)` = 1rem, `space(0.5)` = 0.125rem
   - Do: `padding: space(2) space(4);`
-  - Don't: `padding: 8px 16px;`
-- Use the breakpoint mixins from `_vars.scss` (`@include md`, `lg`, `xl`) rather than raw media queries.
+  - Don't: `padding: 8px 16px;` or `padding: 0.5rem 1rem;`
+  - Never change the root font size (no `html { font-size: 62.5% }`).
+- **px only for hairlines**, and only through tokens: `$border-width`, `$border-width-accent`, `$focus-ring-width`, `$focus-ring-offset`.
+- **Colors:** `color(surface)`, `color(text-inverse-muted)`, … These are semantic names that compile to CSS custom properties. Raw palette values stay private inside `tokens/_color.scss`.
+- **Typography:** `font-size(lg)`, `font-weight(bold)`, `line-height(tight)`, `$font-family-sans`, `$measure`. Font sizes never use `space()`.
+- **Other tokens:** `radius(sm)`, `shadow(header)`, `z(modal)`, `duration(slow)`, `ease(out)`.
+- An unknown token name (e.g. `color(surfce)`) fails the build. Add a new token to the matching `tokens/` file instead of inlining a value.
+- Use the breakpoint mixins (`@include md`, `lg`, `xl`; em-based) rather than raw media queries.
 
 ## Click handling
 

@@ -1,0 +1,19 @@
+@use 'functions' as *;
+
+$-durations: (
+    fast: 150ms,
+    base: 250ms,
+    slow: 600ms,
+);
+$-easings: (
+    out: ease-out,
+    in-out: ease-in-out,
+);
+
+@function duration($name) {
+    @return token($-durations, $name, 'duration');
+}
+
+@function ease($name) {
+    @return token($-easings, $name, 'easing');
+}

@@ -2,6 +2,6 @@
 
 .footer {
     padding: space(4) space(5);
-    color: $color-text-inverse-muted;
-    background-color: $color-surface;
+    color: color(text-inverse-muted);
+    background-color: color(surface);
 }

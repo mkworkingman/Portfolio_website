@@ -1,0 +1,34 @@
+@use 'functions' as *;
+
+// em, not px: media queries resolve em against the browser's default font size,
+// so a visitor with larger text gets the narrower layout earlier.
+// 48em = 768px, 64em = 1024px, 90em = 1440px at the 16px default.
+$breakpoints: (
+    md: 48em,
+    lg: 64em,
+    xl: 90em,
+);
+
+@mixin breakpoint($name) {
+    @media (min-width: token($breakpoints, $name, 'breakpoint')) {
+        @content;
+    }
+}
+
+@mixin md {
+    @include breakpoint(md) {
+        @content;
+    }
+}
+
+@mixin lg {
+    @include breakpoint(lg) {
+        @content;
+    }
+}
+
+@mixin xl {
+    @include breakpoint(xl) {
+        @content;
+    }
+}
