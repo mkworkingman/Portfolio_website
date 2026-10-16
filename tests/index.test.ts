@@ -1,6 +1,7 @@
-import { describe, it, expect, beforeAll } from 'vitest'
+import { describe, it, expect, beforeAll, afterEach } from 'vitest'
 import fs from 'fs'
 import path from 'path'
+import { setLanguage } from '../src/scripts/language'
 import { LANGUAGES, TEXT_KEYS } from '../src/scripts/values'
 
 const html = fs.readFileSync(path.resolve(__dirname, '../index.html'), 'utf8')
@@ -42,6 +43,29 @@ describe('HTML', () => {
         }
     })
 
+    it('points every aria-labelledby / aria-controls at an existing id', () => {
+        for (const el of document.querySelectorAll('[aria-labelledby], [aria-controls]')) {
+            const ids = [
+                el.getAttribute('aria-labelledby'),
+                el.getAttribute('aria-controls'),
+            ].flatMap((value) => value?.split(' ') ?? [])
+
+            for (const id of ids) {
+                expect(document.getElementById(id), `#${id} not found`).not.toBeNull()
+            }
+        }
+    })
+
+    it('labels every main section with its heading', () => {
+        for (const section of document.querySelectorAll('main > section')) {
+            expect(section.getAttribute('aria-labelledby'), `#${section.id}`).toBeTruthy()
+        }
+    })
+
+    it('has exactly one h1', () => {
+        expect(document.querySelectorAll('h1')).toHaveLength(1)
+    })
+
     it('has no duplicate ids', () => {
         const ids = [...document.querySelectorAll('[id]')].map((el) => el.id)
         expect(ids.length === new Set(ids).size).toBe(true)
@@ -49,6 +73,12 @@ describe('HTML', () => {
 })
 
 describe('Runtime', () => {
+    // The DOM is shared across tests, so put back the language each test may have switched.
+    afterEach(() => {
+        setLanguage('en')
+        localStorage.clear()
+    })
+
     it('applies English translations on load', () => {
         const homeLink = document.querySelector<HTMLElement>('[data-i18n="navHome"]')
         expect(homeLink?.textContent).toBe('Home')
@@ -66,13 +96,20 @@ describe('Runtime', () => {
     })
 
     it('shows the current language on the switcher button', () => {
-        const switcher = document.querySelector<HTMLElement>('.lang__switcher')
+        const current = document.querySelector<HTMLElement>('.lang__current')
 
         document.querySelector<HTMLElement>('[data-lang="sr"]')?.click()
-        expect(switcher?.textContent).toBe('SR')
+        expect(current?.textContent).toBe('SR')
 
         document.querySelector<HTMLElement>('[data-lang="en"]')?.click()
-        expect(switcher?.textContent).toBe('EN')
+        expect(current?.textContent).toBe('EN')
+    })
+
+    it('marks only the active language option with aria-current', () => {
+        document.querySelector<HTMLElement>('[data-lang="ru"]')?.click()
+
+        const current = [...document.querySelectorAll<HTMLElement>('[aria-current="true"]')]
+        expect(current.map((el) => el.dataset.lang)).toEqual(['ru'])
     })
 
     it('ships the same English in the HTML as switching to English produces', () => {

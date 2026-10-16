@@ -18,6 +18,7 @@
 .header-logo {
     margin-inline-end: auto;
     color: color(accent);
+    text-decoration: none;
 
     span {
         color: color(text-inverse);
@@ -127,5 +128,9 @@
 
     &:hover {
         color: color(text-inverse);
+    }
+
+    &[aria-current='true'] {
+        color: color(accent);
     }
 }

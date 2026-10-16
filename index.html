@@ -55,19 +55,24 @@
         <link rel="stylesheet" href="./src/styles/index.scss" />
         <script type="module" src="./src/scripts/index.ts"></script>
     </head>
-    <!-- TODO: Semantic, Accessibility -->
     <body>
         <header class="header">
-            <p class="header-logo" role="img" aria-label="MKalinin logo">
+            <!-- The label replaces the decorative "<MKalinin />" characters for screen readers. -->
+            <a class="header-logo" href="#home" aria-label="Maksim Kalinin">
                 &lt;<span>MKalinin /</span>&gt;
-            </p>
-            <button class="header-contact" data-i18n="navContact">Contact Me</button>
+            </a>
+            <button class="header-contact" aria-haspopup="dialog" data-i18n="navContact">
+                Contact Me
+            </button>
             <div class="lang">
                 <button class="lang__switcher" aria-expanded="false" aria-controls="lang-list">
-                    EN
+                    <span class="visually-hidden" data-i18n="langLabel">Language:</span>
+                    <span class="lang__current">EN</span>
                 </button>
                 <ul class="lang__list" id="lang-list">
-                    <li><button class="lang__option" data-lang="en">EN</button></li>
+                    <li>
+                        <button class="lang__option" data-lang="en" aria-current="true">EN</button>
+                    </li>
                     <li><button class="lang__option" data-lang="ru">RU</button></li>
                     <li><button class="lang__option" data-lang="sr">SR</button></li>
                 </ul>
@@ -106,18 +111,17 @@
                 <div class="hero-greeting">
                     <p class="hello">Hello, I am</p>
                     <h1 id="hero-heading">Maksim Kalinin</h1>
-                    <h2 class="hero-subtitle">Senior Fullstack/Frontend Developer</h2>
+                    <p class="hero-subtitle">Senior Fullstack/Frontend Developer</p>
                 </div>
                 <!-- TODO: swap the planets for technology logos, add particles -->
-                <!-- Canvas hidden for now; initSolarSystem() no-ops without it. -->
                 <canvas class="hero-canvas" aria-hidden="true"></canvas>
                 <!-- <ul>
                     <li>Frontend: React, Next.js, Vue, Nuxt, TypeScript</li>
                     <li>Backend: PHP (Laravel), Node (Express), Python (Django)</li>
                 </ul> -->
             </section>
-            <section id="about">
-                <h2>About</h2>
+            <section id="about" aria-labelledby="about-heading">
+                <h2 id="about-heading">About</h2>
                 <p>
                     I am a FullStack/FrontEnd Developer with 7+ years building production web
                     applications with React, Vue and TypeScript for gaming, fintech and edtech
@@ -132,8 +136,8 @@
                     Express, PHP, Laravel, as well as MySQL, PostgreSQL etc.
                 </p>
             </section>
-            <section id="skills">
-                <h2>Skills</h2>
+            <section id="skills" aria-labelledby="skills-heading">
+                <h2 id="skills-heading">Skills</h2>
                 <div>
                     <h3>Frontend</h3>
                     <ul>
@@ -168,11 +172,11 @@
                     </ul>
                 </div>
             </section>
-            <section id="projects">
-                <h2>Projects</h2>
-                <div>
+            <section id="projects" aria-labelledby="projects-heading">
+                <h2 id="projects-heading">Projects</h2>
+                <article>
                     <h3>WizardTuner</h3>
-                </div>
+                </article>
             </section>
         </main>
         <footer class="footer">MK - 2026</footer>
@@ -182,7 +186,7 @@
             <div class="contact-modal__background"></div>
             <div class="contact-modal__card">
                 <div class="contact-modal__header">
-                    <h3 id="contact-modal-title">Contact me</h3>
+                    <h2 id="contact-modal-title">Contact me</h2>
                     <button
                         class="contact-modal__close"
                         aria-label="Close"

@@ -6,6 +6,7 @@ export const TEXT_KEYS = [
     'navProjects',
     'navContact',
     'navMenu',
+    'langLabel',
     'contactClose',
     'contactName',
 ] as const

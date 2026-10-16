@@ -10,6 +10,7 @@ const translations: Record<Language, Record<TextKey, string>> = {
         navProjects: 'Projects',
         navContact: 'Contact Me',
         navMenu: 'Menu',
+        langLabel: 'Language:',
         contactClose: 'Close',
         contactName: 'Your name',
     },
@@ -20,6 +21,7 @@ const translations: Record<Language, Record<TextKey, string>> = {
         navProjects: 'Проекты',
         navContact: 'Связаться со мной',
         navMenu: 'Меню',
+        langLabel: 'Язык:',
         contactClose: 'Закрыть',
         contactName: 'Ваше имя',
     },
@@ -30,6 +32,7 @@ const translations: Record<Language, Record<TextKey, string>> = {
         navProjects: 'Projekti',
         navContact: 'Kontaktirajte me',
         navMenu: 'Meni',
+        langLabel: 'Jezik:',
         contactClose: 'Zatvori',
         contactName: 'Vaše ime',
     },
@@ -70,8 +73,13 @@ function applyLanguage(lang: Language) {
         if (key) el.setAttribute('aria-label', translations[lang][key])
     })
 
-    const switcher = document.querySelector<HTMLElement>('.lang__switcher')
-    if (switcher) switcher.textContent = lang.toUpperCase()
+    const current = document.querySelector<HTMLElement>('.lang__current')
+    if (current) current.textContent = lang.toUpperCase()
+
+    document.querySelectorAll<HTMLElement>('.lang__option').forEach((el) => {
+        if (el.dataset.lang === lang) el.setAttribute('aria-current', 'true')
+        else el.removeAttribute('aria-current')
+    })
 }
 
 export function initLanguage() {
