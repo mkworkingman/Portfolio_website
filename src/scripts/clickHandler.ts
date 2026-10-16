@@ -5,14 +5,10 @@ interface Handler {
     fn: (match: HTMLElement) => void
 }
 
-const header = document.querySelector<HTMLElement>('.header')
-const main = document.querySelector<HTMLElement>('.main')
-const footer = document.querySelector<HTMLElement>('.footer')
 const langList = document.querySelector<HTMLElement>('.lang__list')
 const headerNavToggle = document.querySelector<HTMLElement>('.header-nav-toggle')
-const headerContactButton = document.querySelector<HTMLElement>('.header-contact')
 const headerNav = document.querySelector<HTMLElement>('.header-nav')
-const contactModal = document.querySelector<HTMLElement>('.contact-modal')
+const contactModal = document.querySelector<HTMLDialogElement>('.contact-modal')
 
 function handleSelectNavClick(element?: 'languageSwitcher' | 'navSwitcher') {
     if (element !== 'languageSwitcher') {
@@ -35,34 +31,16 @@ export function initClickHandler() {
         headerNavToggle?.classList.remove('is-open')
     }
 
-    function handleEscClose(e: KeyboardEvent) {
-        if (e.key === 'Escape') {
-            handleCloseContactMeModal()
-        }
-    }
-
+    // showModal() makes the rest of the page inert, closes on Escape
+    // and returns focus to the opener on close.
     function handleShowContactMeModal() {
-        contactModal?.classList.add('is-open')
-        const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
-        document.documentElement.style.setProperty('--scrollbar-width', `${scrollbarWidth}px`)
-        document.documentElement.classList.add('is-modal-open')
-        header?.setAttribute('inert', '')
-        main?.setAttribute('inert', '')
-        footer?.setAttribute('inert', '')
-        document.addEventListener('keydown', handleEscClose)
-        // TODO: add focus on the first input
+        contactModal?.showModal()
+        // TODO: put `autofocus` on the first input (otherwise the close button gets focus)
         // TODO: save the state of the inputs
     }
 
     function handleCloseContactMeModal() {
-        contactModal?.classList.remove('is-open')
-        document.documentElement.classList.remove('is-modal-open')
-        document.documentElement.style.removeProperty('--scrollbar-width')
-        header?.removeAttribute('inert')
-        main?.removeAttribute('inert')
-        footer?.removeAttribute('inert')
-        document.removeEventListener('keydown', handleEscClose)
-        headerContactButton?.focus()
+        contactModal?.close()
     }
 
     const handlers: Handler[] = [

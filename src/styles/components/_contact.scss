@@ -1,11 +1,20 @@
 @use '../tokens' as *;
 
+// A full-viewport <dialog>; the overlay is the __background element rather than
+// ::backdrop so outside clicks land on an element the click delegation can match.
 .contact-modal {
-    position: fixed;
-    inset: 0;
-    z-index: z(modal);
-    display: none;
-    place-items: center;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    max-height: none;
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: 0;
+
+    &::backdrop {
+        background: none;
+    }
 
     &__background {
         position: absolute;
@@ -26,7 +35,8 @@
         border-radius: radius(md);
     }
 
-    &.is-open {
+    &[open] {
         display: grid;
+        place-items: center;
     }
 }

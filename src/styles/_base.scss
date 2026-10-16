@@ -58,10 +58,13 @@ $font-weights: 400, 700;
 
 html {
     text-size-adjust: none;
+
+    // Reserves the scrollbar's space so locking scroll doesn't shift the layout.
+    scrollbar-gutter: stable;
     scroll-padding-top: var(--header-height);
 
-    &.is-modal-open {
-        padding-right: var(--scrollbar-width, 0);
+    // <dialog> doesn't lock page scroll on its own.
+    &:has(.contact-modal[open]) {
         overflow: hidden;
     }
 }
