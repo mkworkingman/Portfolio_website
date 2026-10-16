@@ -34,6 +34,8 @@
 
 // Navigation:
 .header-nav-toggle {
+    display: grid;
+    place-items: center;
     width: space(9);
     height: space(9);
     border: $border-width solid color(text-inverse-muted);
@@ -106,15 +108,6 @@
     padding: space(4) space(5);
     background-color: color(surface);
 
-    li {
-        color: color(text-inverse-muted);
-        cursor: pointer;
-
-        &:hover {
-            color: color(text-inverse);
-        }
-    }
-
     &.is-open {
         display: grid;
     }
@@ -124,5 +117,15 @@
         gap: space(2);
         min-width: 100%;
         padding: space(2);
+    }
+}
+
+.lang__option {
+    width: 100%;
+    color: color(text-inverse-muted);
+    text-align: start;
+
+    &:hover {
+        color: color(text-inverse);
     }
 }

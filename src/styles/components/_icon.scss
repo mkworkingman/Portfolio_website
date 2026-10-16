@@ -1,0 +1,11 @@
+@use '../tokens' as *;
+
+// Inline stroke icons (24x24 viewBox) that take the button's text color.
+.icon {
+    width: space(5);
+    height: space(5);
+    fill: none;
+    stroke: currentcolor;
+    stroke-width: 2;
+    stroke-linecap: round;
+}

@@ -35,6 +35,36 @@
         border-radius: radius(md);
     }
 
+    &__header {
+        display: flex;
+        gap: space(4);
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__close {
+        display: grid;
+        place-items: center;
+        width: space(9);
+        height: space(9);
+        border-radius: radius(sm);
+    }
+
+    &__field {
+        display: grid;
+        gap: space(1);
+        margin-top: space(6);
+    }
+
+    &__input {
+        padding: space(2) space(3);
+        font-size: inherit;
+        color: inherit;
+        background-color: transparent;
+        border: $border-width solid color(text);
+        border-radius: radius(sm);
+    }
+
     &[open] {
         display: grid;
         place-items: center;

@@ -22,10 +22,10 @@ describe('HTML', () => {
         expect(actual).toEqual(expected)
     })
 
-    it('contains exactly one data-i18n element for each text key, no duplicates', () => {
-        const i18nValues = [...document.querySelectorAll<HTMLElement>('[data-i18n]')].map(
-            (el) => el.dataset.i18n,
-        )
+    it('contains exactly one data-i18n / data-i18n-label element for each text key, no duplicates', () => {
+        const i18nValues = [
+            ...document.querySelectorAll<HTMLElement>('[data-i18n], [data-i18n-label]'),
+        ].map((el) => el.dataset.i18n ?? el.dataset.i18nLabel)
 
         const expected = [...TEXT_KEYS].sort()
         const actual = i18nValues.sort()
@@ -73,5 +73,53 @@ describe('Runtime', () => {
 
         document.querySelector<HTMLElement>('[data-lang="en"]')?.click()
         expect(switcher?.textContent).toBe('EN')
+    })
+
+    it('ships the same English in the HTML as switching to English produces', () => {
+        const initial = new DOMParser().parseFromString(html, 'text/html')
+        const read = (root: ParentNode) =>
+            [...root.querySelectorAll<HTMLElement>('[data-i18n], [data-i18n-label]')].map((el) =>
+                el.dataset.i18n ? el.textContent?.trim() : el.getAttribute('aria-label'),
+            )
+
+        document.querySelector<HTMLElement>('[data-lang="ru"]')?.click()
+        document.querySelector<HTMLElement>('[data-lang="en"]')?.click()
+
+        expect(read(document)).toEqual(read(initial))
+    })
+
+    it('updates <html lang> and remembers the choice', () => {
+        document.querySelector<HTMLElement>('[data-lang="sr"]')?.click()
+        expect(document.documentElement.lang).toBe('sr-Latn')
+        expect(localStorage.getItem('lang')).toBe('sr')
+
+        document.querySelector<HTMLElement>('[data-lang="en"]')?.click()
+        expect(document.documentElement.lang).toBe('en')
+    })
+
+    it('reflects the open state of the toggles in aria-expanded', () => {
+        const switcher = document.querySelector<HTMLElement>('.lang__switcher')
+        const navToggle = document.querySelector<HTMLElement>('.header-nav-toggle')
+
+        switcher?.click()
+        expect(switcher?.getAttribute('aria-expanded')).toBe('true')
+
+        navToggle?.click()
+        expect(navToggle?.getAttribute('aria-expanded')).toBe('true')
+        // Opening one menu closes the other.
+        expect(switcher?.getAttribute('aria-expanded')).toBe('false')
+
+        navToggle?.click()
+        expect(navToggle?.getAttribute('aria-expanded')).toBe('false')
+    })
+
+    it('closes an open menu on Escape and returns focus to its toggle', () => {
+        const switcher = document.querySelector<HTMLElement>('.lang__switcher')
+
+        switcher?.click()
+        document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }))
+
+        expect(switcher?.getAttribute('aria-expanded')).toBe('false')
+        expect(document.activeElement).toBe(switcher)
     })
 })
