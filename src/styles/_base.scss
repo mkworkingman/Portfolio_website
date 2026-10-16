@@ -1,4 +1,4 @@
-@use './vars' as *;
+@use './tokens' as *;
 
 // Only the subsets and weights the site actually renders are shipped:
 // latin (UI/English), latin-ext (Serbian diacritics: č, š, ž), cyrillic (Russian).

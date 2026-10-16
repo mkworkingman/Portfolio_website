@@ -1,7 +1,7 @@
 # Design tokens
 
-Every style value comes from here. Components get all tokens through `@use '../vars' as *;`
-(`_vars.scss` forwards this folder).
+Every style value comes from here. Components get all tokens through `@use '../tokens' as *;`
+(`_index.scss` forwards every token file).
 
 | File                | API                                                         | Unit      |
 | ------------------- | ----------------------------------------------------------- | --------- |
