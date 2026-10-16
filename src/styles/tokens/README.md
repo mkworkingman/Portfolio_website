@@ -6,7 +6,7 @@ Every style value comes from here. Components get all tokens through `@use '../t
 | File                | API                                                         | Unit      |
 | ------------------- | ----------------------------------------------------------- | --------- |
 | `_space.scss`       | `space($n)`: 4px grid                                       | rem       |
-| `_breakpoints.scss` | `@include md` / `lg` / `xl` (48 / 64 / 90em)                | em        |
+| `_breakpoints.scss` | `@include md` / `lg` / `xl` (48 / 64 / 90em); `--breakpoint-*` on `:root` for TS | em        |
 | `_border.scss`      | `$border-width`, `$border-width-accent`, `$focus-ring-width`, `$focus-ring-offset` | px (only place) |
 | `_color.scss`       | `color(name)` → `var(--color-name)`                         | —         |
 | `_typography.scss`  | `font-size()`, `font-weight()`, `line-height()`, `$font-family-sans`, `$measure` | rem / ch |

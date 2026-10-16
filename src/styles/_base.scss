@@ -46,6 +46,7 @@ $font-weights: 400, 700;
     --header-height: #{space(14)}; // 3.5rem
 
     @include color-custom-properties;
+    @include breakpoint-custom-properties;
 
     @include md {
         --header-height: #{space(16)}; // 4rem

@@ -100,4 +100,15 @@ export function initClickHandler() {
             headerNavToggle?.focus()
         }
     })
+
+    // Close the mobile menu once the desktop nav takes over (e.g. rotating a phone),
+    // so it isn't still open when the layout goes back to mobile.
+    // The breakpoint comes from the SCSS tokens; it is empty when no stylesheet is
+    // loaded (the jsdom tests, which also lack matchMedia), so skip it then.
+    const md = getComputedStyle(document.documentElement).getPropertyValue('--breakpoint-md').trim()
+    if (md) {
+        matchMedia(`(min-width: ${md})`).addEventListener('change', (e) => {
+            if (e.matches) setNavOpen(false)
+        })
+    }
 }

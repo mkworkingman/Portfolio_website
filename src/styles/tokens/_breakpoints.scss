@@ -9,6 +9,13 @@ $breakpoints: (
     xl: 90em,
 );
 
+// Emitted once on :root, so TS can match the same breakpoints with matchMedia().
+@mixin breakpoint-custom-properties {
+    @each $name, $value in $breakpoints {
+        --breakpoint-#{$name}: #{$value};
+    }
+}
+
 @mixin breakpoint($name) {
     @media (min-width: token($breakpoints, $name, 'breakpoint')) {
         @content;

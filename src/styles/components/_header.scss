@@ -114,7 +114,7 @@
     }
 
     @include md {
-        left: auto;
+        left: space(-2);
         gap: space(2);
         min-width: 100%;
         padding: space(2);
