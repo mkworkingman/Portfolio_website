@@ -30,7 +30,9 @@ const NODE_LOGO: Logo = { glow: [83, 158, 67], unit: 289 }
 const VUE_LOGO: Logo = { glow: [65, 184, 131], unit: 128 }
 // The "dj" glyph is taller than wide (266 x 340), so it is sized by its height
 // to sit at the same visual size as the others.
-const DJANGO_LOGO: Logo = { glow: [68, 183, 139], unit: 340 }
+// Muted slate glow behind the white glyph; a green would be the third in a row after
+// Node and Vue, and a full white glow overpowers the navy.
+const DJANGO_LOGO: Logo = { glow: [148, 163, 184], unit: 340 }
 
 // Path data from the official logo SVGs. Path2D speaks SVG path syntax, so
 // these need no conversion.
