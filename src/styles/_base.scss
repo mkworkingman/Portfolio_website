@@ -117,6 +117,13 @@ button {
     outline-offset: $focus-ring-offset;
 }
 
+// Fades translated text in once initLanguage() removes .i18n-pending (set in index.html).
+// Only runs for non-English first loads; switching language later doesn't touch opacity.
+[data-i18n],
+.lang__current {
+    transition: opacity duration(base) ease(out);
+}
+
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,

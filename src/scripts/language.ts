@@ -84,6 +84,8 @@ function applyLanguage(lang: Language) {
 
 export function initLanguage() {
     applyLanguage(detectLanguage())
+    // Set by the inline script in index.html to hide the English defaults until now.
+    document.documentElement.classList.remove('i18n-pending')
 }
 
 /** Switches language and remembers the choice for the next visit. */

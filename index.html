@@ -52,6 +52,43 @@
             type="font/woff2"
             crossorigin
         />
+        <!--
+            Critical, render-blocking: hide translatable text until initLanguage() swaps it,
+            so non-English visitors don't see an English flash. Mirrors detectLanguage() in
+            src/scripts/language.ts. The timeout un-hides the text if the module never runs.
+        -->
+        <style>
+            .i18n-pending [data-i18n],
+            .i18n-pending .lang__current {
+                opacity: 0;
+            }
+        </style>
+        <script>
+            ;(function () {
+                var langs = ['en', 'ru', 'sr']
+                var lang
+                try {
+                    lang = localStorage.getItem('lang')
+                } catch (e) {}
+                if (langs.indexOf(lang) === -1) {
+                    lang = 'en'
+                    var tags = navigator.languages || []
+                    for (var i = 0; i < tags.length; i++) {
+                        var base = tags[i].split('-')[0].toLowerCase()
+                        if (langs.indexOf(base) !== -1) {
+                            lang = base
+                            break
+                        }
+                    }
+                }
+                if (lang === 'en') return
+                var root = document.documentElement
+                root.classList.add('i18n-pending')
+                setTimeout(function () {
+                    root.classList.remove('i18n-pending')
+                }, 3000)
+            })()
+        </script>
         <link rel="stylesheet" href="./src/styles/index.scss" />
         <script type="module" src="./src/scripts/index.ts"></script>
     </head>
