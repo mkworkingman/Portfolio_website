@@ -100,7 +100,7 @@
 .lang {
     @include md {
         position: relative;
-        padding-inline: 0.5rem;
+        padding-inline: space(2);
     }
 }
 

@@ -98,13 +98,22 @@
             <a class="header-logo" href="#home" aria-label="Maksim Kalinin">
                 &lt;<span>MKalinin /</span>&gt;
             </a>
-            <button class="header-contact" aria-haspopup="dialog" data-i18n="navContact">
-                Contact Me
+            <button class="header-contact" aria-haspopup="dialog">
+                <span class="i18n-reserve">
+                    <span data-i18n="navContact">Contact Me</span>
+                    <!-- i18n-reserve:navContact -->
+                </span>
             </button>
             <div class="lang">
                 <button class="lang__switcher" aria-expanded="false" aria-controls="lang-list">
                     <span class="visually-hidden" data-i18n="langLabel">Language:</span>
-                    <span class="lang__current">EN</span>
+                    <!-- Codes rather than translation keys, so the ghosts are written out here. -->
+                    <span class="i18n-reserve">
+                        <span class="lang__current">EN</span>
+                        <span class="i18n-reserve__ghost" aria-hidden="true">EN</span>
+                        <span class="i18n-reserve__ghost" aria-hidden="true">RU</span>
+                        <span class="i18n-reserve__ghost" aria-hidden="true">SR</span>
+                    </span>
                 </button>
                 <ul class="lang__list" id="lang-list">
                     <li>
@@ -127,17 +136,37 @@
             </button>
             <nav class="header-nav" id="header-nav">
                 <ul class="header-nav__links">
-                    <li><a class="header-nav__link" href="#home" data-i18n="navHome">Home</a></li>
                     <li>
-                        <a class="header-nav__link" href="#about" data-i18n="navAbout">About</a>
+                        <a class="header-nav__link" href="#home">
+                            <span class="i18n-reserve">
+                                <span data-i18n="navHome">Home</span>
+                                <!-- i18n-reserve:navHome -->
+                            </span>
+                        </a>
                     </li>
                     <li>
-                        <a class="header-nav__link" href="#skills" data-i18n="navSkills">Skills</a>
+                        <a class="header-nav__link" href="#about">
+                            <span class="i18n-reserve">
+                                <span data-i18n="navAbout">About</span>
+                                <!-- i18n-reserve:navAbout -->
+                            </span>
+                        </a>
                     </li>
                     <li>
-                        <a class="header-nav__link" href="#projects" data-i18n="navProjects"
-                            >Projects</a
-                        >
+                        <a class="header-nav__link" href="#skills">
+                            <span class="i18n-reserve">
+                                <span data-i18n="navSkills">Skills</span>
+                                <!-- i18n-reserve:navSkills -->
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="header-nav__link" href="#projects">
+                            <span class="i18n-reserve">
+                                <span data-i18n="navProjects">Projects</span>
+                                <!-- i18n-reserve:navProjects -->
+                            </span>
+                        </a>
                     </li>
                 </ul>
             </nav>

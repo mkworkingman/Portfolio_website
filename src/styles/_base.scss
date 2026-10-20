@@ -112,6 +112,29 @@ button {
     clip-path: inset(50%);
 }
 
+// Reserves the width of the longest translation (ghosts are filled in by the
+// i18n-reserve plugin in vite.config.js), so switching language doesn't shift a row.
+// Only from md up: below that the nav is a vertical list, where width doesn't move anything.
+.i18n-reserve {
+    @include md {
+        display: inline-grid;
+        justify-items: center;
+
+        > * {
+            grid-area: 1 / 1;
+        }
+    }
+}
+
+.i18n-reserve__ghost {
+    display: none;
+    visibility: hidden;
+
+    @include md {
+        display: block;
+    }
+}
+
 :focus-visible {
     outline: $focus-ring-width solid color(accent);
     outline-offset: $focus-ring-offset;
