@@ -82,6 +82,7 @@
 
 .hero-greeting {
     align-self: center;
+    anchor-name: --hero-greeting;
 
     h1 {
         font-size: font-size(display);
@@ -105,6 +106,13 @@
     width: min(100%, space(140));
     aspect-ratio: 1;
     pointer-events: none;
+
+    // Follow the greeting's right edge so wide screens don't leave a gap between them,
+    // but never past the section's right edge. Unsupported browsers keep right: 0.
+    @supports (left: anchor(--hero-greeting right)) {
+        right: auto;
+        left: min(anchor(--hero-greeting right), 100% - min(100%, space(140)));
+    }
 
     // solarSystem.ts also skips drawing under reduced motion.
     @media (prefers-reduced-motion: reduce) {
