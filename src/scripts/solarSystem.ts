@@ -25,19 +25,26 @@ interface Logo {
     unit: number
 }
 
-const REACT_LOGO: Logo = { glow: [97, 218, 251], unit: 23 }
-const NODE_LOGO: Logo = { glow: [83, 158, 67], unit: 289 }
-const VUE_LOGO: Logo = { glow: [65, 184, 131], unit: 128 }
+// Each glow is roughly the complement of its logo's colour, so the mark stands
+// out against it. Where two complements landed close (Node, Vue and Nuxt are all
+// green, so all three came out purple-pink), the hues are pushed apart so every
+// glow stays distinct. Next.js is the exception, see below.
+// Cyan logo, orange glow.
+const REACT_LOGO: Logo = { glow: [240, 125, 76], unit: 23 }
+// Green logo, magenta glow.
+const NODE_LOGO: Logo = { glow: [236, 81, 223], unit: 289 }
+// Green logo, violet glow.
+const VUE_LOGO: Logo = { glow: [166, 99, 233], unit: 128 }
 // The "dj" glyph is taller than wide (266 x 340), so it is sized by its height
 // to sit at the same visual size as the others.
-// A softened take on Python's yellow (#ffd43b) for the glyph and its glow; the
-// full-strength yellow was too loud against the navy.
-const DJANGO_LOGO: Logo = { glow: [196, 166, 72], unit: 340 }
+// A softened take on Python's yellow (#ffd43b) for the glyph; the full-strength
+// yellow was too loud against the navy. Blue glow.
+const DJANGO_LOGO: Logo = { glow: [85, 129, 231], unit: 340 }
 // Near-black mark lit from behind by React's cyan, so it reads as a silhouette
 // against the glow rather than a white cut-out.
 const NEXT_LOGO: Logo = { glow: [97, 218, 251], unit: 15 }
-// Sized by the mountains' width (44..468), not the 512 viewBox.
-const NUXT_LOGO: Logo = { glow: [0, 220, 130], unit: 424 }
+// Sized by the mountains' width (44..468), not the 512 viewBox. Green logo, rose glow.
+const NUXT_LOGO: Logo = { glow: [241, 85, 124], unit: 424 }
 
 // Path data from the official logo SVGs. Path2D speaks SVG path syntax, so
 // these need no conversion.
@@ -60,8 +67,7 @@ const NUXT_PATH =
 /** Logo width as a fraction of the canvas' shortest side. */
 const LOGO_SCALE = 0.16
 /** Seconds each logo holds the centre before the other takes over. */
-// TODO: Back to 5 once done testing the cycle.
-const LOGO_INTERVAL = 1
+const LOGO_INTERVAL = 3
 /** Length of the crossfade, taken out of the end of each interval. */
 const LOGO_FADE = 0.6
 
@@ -179,10 +185,7 @@ export function initSolarSystem() {
         },
     }
 
-    /**
-     * Centre logos in display order; the cycle wraps back to the first. Green
-     * (Node, Vue, Nuxt) alternates with the rest so no two green glows run back to back.
-     */
+    /** Centre logos in display order; the cycle wraps back to the first. */
     const logos = [reactLogo, nodeLogo, nextLogo, vueLogo, djangoLogo, nuxtLogo]
     // The modulo keeps the index in range; the fallback only satisfies noUncheckedIndexedAccess.
     const logoAt = (index: number) => logos[index % logos.length] ?? reactLogo
