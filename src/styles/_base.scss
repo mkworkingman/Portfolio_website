@@ -115,24 +115,33 @@ button {
 // Reserves the width of the longest translation (ghosts are filled in by the
 // i18n-reserve plugin in vite.config.js), so switching language doesn't shift a row.
 // Only from md up: below that the nav is a vertical list, where width doesn't move anything.
+@mixin i18n-reserve-on {
+    display: inline-grid;
+    justify-items: center;
+
+    > * {
+        grid-area: 1 / 1;
+    }
+
+    > .i18n-reserve__ghost {
+        display: block;
+    }
+}
+
 .i18n-reserve {
     @include md {
-        display: inline-grid;
-        justify-items: center;
-
-        > * {
-            grid-area: 1 / 1;
-        }
+        @include i18n-reserve-on;
     }
+}
+
+// For text that sits in a row at every width (e.g. the header's Contact button).
+.i18n-reserve--always {
+    @include i18n-reserve-on;
 }
 
 .i18n-reserve__ghost {
     display: none;
     visibility: hidden;
-
-    @include md {
-        display: block;
-    }
 }
 
 :focus-visible {

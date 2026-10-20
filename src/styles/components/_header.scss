@@ -26,9 +26,11 @@
 }
 
 .header-contact {
+    flex-shrink: 0; // otherwise a long translation wraps and the button changes size
     padding: space(2) space(4);
     font-weight: font-weight(bold);
     color: color(surface);
+    white-space: nowrap;
     background-color: color(accent);
     border-radius: radius(sm);
 }
