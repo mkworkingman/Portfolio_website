@@ -20,17 +20,17 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         navMenu: 'Menu',
         langLabel: 'Language:',
 
-        heroEyebrow: 'Fullstack engineer · Belgrade',
+        heroEyebrow: 'Frontend developer · Belgrade',
         heroSubtitle:
-            'I build high-traffic, data-dense web apps end to end, from the data model to the interface.',
+            'I build data-dense, high-traffic interfaces in React, Vue and TypeScript, and the APIs behind them when a feature needs it.',
 
         aboutHeading: 'About',
         aboutP1:
-            'I’m a fullstack engineer with 7+ years of experience building production web apps for gaming, fintech and edtech. On the frontend I work with React (Next.js), Vue (Nuxt) and TypeScript; on the backend with Node.js, Django and Laravel.',
+            'I’m a frontend developer with 7+ years of experience building production web apps for gaming, fintech and edtech. My core is React (Next.js), Vue (Nuxt) and TypeScript: real-time data, large tables, complex state, and interfaces that stay smooth under load.',
         aboutP2:
-            'I own features end to end, from the data model and API contract to the interface, and I do my best work on data-dense UIs that have to ship on a fixed date: live trading tables, real-time grading, a game’s main screen.',
+            'I’m fullstack enough to own a feature end to end: when the UI needs it, I write the API too, in Node.js, Django or Laravel, and shape the data contract around what the interface has to show. That’s how I worked at Wargaming on the World of Tanks 2.0 Hangar and its live-ops events.',
         aboutP3:
-            'I live in Belgrade and speak English, Russian and Serbian, the same three languages this site is in.',
+            'I care about the parts users feel but rarely notice: accessibility, localization (16 languages and RTL at Libertex, 29 at Wargaming) and motion. I live in Belgrade and speak English, Russian and Serbian, the same three languages this site is in.',
 
         expHeading: 'Experience',
         expPresent: 'present',
@@ -40,13 +40,13 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         expWgRole: 'Fullstack developer',
         expWg1: 'Rebuilt the World of Tanks 2.0 Hangar, the game’s main navigation screen, used by 5,800+ concurrent players (10,000+ at peak) in 29 languages.',
         expWg2: 'Shipped live-ops and clan features to fixed launch dates together with game designers, UX/UI, backend and QA: Pet System, Holiday Ops 24/25 and 25/26, Strongholds Event, Clan Supply, Tournaments, Clan Winter Event.',
-        expWg3: 'Built Django endpoints with data-aggregation logic and defined the backend–frontend data contracts around the game client’s UI constraints.',
+        expWg3: 'Built the Django endpoints behind my features, with data-aggregation logic, and defined the backend–frontend data contracts around the game client’s UI constraints.',
         expWg4: 'Reviewed pull requests for a team of 5 frontend and fullstack developers.',
         expLxRole: 'Frontend developer',
         expLx1: 'Built a real-time trading table streaming prices for 15–20 instruments (stocks, crypto and more) every second without render slowdowns, embedded as widgets in the existing CMS.',
         expLx2: 'Led motion and interaction work on the trading UI and wrote the animation guidelines the other 4 frontend developers followed.',
         expLx3: 'Implemented support for 16 languages, including a full right-to-left layout for Arabic.',
-        expFlRole: 'Freelance fullstack developer',
+        expFlRole: 'Freelance frontend / fullstack developer',
         expFl1: 'Completed 28 Upwork projects with a 4.9/5 rating and 100% Job Success: responsive sites from designs, animation work, a browser lottery game with a backend, and a Flash-to-JavaScript migration.',
         expFl2: 'Integrated real-time feeds from multiple exchange APIs into a crypto exchange aggregator.',
         expEdRole: 'Fullstack engineer',
@@ -97,17 +97,17 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         navMenu: 'Меню',
         langLabel: 'Язык:',
 
-        heroEyebrow: 'Fullstack-инженер · Белград',
+        heroEyebrow: 'Фронтенд-разработчик · Белград',
         heroSubtitle:
-            'Создаю нагруженные веб-приложения с большим объёмом данных — от модели данных до интерфейса.',
+            'Создаю интерфейсы с большим объёмом данных для нагруженных продуктов на React, Vue и TypeScript — и API для них, когда этого требует фича.',
 
         aboutHeading: 'Обо мне',
         aboutP1:
-            'Я fullstack-инженер с опытом более 7 лет: разрабатываю продакшен веб-приложения для геймдева, финтеха и edtech. На фронтенде работаю с React (Next.js), Vue (Nuxt) и TypeScript, на бэкенде — с Node.js, Django и Laravel.',
+            'Я фронтенд-разработчик с опытом более 7 лет: делаю продакшен веб-приложения для геймдева, финтеха и edtech. Моя основа — React (Next.js), Vue (Nuxt) и TypeScript: данные в реальном времени, большие таблицы, сложное состояние и интерфейсы, которые не тормозят под нагрузкой.',
         aboutP2:
-            'Веду фичи от начала до конца — от модели данных и API-контракта до интерфейса. Лучше всего у меня получаются интерфейсы с большим объёмом данных и жёстким сроком запуска: торговые таблицы в реальном времени, автопроверка тестов на лету, главный экран игры.',
+            'При этом я достаточно fullstack, чтобы вести фичу целиком: когда интерфейсу это нужно, сам пишу API на Node.js, Django или Laravel и строю контракт данных под то, что должен показать интерфейс. Так я работал в Wargaming над Ангаром World of Tanks 2.0 и его live-ops событиями.',
         aboutP3:
-            'Живу в Белграде и говорю на английском, русском и сербском — на тех же трёх языках, что и этот сайт.',
+            'Мне важны вещи, которые пользователь чувствует, но редко замечает: доступность, локализация (16 языков и RTL в Libertex, 29 в Wargaming) и анимация. Живу в Белграде и говорю на английском, русском и сербском — на тех же трёх языках, что и этот сайт.',
 
         expHeading: 'Опыт',
         expPresent: 'н. в.',
@@ -117,13 +117,13 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         expWgRole: 'Fullstack-разработчик',
         expWg1: 'Переписал Ангар World of Tanks 2.0 — главный навигационный экран игры: 5 800+ игроков онлайн одновременно (10 000+ в пике), 29 языков.',
         expWg2: 'Вместе с геймдизайнерами, UX/UI, бэкендом и QA выпускал live-ops и клановые фичи к фиксированным датам запуска: Pet System, Holiday Ops 24/25 и 25/26, Strongholds Event, Clan Supply, турниры, Clan Winter Event.',
-        expWg3: 'Писал эндпоинты на Django с логикой агрегации данных и проектировал контракты данных между бэкендом и фронтендом с учётом ограничений UI игрового клиента.',
+        expWg3: 'Писал эндпоинты на Django для своих фич, с логикой агрегации данных, и проектировал контракты данных между бэкендом и фронтендом с учётом ограничений UI игрового клиента.',
         expWg4: 'Проводил код-ревью для команды из 5 фронтенд- и fullstack-разработчиков.',
         expLxRole: 'Фронтенд-разработчик',
         expLx1: 'Сделал торговую таблицу реального времени: цены 15–20 инструментов (акции, криптовалюта и др.) обновляются каждую секунду без просадок рендеринга; таблица встроена виджетами в существующую CMS.',
         expLx2: 'Руководил анимациями и интерактивом в торговом интерфейсе и написал гайдлайны по анимации, которым следовали ещё 4 фронтенд-разработчика.',
         expLx3: 'Реализовал поддержку 16 языков, включая полную RTL-вёрстку для арабского.',
-        expFlRole: 'Fullstack-разработчик на фрилансе',
+        expFlRole: 'Фронтенд/fullstack-разработчик на фрилансе',
         expFl1: 'Выполнил 28 проектов на Upwork с рейтингом 4.9/5 и 100% Job Success: адаптивные сайты по макетам, анимации, браузерная лотерея с бэкендом и перенос с Flash на JavaScript.',
         expFl2: 'Подключил потоки данных в реальном времени от API нескольких бирж к агрегатору криптобирж.',
         expEdRole: 'Fullstack-инженер',
@@ -174,17 +174,17 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         navMenu: 'Meni',
         langLabel: 'Jezik:',
 
-        heroEyebrow: 'Fullstack inženjer · Beograd',
+        heroEyebrow: 'Frontend programer · Beograd',
         heroSubtitle:
-            'Pravim veb-aplikacije sa velikim saobraćajem i mnogo podataka, od modela podataka do interfejsa.',
+            'Pravim interfejse sa mnogo podataka za proizvode sa velikim saobraćajem u React-u, Vue-u i TypeScript-u, a po potrebi i API iza njih.',
 
         aboutHeading: 'O meni',
         aboutP1:
-            'Ja sam fullstack inženjer sa više od 7 godina iskustva u izradi produkcijskih veb-aplikacija za gejming, fintech i edtech. Na frontendu radim sa React-om (Next.js), Vue-om (Nuxt) i TypeScript-om, a na bekendu sa Node.js-om, Django-om i Laravel-om.',
+            'Ja sam frontend programer sa više od 7 godina iskustva u izradi produkcijskih veb-aplikacija za gejming, fintech i edtech. Moja osnova su React (Next.js), Vue (Nuxt) i TypeScript: podaci u realnom vremenu, velike tabele, složeno stanje i interfejsi koji ostaju glatki pod opterećenjem.',
         aboutP2:
-            'Funkcionalnosti vodim od početka do kraja, od modela podataka i API ugovora do interfejsa. Najbolje se snalazim sa interfejsima punim podataka koji moraju da izađu na tačno određen datum: trgovačke tabele uživo, ocenjivanje u realnom vremenu, glavni ekran igre.',
+            'Pritom sam dovoljno fullstack da funkcionalnost vodim od početka do kraja: kada interfejsu zatreba, sam pišem i API u Node.js-u, Django-u ili Laravel-u i oblikujem ugovor podataka prema onome što interfejs treba da prikaže. Tako sam u Wargaming-u radio na Hangaru u World of Tanks 2.0 i njegovim live-ops događajima.',
         aboutP3:
-            'Živim u Beogradu i govorim engleski, ruski i srpski, upravo jezike na kojima je i ovaj sajt.',
+            'Stalo mi je do stvari koje korisnici osete, a retko primete: pristupačnost, lokalizacija (16 jezika i RTL u Libertex-u, 29 u Wargaming-u) i animacije. Živim u Beogradu i govorim engleski, ruski i srpski, upravo jezike na kojima je i ovaj sajt.',
 
         expHeading: 'Iskustvo',
         expPresent: 'danas',
@@ -194,13 +194,13 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         expWgRole: 'Fullstack programer',
         expWg1: 'Ponovo sam napravio Hangar u World of Tanks 2.0, glavni navigacioni ekran igre, koji koristi 5.800+ igrača istovremeno (10.000+ u vršnim trenucima) na 29 jezika.',
         expWg2: 'Sa gejm dizajnerima, UX/UI, bekend i QA timom isporučivao sam live-ops i klanske funkcionalnosti za fiksne datume lansiranja: Pet System, Holiday Ops 24/25 i 25/26, Strongholds Event, Clan Supply, turniri, Clan Winter Event.',
-        expWg3: 'Pisao sam Django endpointe sa logikom agregacije podataka i definisao ugovore podataka između bekenda i frontenda u skladu sa ograničenjima UI-ja klijenta igre.',
+        expWg3: 'Pisao sam Django endpointe za svoje funkcionalnosti, sa logikom agregacije podataka, i definisao ugovore podataka između bekenda i frontenda u skladu sa ograničenjima UI-ja klijenta igre.',
         expWg4: 'Radio sam code review za tim od 5 frontend i fullstack programera.',
         expLxRole: 'Frontend programer',
         expLx1: 'Napravio sam trgovačku tabelu u realnom vremenu koja svake sekunde prikazuje cene 15–20 instrumenata (akcije, kriptovalute i drugo) bez usporavanja renderovanja, ugrađenu kao vidžeti u postojeći CMS.',
         expLx2: 'Vodio sam animacije i interakcije u trgovačkom interfejsu i napisao smernice za animaciju koje su pratila još 4 frontend programera.',
         expLx3: 'Implementirao sam podršku za 16 jezika, uključujući kompletan raspored zdesna nalevo za arapski.',
-        expFlRole: 'Fullstack programer, frilens',
+        expFlRole: 'Frontend / fullstack programer, frilens',
         expFl1: 'Završio sam 28 projekata na Upwork-u sa ocenom 4,9/5 i 100% Job Success: responzivni sajtovi po dizajnu, animacije, lutrijska igra u pregledaču sa bekendom i migracija sa Flash-a na JavaScript.',
         expFl2: 'Integrisao sam podatke u realnom vremenu sa API-ja više berzi u agregator kripto berzi.',
         expEdRole: 'Fullstack inženjer',
