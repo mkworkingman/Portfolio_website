@@ -11,6 +11,25 @@ function showStatus(el: HTMLElement, status: FormStatus) {
 }
 
 /**
+ * Fallback for browsers without CSS `field-sizing: content`: grows the textarea to fit
+ * its text, so it never scrolls. The 4-line minimum still comes from its min-height.
+ */
+function autoGrow(form: HTMLFormElement) {
+    const textarea = form.querySelector<HTMLTextAreaElement>('.contact-form__textarea')
+    // typeof check: CSS is missing in jsdom (tests).
+    if (!textarea || (typeof CSS !== 'undefined' && CSS.supports('field-sizing', 'content'))) return
+
+    const fit = () => {
+        textarea.style.height = 'auto'
+        textarea.style.height = `${textarea.scrollHeight}px`
+    }
+
+    textarea.addEventListener('input', fit)
+    // reset() fires before the value is cleared, so measure on the next frame.
+    form.addEventListener('reset', () => requestAnimationFrame(fit))
+}
+
+/**
  * Sends the contact form to Web3Forms, which emails it on. No backend of our own:
  * the access key in the form's hidden input is public by design.
  * A submit listener, not a click: it also catches Enter and runs only after the
@@ -21,6 +40,8 @@ export function initContactForm() {
     const status = form?.querySelector<HTMLElement>('.contact-form__status')
     const submit = form?.querySelector<HTMLButtonElement>('.contact-form__submit')
     if (!form || !status || !submit) return
+
+    autoGrow(form)
 
     let sending = false
     const setStatus = (next: FormStatus) => showStatus(status, next)

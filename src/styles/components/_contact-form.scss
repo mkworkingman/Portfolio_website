@@ -31,9 +31,14 @@
         border-radius: radius(sm);
     }
 
+    // Grows with its content instead of scrolling, never shorter than 4 lines
+    // (border-box: the lines plus the vertical padding and borders).
+    // field-sizing does the growing; contactForm.ts covers browsers without it.
     &__textarea {
-        min-height: space(30);
-        resize: vertical;
+        min-height: calc(4lh + 2 * space(2) + 2 * $border-width);
+        overflow: hidden;
+        resize: none;
+        field-sizing: content;
     }
 
     &__submit {
