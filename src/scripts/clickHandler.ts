@@ -39,7 +39,9 @@ export function initClickHandler() {
 
         setLanguage(lang)
         // The option that had focus is hidden along with the list.
-        langSwitcher?.focus()
+        // preventScroll: the header is sticky but sits inside the page's
+        // scroll-padding-top, so Chrome would otherwise scroll the page to "reveal" it.
+        langSwitcher?.focus({ preventScroll: true })
     }
 
     // showModal() makes the rest of the page inert, focuses the [autofocus]
@@ -94,12 +96,12 @@ export function initClickHandler() {
 
         if (isOpen(langList)) {
             setLangListOpen(false)
-            langSwitcher?.focus()
+            langSwitcher?.focus({ preventScroll: true })
         }
 
         if (isOpen(headerNav)) {
             setNavOpen(false)
-            headerNavToggle?.focus()
+            headerNavToggle?.focus({ preventScroll: true })
         }
     })
 
