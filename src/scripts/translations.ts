@@ -4,7 +4,6 @@ import type { Language, TextKey } from './values'
 // i18n-reserve plugin there).
 
 // TODO: Make it JSON? Load those texts on click? If English is default language, what's the point of having ru and sr in the memory because not everyone will click to switch language
-// TODO: Animated switch between languages?
 export const translations: Record<Language, Record<TextKey, string>> = {
     en: {
         navHome: 'Home',

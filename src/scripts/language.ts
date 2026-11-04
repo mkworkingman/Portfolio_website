@@ -20,21 +20,54 @@ function detectLanguage(): Language {
     return 'en'
 }
 
-function applyLanguage(lang: Language) {
+type ScrambleModule = typeof import('./scramble')
+let scramble: Promise<ScrambleModule | null> | undefined
+
+/** Starts loading GSAP (once), e.g. when the language list opens, ahead of the click. */
+export function preloadScramble() {
+    // A failed load just means switching without the animation.
+    scramble ??= import('./scramble').catch(() => null)
+    return scramble
+}
+
+/**
+ * Scramble only when the visitor is fine with motion. matchMedia is missing in
+ * jsdom, so the tests get the instant swap.
+ */
+const shouldAnimate = () =>
+    typeof matchMedia === 'function' && !matchMedia('(prefers-reduced-motion: reduce)').matches
+
+/** Swaps visible text, scrambling from the old language into the new one when `animate`. */
+function setTexts(changes: [HTMLElement, string][], animate: boolean) {
+    const instant = () => changes.forEach(([el, text]) => (el.textContent = text))
+
+    if (!animate) return instant()
+
+    void preloadScramble().then((mod) => {
+        if (!mod) return instant()
+        changes.forEach(([el, text]) => mod.scrambleTo(el, text))
+    })
+}
+
+function applyLanguage(lang: Language, animate: boolean) {
     document.documentElement.lang = HTML_LANG[lang]
+
+    const changes: [HTMLElement, string][] = []
 
     document.querySelectorAll<HTMLElement>('[data-i18n]').forEach((el) => {
         const key = el.dataset.i18n
-        if (key) el.textContent = translations[lang][key]
+        if (key) changes.push([el, translations[lang][key]])
     })
+
+    const current = document.querySelector<HTMLElement>('.lang__current')
+    if (current) changes.push([current, lang.toUpperCase()])
+
+    setTexts(changes, animate)
 
     document.querySelectorAll<HTMLElement>('[data-i18n-label]').forEach((el) => {
         const key = el.dataset.i18nLabel
         if (key) el.setAttribute('aria-label', translations[lang][key])
     })
-
-    const current = document.querySelector<HTMLElement>('.lang__current')
-    if (current) current.textContent = lang.toUpperCase()
 
     document.querySelectorAll<HTMLElement>('.lang__option').forEach((el) => {
         if (el.dataset.lang === lang) el.setAttribute('aria-current', 'true')
@@ -43,14 +76,14 @@ function applyLanguage(lang: Language) {
 }
 
 export function initLanguage() {
-    applyLanguage(detectLanguage())
+    applyLanguage(detectLanguage(), false)
     // Set by the inline script in index.html to hide the English defaults until now.
     document.documentElement.classList.remove('i18n-pending')
 }
 
 /** Switches language and remembers the choice for the next visit. */
 export function setLanguage(lang: Language) {
-    applyLanguage(lang)
+    applyLanguage(lang, shouldAnimate())
 
     try {
         localStorage.setItem(STORAGE_KEY, lang)

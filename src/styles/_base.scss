@@ -126,6 +126,18 @@ button {
     > .i18n-reserve__ghost {
         display: block;
     }
+
+    // The live text takes no part in sizing the cell, so the ghosts alone set the
+    // width. Mid-scramble the random glyphs can run wider than any translation;
+    // they get clipped instead of shifting the row. nowrap stops them wrapping to a
+    // second line instead (e.g. "Обо мне" mid-scramble).
+    > :not(.i18n-reserve__ghost) {
+        width: 0;
+        min-width: 100%;
+        overflow: clip;
+        text-align: center;
+        white-space: nowrap;
+    }
 }
 
 .i18n-reserve {
