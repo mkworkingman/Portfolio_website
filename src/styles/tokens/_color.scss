@@ -25,6 +25,8 @@ $-colors: (
     text-inverse: $-slate-50, // text on surface
     text-inverse-soft: $-slate-300, // large headings on surface
     text-inverse-muted: $-slate-400,
+    focus-ring: $-navy-800, // keyboard focus outline on base
+    focus-ring-inverse: $-amber-400, // keyboard focus outline on surface
     overlay: color.change($-navy-800, $alpha: 0.7),
     grid-line: color.change($-slate-50, $alpha: 0.05), // barely visible lines on surface
     edge-highlight: color.change($-slate-50, $alpha: 0.14), // light hairline, sits on top of shadow

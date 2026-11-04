@@ -5,7 +5,7 @@
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <title>Maksim Kalinin — Frontend Developer</title>
+        <title data-i18n="pageTitle">Maksim Kalinin — Frontend Developer</title>
         <meta
             name="description"
             content="Frontend developer and FE-focused fullstack engineer with 7+ years building data-dense, high-traffic web apps in React, Vue and TypeScript for gaming, fintech and edtech."
@@ -93,8 +93,8 @@
     </head>
     <body>
         <header class="header">
-            <!-- The label replaces the decorative "<MKalinin />" characters for screen readers. -->
-            <a class="header-logo" href="#home" aria-label="Maksim Kalinin">
+            <!-- The label drops the decorative "< />" for screen readers but keeps the visible "MKalinin", so speech input can match it (WCAG 2.5.3). -->
+            <a class="header-logo" href="#home" aria-label="MKalinin">
                 <span class="header-logo__bracket">&lt;</span><span class="header-logo__name"><span>M</span><span>K</span><span>a</span><span>l</span><span>i</span><span>n</span><span>i</span><span>n</span><span> </span><span>/</span></span><span class="header-logo__bracket">&gt;</span>
             </a>
             <button type="button" class="header-contact" aria-haspopup="dialog">
@@ -119,11 +119,12 @@
                     </span>
                 </button>
                 <ul class="lang__list" id="lang-list">
+                    <!-- Each option is named in its own language, so it needs no translation; the code stays first in the label for speech input. -->
                     <li>
-                        <button type="button" class="lang__option" data-lang="en" aria-current="true">EN</button>
+                        <button type="button" class="lang__option" data-lang="en" lang="en" aria-label="EN, English" aria-current="true">EN</button>
                     </li>
-                    <li><button type="button" class="lang__option" data-lang="ru">RU</button></li>
-                    <li><button type="button" class="lang__option" data-lang="sr">SR</button></li>
+                    <li><button type="button" class="lang__option" data-lang="ru" lang="ru" aria-label="RU, Русский">RU</button></li>
+                    <li><button type="button" class="lang__option" data-lang="sr" lang="sr-Latn" aria-label="SR, Srpski">SR</button></li>
                 </ul>
             </div>
             <button

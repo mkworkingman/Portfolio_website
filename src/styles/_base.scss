@@ -104,6 +104,23 @@ button {
     border: 0;
 }
 
+// One focus ring for every control instead of each browser's default. The offset puts it
+// on the background around the control, so its colour follows the background: dark on
+// base, accent on the surface areas (also around the amber buttons, which sit on surface
+// or base, never on accent).
+:focus-visible {
+    outline: $focus-ring-width solid color(focus-ring);
+    outline-offset: $focus-ring-offset;
+}
+
+.header,
+.footer,
+#home {
+    :focus-visible {
+        outline-color: color(focus-ring-inverse);
+    }
+}
+
 // Hidden on screen, still read by screen readers.
 .visually-hidden {
     position: absolute;

@@ -55,7 +55,6 @@
         right: 0;
         bottom: 0;
         left: 0;
-        z-index: z(behind);
         height: 40%;
         pointer-events: none;
         content: '';
@@ -84,7 +83,12 @@
     }
 }
 
+// Raised above the canvas and the ::after shade, instead of pushing those to z(behind):
+// a negative z-index layer that repaints every frame, under #home's clip-path, made
+// Chrome composite the text above it too, and it sometimes left a band of the hero unpainted.
 .hero-greeting {
+    position: relative;
+    z-index: z(raised);
     align-self: center;
 
     h1 {
@@ -110,14 +114,13 @@
 // right edge, capped at --hero-canvas-size so very wide screens keep it beside the text,
 // never taller than the section; solarSystem.ts centers the drawing on the shortest side.
 // While hidden, solarSystem.ts's IntersectionObserver sees it off screen and stops the loop.
-// z(behind) stays inside #home, since its clip-path creates a stacking context.
+// It stays under the text because .hero-greeting is raised, not because it is pushed behind.
 .hero-canvas {
     position: absolute;
     bottom: 0;
 
     // The text is centered, so its right edge is half its width past the middle.
     left: calc(50% + var(--hero-text-width) / 2);
-    z-index: z(behind);
     display: none;
 
     // The text is centered, so the strip beside it is half of what the text leaves over.

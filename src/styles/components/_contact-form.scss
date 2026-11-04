@@ -58,8 +58,10 @@
     &__status {
         font-size: font-size(sm);
 
+        // Stays rendered while empty: a live region that appears in the same step as its
+        // text is often not announced. Out of flow, so the grid gives it no gap meanwhile.
         &:empty {
-            display: none;
+            position: absolute;
         }
 
         &[data-status='error'] {

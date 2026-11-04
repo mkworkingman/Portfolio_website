@@ -1,5 +1,8 @@
 export const LANGUAGES = ['en', 'ru', 'sr'] as const
 export const TEXT_KEYS = [
+    // <title>, so the tab name follows the language too
+    'pageTitle',
+
     // Header
     'navHome',
     'navAbout',

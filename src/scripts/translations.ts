@@ -11,6 +11,8 @@ import type { FormStatus, Language, TextKey } from './values'
 // TODO: Make it JSON? Load those texts on click? If English is default language, what's the point of having ru and sr in the memory because not everyone will click to switch language
 export const translations: Record<Language, Record<TextKey, string>> = {
     en: {
+        pageTitle: 'Maksim Kalinin — Frontend Developer',
+
         navHome: 'Home',
         navAbout: 'About',
         navExperience: 'Experience',
@@ -86,6 +88,8 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         contactFormSend: 'Send',
     },
     ru: {
+        pageTitle: 'Максим Калинин — фронтенд-разработчик',
+
         navHome: 'Главная',
         navAbout: 'Обо мне',
         navExperience: 'Опыт',
@@ -161,6 +165,8 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         contactFormSend: 'Отправить',
     },
     sr: {
+        pageTitle: 'Maksim Kalinin — frontend programer',
+
         navHome: 'Početna',
         navAbout: 'O meni',
         navExperience: 'Iskustvo',

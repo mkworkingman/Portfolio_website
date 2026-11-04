@@ -168,7 +168,11 @@ $-logo-char-count: 10; // characters in "MKalinin /"
     }
 }
 
+// At least 24px tall (WCAG 2.5.8 target size), so the targets don't rely on their spacing.
 .header-nav__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: space(6);
     color: color(text-inverse-muted);
     text-decoration: none;
 
@@ -187,6 +191,12 @@ $-logo-char-count: 10; // characters in "MKalinin /"
         position: relative;
         padding-inline: space(2);
     }
+}
+
+// WCAG 2.5.8 target size, see .header-nav__link.
+.lang__switcher {
+    min-width: space(6);
+    min-height: space(6);
 }
 
 .lang__list {
@@ -217,6 +227,7 @@ $-logo-char-count: 10; // characters in "MKalinin /"
 
 .lang__option {
     width: 100%;
+    min-height: space(6); // WCAG 2.5.8 target size, see .header-nav__link
     color: color(text-inverse-muted);
     text-align: start;
 
