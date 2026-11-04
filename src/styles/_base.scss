@@ -12,9 +12,10 @@ $font-subsets: (
 );
 $font-weights: 400, 700;
 
-// latin is preloaded, so `optional` avoids any swap. latin-ext/cyrillic only load
-// once RU/SR text is on the page (often after a language switch), so they need
-// `swap` - with `optional` they would miss the ~100ms window and stay Arial.
+// latin is preloaded, so `optional` avoids any swap. latin-ext/cyrillic are preloaded
+// only when the saved or browser language is RU/SR (inline script in index.html);
+// otherwise they load once RU/SR text is on the page (often after a language switch).
+// Either way they can arrive late, so they need `swap` - with `optional` they would miss the ~100ms window and stay Arial.
 @each $subset, $range in $font-subsets {
     $display: swap;
 
@@ -118,6 +119,27 @@ button {
 #home {
     :focus-visible {
         outline-color: color(focus-ring-inverse);
+    }
+}
+
+// Above the sticky header and off screen until focused, then shown in its top-left corner.
+.skip-link {
+    position: absolute;
+    top: space(2);
+    left: space(2);
+    z-index: z(modal);
+    padding: space(2) space(4);
+    font-weight: font-weight(bold);
+    color: color(surface);
+    text-decoration: none;
+    background-color: color(accent);
+    border-radius: radius(sm);
+    transform: translateY(calc(-100% - #{space(4)}));
+
+    // Shown over the dark header, so it takes the inverse ring like the header's own controls.
+    &:focus-visible {
+        outline-color: color(focus-ring-inverse);
+        transform: none;
     }
 }
 

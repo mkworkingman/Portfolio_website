@@ -37,20 +37,7 @@
             type="font/woff2"
             crossorigin
         />
-        <link
-            rel="preload"
-            href="/fonts/montserrat-cyrillic-400-normal.woff2"
-            as="font"
-            type="font/woff2"
-            crossorigin
-        />
-        <link
-            rel="preload"
-            href="/fonts/montserrat-cyrillic-700-normal.woff2"
-            as="font"
-            type="font/woff2"
-            crossorigin
-        />
+        <!-- The subset each non-English language needs is preloaded by the inline script below, only for that language's visitors. -->
         <!--
             Critical, render-blocking: hide translatable text until initLanguage() swaps it,
             so non-English visitors don't see an English flash. Mirrors detectLanguage() in
@@ -81,6 +68,17 @@
                     }
                 }
                 if (lang === 'en') return
+                // Russian needs the cyrillic subset, Serbian (Latin script) the latin-ext one.
+                var subset = lang === 'ru' ? 'cyrillic' : 'latin-ext'
+                ;['400', '700'].forEach(function (weight) {
+                    var link = document.createElement('link')
+                    link.rel = 'preload'
+                    link.as = 'font'
+                    link.type = 'font/woff2'
+                    link.crossOrigin = 'anonymous'
+                    link.href = '/fonts/montserrat-' + subset + '-' + weight + '-normal.woff2'
+                    document.head.appendChild(link)
+                })
                 var root = document.documentElement
                 root.classList.add('i18n-pending')
                 setTimeout(function () {
@@ -92,6 +90,8 @@
         <script type="module" src="./src/scripts/index.ts"></script>
     </head>
     <body>
+        <!-- First tab stop: jumps past the header controls (WCAG 2.4.1). Off screen until focused. -->
+        <a class="skip-link" href="#main" data-i18n="skipLink">Skip to content</a>
         <header class="header">
             <!-- The label drops the decorative "< />" for screen readers but keeps the visible "MKalinin", so speech input can match it (WCAG 2.5.3). -->
             <a class="header-logo" href="#home" aria-label="MKalinin">
@@ -184,7 +184,7 @@
                 </ul>
             </nav>
         </header>
-        <main class="main">
+        <main class="main" id="main">
             <section id="home" aria-labelledby="hero-heading">
                 <div class="hero-greeting">
                     <!-- The span carries the text so .hello's animation can't override the i18n-pending hide. -->
@@ -395,6 +395,7 @@
                     <!-- Honeypot: hidden from people, bots tick it and Web3Forms drops the submission. -->
                     <!-- eslint-disable-next-line @html-eslint/require-input-label -- honeypot, intentionally unlabeled -->
                     <input class="contact-form__honeypot" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" />
+                    <p class="contact-form__hint"><span class="i18n-stack"><span data-i18n="contactFormRequired">All fields are required.</span><!-- i18n-reserve:contactFormRequired --></span></p>
                     <label class="contact-form__field">
                         <span data-i18n="contactFormName">Your name</span>
                         <input class="contact-form__input" type="text" name="name" autocomplete="name" maxlength="100" required />

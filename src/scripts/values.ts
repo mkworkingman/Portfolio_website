@@ -2,6 +2,7 @@ export const LANGUAGES = ['en', 'ru', 'sr'] as const
 export const TEXT_KEYS = [
     // <title>, so the tab name follows the language too
     'pageTitle',
+    'skipLink',
 
     // Header
     'navHome',
@@ -71,6 +72,7 @@ export const TEXT_KEYS = [
     'contactClose',
     'contactText',
     'contactEmail',
+    'contactFormRequired',
     'contactFormName',
     'contactFormEmail',
     'contactFormMessage',

@@ -10,6 +10,13 @@
         display: none;
     }
 
+    // Says up front that every field is required (WCAG 3.3.2), not only in the browser's
+    // own validation bubble, which speaks the browser's language rather than the site's.
+    &__hint {
+        font-size: font-size(sm);
+        color: color(text-muted);
+    }
+
     &__field {
         display: grid;
         gap: space(1);

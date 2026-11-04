@@ -12,6 +12,7 @@ import type { FormStatus, Language, TextKey } from './values'
 export const translations: Record<Language, Record<TextKey, string>> = {
     en: {
         pageTitle: 'Maksim Kalinin — Frontend Developer',
+        skipLink: 'Skip to content',
 
         navHome: 'Home',
         navAbout: 'About',
@@ -82,6 +83,7 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         contactClose: 'Close',
         contactText: 'Or reach me directly:',
         contactEmail: 'Email',
+        contactFormRequired: 'All fields are required.',
         contactFormName: 'Your name',
         contactFormEmail: 'Your email',
         contactFormMessage: 'Message',
@@ -89,6 +91,7 @@ export const translations: Record<Language, Record<TextKey, string>> = {
     },
     ru: {
         pageTitle: 'Максим Калинин — фронтенд-разработчик',
+        skipLink: 'Перейти к содержанию',
 
         navHome: 'Главная',
         navAbout: 'Обо мне',
@@ -159,6 +162,7 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         contactClose: 'Закрыть',
         contactText: 'Или свяжитесь со мной напрямую:',
         contactEmail: 'Почта',
+        contactFormRequired: 'Все поля обязательны.',
         contactFormName: 'Ваше имя',
         contactFormEmail: 'Ваш email',
         contactFormMessage: 'Сообщение',
@@ -166,6 +170,7 @@ export const translations: Record<Language, Record<TextKey, string>> = {
     },
     sr: {
         pageTitle: 'Maksim Kalinin — frontend programer',
+        skipLink: 'Preskoči na sadržaj',
 
         navHome: 'Početna',
         navAbout: 'O meni',
@@ -236,6 +241,7 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         contactClose: 'Zatvori',
         contactText: 'Ili me kontaktirajte direktno:',
         contactEmail: 'Imejl',
+        contactFormRequired: 'Sva polja su obavezna.',
         contactFormName: 'Vaše ime',
         contactFormEmail: 'Vaš imejl',
         contactFormMessage: 'Poruka',
