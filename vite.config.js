@@ -38,7 +38,47 @@ function i18nReserve() {
     }
 }
 
-const sha256 = (text) => `'sha256-${createHash('sha256').update(text).digest('base64')}'`
+/**
+ * Fills each `<!-- i18n-group-ghosts -->` (placed right after a `.i18n-group__live`
+ * block) with an invisible copy of that block per language. They share one grid cell
+ * with the live block, so the group keeps the size of its longest language and switching
+ * moves nothing around it, while the text inside still flows with its normal spacing.
+ * The copies lose ids, comments and data-i18n* attributes, so they stay out of the
+ * accessibility tree, id lookups and language switching.
+ */
+function i18nGroups() {
+    const ghost = (inner, lang) =>
+        inner
+            .replace(/<!--[\s\S]*?-->/g, '')
+            .replace(/<(\w+)([^>]*?)\sdata-i18n="(\w+)"([^>]*)>[^<]*<\/\1>/g, (_, tag, a, key, b) => {
+                if (!(key in translations[lang])) {
+                    throw new Error(`i18n-group: unknown text key "${key}"`)
+                }
+                return `<${tag}${a}${b}>${escapeHtml(translations[lang][key])}</${tag}>`
+            })
+            .replace(/\s(id|for|data-i18n-label)="[^"]*"/g, '')
+            .replace(/\sautofocus\b/g, '')
+
+    return {
+        name: 'i18n-group',
+        transformIndexHtml: {
+            // Before the minifier strips the comments.
+            order: 'pre',
+            handler: (html) =>
+                html.replace(
+                    /<div class="i18n-group__live">([\s\S]*?)<\/div>(\s*)<!-- i18n-group-ghosts -->/g,
+                    (_, inner, space) =>
+                        `<div class="i18n-group__live">${inner}</div>${space}` +
+                        LANGUAGES.map(
+                            (lang) =>
+                                `<div class="i18n-group__ghost" lang="${HTML_LANG[lang]}" aria-hidden="true">${ghost(inner, lang)}</div>`,
+                        ).join(''),
+                ),
+        },
+    }
+}
+
+const sha256 =(text) => `'sha256-${createHash('sha256').update(text).digest('base64')}'`
 
 /**
  * Adds a Content-Security-Policy <meta> to the built page. The inline <script> and
@@ -80,7 +120,7 @@ function csp() {
 }
 
 export default defineConfig({
-    plugins: [i18nReserve(), ViteMinifyPlugin({}), csp()],
+    plugins: [i18nGroups(), i18nReserve(),ViteMinifyPlugin({}), csp()],
     test: {
         environment: 'jsdom',
     },
