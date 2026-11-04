@@ -37,7 +37,7 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         expIndRole: 'Independent developer',
         expIndText:
             'Building my own products, WizardTuner and JobScraper. More about them under Projects.',
-        expWgRole: 'Fullstack developer',
+        expWgRole: 'FE-focused fullstack developer',
         expWg1: 'Rebuilt the World of Tanks 2.0 Hangar, the game’s main navigation screen, used by 5,800+ concurrent players (10,000+ at peak) in 29 languages.',
         expWg2: 'Shipped live-ops and clan features to fixed launch dates together with game designers, UX/UI, backend and QA: Pet System, Holiday Ops 24/25 and 25/26, Strongholds Event, Clan Supply, Tournaments, Clan Winter Event.',
         expWg3: 'Built the Django endpoints behind my features, with data-aggregation logic, and defined the backend–frontend data contracts around the game client’s UI constraints.',
@@ -114,7 +114,7 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         expIndRole: 'Независимый разработчик',
         expIndText:
             'Разрабатываю собственные продукты — WizardTuner и JobScraper. Подробнее о них в разделе «Проекты».',
-        expWgRole: 'Fullstack-разработчик',
+        expWgRole: 'Fullstack-разработчик с фокусом на фронтенд',
         expWg1: 'Переписал Ангар World of Tanks 2.0 — главный навигационный экран игры: 5 800+ игроков онлайн одновременно (10 000+ в пике), 29 языков.',
         expWg2: 'Вместе с геймдизайнерами, UX/UI, бэкендом и QA выпускал live-ops и клановые фичи к фиксированным датам запуска: Pet System, Holiday Ops 24/25 и 25/26, Strongholds Event, Clan Supply, турниры, Clan Winter Event.',
         expWg3: 'Писал эндпоинты на Django для своих фич, с логикой агрегации данных, и проектировал контракты данных между бэкендом и фронтендом с учётом ограничений UI игрового клиента.',
@@ -191,7 +191,7 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         expIndRole: 'Samostalni programer',
         expIndText:
             'Razvijam sopstvene proizvode, WizardTuner i JobScraper. Više o njima u odeljku „Projekti“.',
-        expWgRole: 'Fullstack programer',
+        expWgRole: 'Fullstack programer sa fokusom na frontend',
         expWg1: 'Ponovo sam napravio Hangar u World of Tanks 2.0, glavni navigacioni ekran igre, koji koristi 5.800+ igrača istovremeno (10.000+ u vršnim trenucima) na 29 jezika.',
         expWg2: 'Sa gejm dizajnerima, UX/UI, bekend i QA timom isporučivao sam live-ops i klanske funkcionalnosti za fiksne datume lansiranja: Pet System, Holiday Ops 24/25 i 25/26, Strongholds Event, Clan Supply, turniri, Clan Winter Event.',
         expWg3: 'Pisao sam Django endpointe za svoje funkcionalnosti, sa logikom agregacije podataka, i definisao ugovore podataka između bekenda i frontenda u skladu sa ograničenjima UI-ja klijenta igre.',

@@ -2,8 +2,12 @@
 
 .jobs {
     display: grid;
-    gap: space(10);
+    gap: space(8);
     max-width: $measure;
+
+    @include md {
+        gap: space(10);
+    }
 }
 
 // An accent rule down the left ties each entry's title, meta and points together.

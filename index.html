@@ -98,7 +98,11 @@
                 <span class="header-logo__bracket">&lt;</span><span class="header-logo__name"><span>M</span><span>K</span><span>a</span><span>l</span><span>i</span><span>n</span><span>i</span><span>n</span><span> </span><span>/</span></span><span class="header-logo__bracket">&gt;</span>
             </a>
             <button class="header-contact" aria-haspopup="dialog">
-                <span class="i18n-reserve i18n-reserve--always">
+                <!-- Phones get the icon; the label is still read by screen readers. -->
+                <svg class="icon header-contact__icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4 6h16v12H4zM4 7l8 6 8-6" />
+                </svg>
+                <span class="header-contact__label i18n-reserve">
                     <span data-i18n="navContact">Contact me</span>
                     <!-- i18n-reserve:navContact -->
                 </span>
@@ -214,7 +218,7 @@
                             </article>
                             <article class="job">
                                 <h3 class="job__title">Wargaming</h3>
-                                <p class="job__meta"><span data-i18n="expWgRole">Fullstack developer</span> · 2022 – 2026</p>
+                                <p class="job__meta"><span data-i18n="expWgRole">FE-focused fullstack developer</span> · 2022 – 2026</p>
                                 <ul class="job__points">
                                     <li><span data-i18n="expWg1">Rebuilt the World of Tanks 2.0 Hangar, the game’s main navigation screen, used by 5,800+ concurrent players (10,000+ at peak) in 29 languages.</span></li>
                                     <li><span data-i18n="expWg2">Shipped live-ops and clan features to fixed launch dates together with game designers, UX/UI, backend and QA: Pet System, Holiday Ops 24/25 and 25/26, Strongholds Event, Clan Supply, Tournaments, Clan Winter Event.</span></li>
@@ -368,7 +372,7 @@
                                     <h3><span data-i18n="projSiteName">This site</span></h3>
                                 </div>
                                 <p><span data-i18n="projSiteText">Vanilla TypeScript and Vite with no framework, an SCSS design-token system, three languages that switch without layout shift, and a strict Content Security Policy.</span></p>
-                                <p class="project__stack">TypeScript · Vite · SCSS · GSAP · Vitest</p>
+                                <p class="project__stack">TypeScript · Vite · SCSS · Vitest</p>
                             </article>
                         </div>
                     </div>

@@ -130,10 +130,7 @@ button {
         display: block;
     }
 
-    // The live text takes no part in sizing the cell, so the ghosts alone set the
-    // width. Mid-scramble the random glyphs can run wider than any translation;
-    // they get clipped instead of shifting the row. nowrap stops them wrapping to a
-    // second line instead (e.g. "Обо мне" mid-scramble).
+    // The live text takes no part in sizing the cell, so the ghosts alone set the width.
     > :not(.i18n-reserve__ghost) {
         width: 0;
         min-width: 100%;
@@ -155,11 +152,6 @@ button {
     }
 }
 
-// For text that sits in a row at every width (e.g. the header's Contact button).
-.i18n-reserve--always {
-    @include i18n-reserve-on;
-}
-
 .i18n-reserve__ghost {
     display: none;
     visibility: hidden;
@@ -168,8 +160,7 @@ button {
 // The same idea for a single translated element (section headings, hero lines): the
 // ghosts of all three languages share one grid cell, so the cell is as wide and as tall
 // as the longest translation at the current width and switching language moves nothing
-// around it. The live text is excluded from sizing (0 + min 100%) and fills the cell;
-// mid-scramble glyphs that would run past it are clipped instead.
+// around it. The live text is excluded from sizing (0 + min 100%) and fills the cell.
 .i18n-stack {
     display: grid;
 
@@ -194,26 +185,38 @@ button {
 // vite.config.js adds a hidden copy of the block per language. Reserving per block
 // rather than per paragraph keeps the spacing between paragraphs the same in every
 // language; only the block as a whole is sized to its longest version.
+// From md up only: on a phone the column is so narrow that the longest translation
+// ran hundreds of pixels taller (Experience: ~290px), leaving big empty gaps between
+// sections. There the block just takes its own height and scroll anchoring keeps the
+// reading position steady when a switch reflows it.
 .i18n-group {
-    position: relative;
-    display: grid;
+    @include md {
+        position: relative;
+        display: grid;
 
-    > * {
-        grid-area: 1 / 1;
+        > * {
+            grid-area: 1 / 1;
+        }
     }
 }
 
 // Taken out of flow so only the ghosts size the group. (The 0 + min 100% trick above
 // isn't reliable here: with grids nested inside, e.g. the project cards, the group
-// drifted to the live block's height.) Not clipped: a moment of mid-scramble overflow
-// just paints over the space below, and clipping would cut off focus rings.
+// drifted to the live block's height.) Not clipped, so focus rings aren't cut off.
 .i18n-group__live {
-    position: absolute;
-    inset: 0 0 auto;
+    @include md {
+        position: absolute;
+        inset: 0 0 auto;
+    }
 }
 
 .i18n-group__ghost {
+    display: none;
     visibility: hidden;
+
+    @include md {
+        display: block;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {

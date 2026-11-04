@@ -3,14 +3,18 @@
 .projects {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(100%, space(80)), 1fr));
-    gap: space(6);
+    gap: space(4);
+
+    @include md {
+        gap: space(6);
+    }
 }
 
 .project {
     display: flex;
     flex-direction: column;
     gap: space(3);
-    padding: space(6);
+    padding: space(5) space(4);
     border: $border-width solid color(border);
     border-top: $border-width-accent solid color(accent);
     border-radius: radius(md);
@@ -19,6 +23,10 @@
         margin-top: auto; // pins the stack line to the bottom of cards in the same row
         font-size: font-size(sm);
         color: color(text-muted);
+    }
+
+    @include md {
+        padding: space(6);
     }
 }
 

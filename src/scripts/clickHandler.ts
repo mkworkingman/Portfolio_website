@@ -1,4 +1,4 @@
-import { preloadScramble, setLanguage } from './language'
+import { setLanguage } from './language'
 import { isLanguage } from './values'
 
 interface Handler {
@@ -15,8 +15,6 @@ const contactModal = document.querySelector<HTMLDialogElement>('.contact-modal')
 const isOpen = (el: HTMLElement | null) => el?.classList.contains('is-open') ?? false
 
 function setLangListOpen(open: boolean) {
-    // Fetch GSAP while the visitor is still picking, so the scramble starts on click.
-    if (open) void preloadScramble()
     langList?.classList.toggle('is-open', open)
     langSwitcher?.setAttribute('aria-expanded', String(open))
 }

@@ -29,6 +29,7 @@ $-logo-char-count: 10; // characters in "MKalinin /"
 .header-logo {
     margin-inline-end: auto;
     color: color(accent);
+    white-space: nowrap; // "<MKalinin />" wrapped onto two lines on phones
     text-decoration: none;
 }
 
@@ -66,14 +67,49 @@ $-logo-char-count: 10; // characters in "MKalinin /"
     }
 }
 
+// Below md an icon-only square the size of the burger toggle: the text button, sized
+// for the longest translation ("Связаться со мной"), pushed the burger off screen.
 .header-contact {
+    display: grid;
     flex-shrink: 0; // otherwise a long translation wraps and the button changes size
-    padding: space(2) space(4);
+    place-items: center;
+    width: space(9);
+    height: space(9);
     font-weight: font-weight(bold);
     color: color(surface);
     white-space: nowrap;
     background-color: color(accent);
     border-radius: radius(sm);
+
+    @include md {
+        display: block;
+        width: auto;
+        height: auto;
+        padding: space(2) space(4);
+    }
+}
+
+.header-contact__icon {
+    @include md {
+        display: none;
+    }
+}
+
+// Visually hidden below md (same rules as .visually-hidden), shown from md up.
+.header-contact__label {
+    position: absolute;
+    width: space(0.25);
+    height: space(0.25);
+    overflow: hidden;
+    clip-path: inset(50%);
+
+    @include md {
+        position: static;
+        width: auto;
+        height: auto;
+        overflow: visible;
+        clip-path: none;
+    }
 }
 
 // Navigation: a burger menu below lg; five links don't fit in a row next to the
