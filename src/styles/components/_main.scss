@@ -29,6 +29,10 @@
 
 #home {
     --hero-min-height: #{space(75)};
+    --hero-canvas-size: #{space(140)};
+
+    // Wide enough for the subtitle to wrap to three lines.
+    --hero-text-width: #{space(130)};
 
     position: relative;
     display: flex;
@@ -82,36 +86,47 @@
 
 .hero-greeting {
     align-self: center;
-    anchor-name: --hero-greeting;
 
     h1 {
         font-size: font-size(display);
         line-height: line-height(tight);
         color: color(text-inverse-soft);
     }
+
+    // md+: a fixed width keeps the text centered and tells the canvas how much room is left.
+    @include md {
+        width: min(100%, var(--hero-text-width));
+    }
 }
 
 .hero-subtitle {
     font-size: font-size(lg);
     color: color(text-inverse-muted);
+    text-wrap: balance;
 }
 
-// Solar system sits behind the hero content, pinned to the bottom right.
+// md+ only: on phones the text takes the full width and the canvas would sit under it.
+// It starts at the centered text's right edge and fills the strip up to the section's
+// right edge, capped at --hero-canvas-size so very wide screens keep it beside the text,
+// never taller than the section; solarSystem.ts centers the drawing on the shortest side.
+// While hidden, solarSystem.ts's IntersectionObserver sees it off screen and stops the loop.
 // z(behind) stays inside #home, since its clip-path creates a stacking context.
 .hero-canvas {
     position: absolute;
-    right: 0;
     bottom: 0;
+
+    // The text is centered, so its right edge is half its width past the middle.
+    left: calc(50% + var(--hero-text-width) / 2);
     z-index: z(behind);
-    width: min(100%, space(140));
-    aspect-ratio: 1;
+    display: none;
+
+    // The text is centered, so the strip beside it is half of what the text leaves over.
+    width: min(var(--hero-canvas-size), (100% - var(--hero-text-width)) / 2);
+    height: min(100%, var(--hero-canvas-size));
     pointer-events: none;
 
-    // Follow the greeting's right edge so wide screens don't leave a gap between them,
-    // but never past the section's right edge. Unsupported browsers keep right: 0.
-    @supports (left: anchor(--hero-greeting right)) {
-        right: auto;
-        left: min(anchor(--hero-greeting right), 100% - min(100%, space(140)));
+    @include md {
+        display: block;
     }
 
     // solarSystem.ts also skips drawing under reduced motion.
