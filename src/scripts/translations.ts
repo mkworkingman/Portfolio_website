@@ -75,12 +75,6 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         projWtStatus: 'In progress',
         projWtText:
             'A PWA for musicians: tuner, metronome, beat machine and ear-training games. Low-latency audio runs on a dedicated audio thread.',
-        projJsStatus: 'In progress',
-        projJsText:
-            'A job aggregator that collects listings from international and Serbian job boards, with keyword, location and work-type filters.',
-        projSiteName: 'This site',
-        projSiteText:
-            'Vanilla TypeScript and Vite with no framework, an SCSS design-token system, three languages that switch without layout shift, and a strict Content Security Policy.',
 
         contactTitle: 'Contact me',
         contactClose: 'Close',
@@ -156,12 +150,6 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         projWtStatus: 'В разработке',
         projWtText:
             'PWA для музыкантов: тюнер, метроном, драм-машина и игры для тренировки слуха. Звук с низкой задержкой обрабатывается в отдельном аудиопотоке.',
-        projJsStatus: 'В разработке',
-        projJsText:
-            'Агрегатор вакансий: собирает объявления с международных и сербских сайтов поиска работы, с фильтрами по ключевым словам, локации и формату работы.',
-        projSiteName: 'Этот сайт',
-        projSiteText:
-            'Чистый TypeScript и Vite без фреймворка, система дизайн-токенов на SCSS, три языка, которые переключаются без сдвига вёрстки, и строгая Content Security Policy.',
 
         contactTitle: 'Связаться со мной',
         contactClose: 'Закрыть',
@@ -237,12 +225,6 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         projWtStatus: 'U izradi',
         projWtText:
             'PWA za muzičare: štimer, metronom, ritam mašina i igre za vežbanje sluha. Zvuk sa malim kašnjenjem radi na posebnoj audio niti.',
-        projJsStatus: 'U izradi',
-        projJsText:
-            'Agregator oglasa za posao koji prikuplja oglase sa međunarodnih i srpskih sajtova za zapošljavanje, sa filterima po ključnim rečima, lokaciji i načinu rada.',
-        projSiteName: 'Ovaj sajt',
-        projSiteText:
-            'Čist TypeScript i Vite bez frejmvorka, sistem dizajn tokena u SCSS-u, tri jezika koji se menjaju bez pomeranja rasporeda i stroga Content Security Policy.',
 
         contactTitle: 'Kontaktirajte me',
         contactClose: 'Zatvori',

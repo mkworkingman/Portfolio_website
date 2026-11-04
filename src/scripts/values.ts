@@ -62,10 +62,6 @@ export const TEXT_KEYS = [
     'projectsHeading',
     'projWtStatus',
     'projWtText',
-    'projJsStatus',
-    'projJsText',
-    'projSiteName',
-    'projSiteText',
 
     // Contact modal
     'contactTitle',
