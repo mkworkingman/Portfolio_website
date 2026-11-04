@@ -5,10 +5,10 @@
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <title data-i18n="pageTitle">Maksim Kalinin — Frontend Developer</title>
+        <title data-i18n="pageTitle">Maksim Kalinin — Frontend-Focused Fullstack Developer</title>
         <meta
             name="description"
-            content="Frontend developer and FE-focused fullstack engineer with 7+ years building data-dense, high-traffic web apps in React, Vue and TypeScript for gaming, fintech and edtech."
+            content="Frontend-focused fullstack developer with 7+ years building data-dense, real-time web apps in React, Vue and TypeScript for gaming, fintech and edtech, and the APIs behind them."
         />
         <link rel="canonical" href="https://mkalinin-portfolio.vercel.app/" />
         <!-- The same on every language page; canonical, og:* and the text are rewritten per page by the build. -->
@@ -20,10 +20,10 @@
         <!-- TODO: add og:image (1200x630 PNG) -->
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://mkalinin-portfolio.vercel.app/" />
-        <meta property="og:title" content="Maksim Kalinin — Frontend Developer" />
+        <meta property="og:title" content="Maksim Kalinin — Frontend-Focused Fullstack Developer" />
         <meta
             property="og:description"
-            content="Frontend developer and FE-focused fullstack engineer with 7+ years building data-dense, high-traffic web apps in React, Vue and TypeScript for gaming, fintech and edtech."
+            content="Frontend-focused fullstack developer with 7+ years building data-dense, real-time web apps in React, Vue and TypeScript for gaming, fintech and edtech, and the APIs behind them."
         />
         <meta property="og:locale" content="en_US" />
         <meta name="twitter:card" content="summary" />
@@ -220,9 +220,31 @@
             <section id="home" aria-labelledby="hero-heading">
                 <div class="hero-greeting">
                     <!-- The span carries the text so .hello's animation can't override the i18n-pending hide. -->
-                    <p class="hello"><span class="i18n-stack"><span data-i18n="heroEyebrow">Frontend developer · Belgrade</span><!-- i18n-reserve:heroEyebrow --></span></p>
+                    <p class="hello"><span class="i18n-stack"><span data-i18n="heroEyebrow">Frontend-focused fullstack developer · Belgrade</span><!-- i18n-reserve:heroEyebrow --></span></p>
                     <h1 id="hero-heading">Maksim Kalinin</h1>
-                    <p class="hero-subtitle"><span class="i18n-stack"><span data-i18n="heroSubtitle">I build data-dense, high-traffic interfaces in React, Vue and TypeScript, and the APIs behind them when a feature needs it.</span><!-- i18n-reserve:heroSubtitle --></span></p>
+                    <p class="hero-subtitle"><span class="i18n-stack"><span data-i18n="heroSubtitle">I build data-dense, real-time interfaces in React, Vue and TypeScript, and the APIs and data contracts behind them.</span><!-- i18n-reserve:heroSubtitle --></span></p>
+                    <!-- The contact details on the page itself, not only inside the dialog. -->
+                    <div class="hero-actions">
+                        <!-- hreflang: the CV is in English on every language page. -->
+                        <a class="hero-actions__cv" href="/Maksim-Kalinin-CV.pdf" download hreflang="en" type="application/pdf">
+                            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14" /></svg>
+                            <span class="i18n-reserve"><span data-i18n="heroCv">Download CV</span><!-- i18n-reserve:heroCv --></span>
+                        </a>
+                        <ul class="hero-actions__links">
+                            <li>
+                                <a class="hero-actions__link" href="mailto:mkworkingman@gmail.com">
+                                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4zM4 7l8 6 8-6" /></svg>
+                                    <span class="i18n-reserve"><span data-i18n="heroEmail">Email</span><!-- i18n-reserve:heroEmail --></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="hero-actions__link" href="https://www.linkedin.com/in/mkworkingman" rel="noopener noreferrer" target="_blank"><svg class="icon icon--brand" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg> LinkedIn</a>
+                            </li>
+                            <li>
+                                <a class="hero-actions__link" href="https://github.com/mkworkingman" rel="noopener noreferrer" target="_blank"><svg class="icon icon--brand" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.22 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" /></svg> GitHub</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <!-- TODO: swap the planets for technology logos, add particles -->
                 <canvas class="hero-canvas" aria-hidden="true"></canvas>
@@ -232,8 +254,8 @@
                 <div class="i18n-group">
                     <div class="i18n-group__live">
                         <!-- Translated texts stay on one line each: they must match translations.ts exactly. -->
-                        <p><span data-i18n="aboutP1">I’m a frontend developer with 7+ years of experience building production web apps for gaming, fintech and edtech. My core is React (Next.js), Vue (Nuxt) and TypeScript: real-time data, large tables, complex state, and interfaces that stay smooth under load.</span></p>
-                        <p><span data-i18n="aboutP2">I’m fullstack enough to own a feature end to end: when the UI needs it, I write the API too, in Node.js, Django or Laravel, and shape the data contract around what the interface has to show. That’s how I worked at Wargaming on the World of Tanks 2.0 Hangar and its live-ops events.</span></p>
+                        <p><span data-i18n="aboutP1">I’m a frontend-focused fullstack developer with 7+ years of experience building production web apps for gaming, fintech and edtech. My core is React (Next.js), Vue (Nuxt) and TypeScript: data-dense and real-time UIs, animation, i18n (up to 29 languages, incl. RTL), accessibility and Core Web Vitals performance.</span></p>
+                        <p><span data-i18n="aboutP2">On the backend I build APIs and data contracts in Node.js (Express, NestJS), Python (Django) and PHP (Laravel). I own features end to end, from the data model to the interface, and ship high-traffic features to fixed deadlines. That’s how I worked at Wargaming on the World of Tanks 2.0 Hangar and its live-ops events.</span></p>
                         <p><span data-i18n="aboutP3">I care about the parts users feel but rarely notice: accessibility, localization (16 languages and RTL at Libertex, 29 at Wargaming) and motion. I live in Belgrade and speak English, Russian and Serbian, the same three languages this site is in.</span></p>
                     </div>
                     <!-- i18n-group-ghosts -->
@@ -248,25 +270,26 @@
                                 <h3 class="job__title"><span data-i18n="expIndRole">Independent developer</span></h3>
                                 <p class="job__meta">2026 – <span data-i18n="expPresent">present</span></p>
                                 <p><span data-i18n="expIndText">Building my own products, WizardTuner and JobScraper. More about them under Projects.</span></p>
+                                <p class="job__stack">Next.js · React 19 · TypeScript · Zustand · Zod · Web Audio API · WebAssembly (Rust) · Node.js · NestJS</p>
                             </article>
                             <article class="job">
                                 <h3 class="job__title">Wargaming</h3>
-                                <p class="job__meta"><span data-i18n="expWgRole">FE-focused fullstack developer</span> · 2022 – 2026</p>
+                                <p class="job__meta"><span data-i18n="expWgRole">Frontend-focused fullstack developer</span> · 2022 – 2026</p>
                                 <ul class="job__points">
-                                    <li><span data-i18n="expWg1">Rebuilt the World of Tanks 2.0 Hangar, the game’s main navigation screen, used by 5,800+ concurrent players (10,000+ at peak) in 29 languages.</span></li>
-                                    <li><span data-i18n="expWg2">Shipped live-ops and clan features to fixed launch dates together with game designers, UX/UI, backend and QA: Pet System, Holiday Ops 24/25 and 25/26, Strongholds Event, Clan Supply, Tournaments, Clan Winter Event.</span></li>
-                                    <li><span data-i18n="expWg3">Built the Django endpoints behind my features, with data-aggregation logic, and defined the backend–frontend data contracts around the game client’s UI constraints.</span></li>
+                                    <li><span data-i18n="expWg1">Rebuilt the World of Tanks 2.0 Hangar, the game’s main navigation screen (main page, vehicle carousel, central vehicle button), used by 5,800+ concurrent players (10,000+ at peak) in 29 languages.</span></li>
+                                    <li><span data-i18n="expWg2">Built in-game event UI for live-ops and clan features shipped to fixed launch dates (Pet System, Holiday Ops 24/25 and 25/26, Strongholds Event, Clan Supply, Tournaments, Clan Winter Event): real-time notifications, live timers and progress bars, leaderboard tables with filtering, pagination, virtualization and expandable rows, animations and mini-games. Worked with game designers, UX/UI, backend and QA on each launch.</span></li>
+                                    <li><span data-i18n="expWg3">Built Django endpoints with data-aggregation logic and defined the backend–frontend data contracts around the game client’s UI constraints; the changes went through the backend team’s code review.</span></li>
                                     <li><span data-i18n="expWg4">Reviewed pull requests for a team of 5 frontend and fullstack developers.</span></li>
                                 </ul>
-                                <p class="job__stack">React · MobX · Next.js · TypeScript · Python · Django · Redis · Docker</p>
+                                <p class="job__stack">React · MobX · Next.js · TypeScript · Coherent Gameface · Python · Django · Redis · Docker</p>
                             </article>
                             <article class="job">
                                 <h3 class="job__title">Libertex</h3>
                                 <p class="job__meta"><span data-i18n="expLxRole">Frontend developer</span> · 2021 – 2022</p>
                                 <ul class="job__points">
-                                    <li><span data-i18n="expLx1">Built a real-time trading table streaming prices for 15–20 instruments (stocks, crypto and more) every second without render slowdowns, embedded as widgets in the existing CMS.</span></li>
+                                    <li><span data-i18n="expLx1">Built a real-time trading table streaming prices for 15–20 instruments (stocks, crypto and more) at ~1-second intervals without render slowdowns, embedded as widgets in the existing CMS.</span></li>
                                     <li><span data-i18n="expLx2">Led motion and interaction work on the trading UI and wrote the animation guidelines the other 4 frontend developers followed.</span></li>
-                                    <li><span data-i18n="expLx3">Implemented support for 16 languages, including a full right-to-left layout for Arabic.</span></li>
+                                    <li><span data-i18n="expLx3">Implemented support for 16 languages, including a full right-to-left layout for Arabic, with per-locale URLs, hreflang and localized meta. Took part in the migration from Drupal to headless Drupal + Nuxt: URLs were kept or 301-redirected, the site stayed fully indexed and key landing pages passed Core Web Vitals.</span></li>
                                 </ul>
                                 <p class="job__stack">Vue · Nuxt · JavaScript · SSE · Drupal · PHP · Twig · Sass · Docker</p>
                             </article>
@@ -292,8 +315,8 @@
                                 <h3 class="job__title"><span data-i18n="expEarlyRole">Earlier</span></h3>
                                 <p class="job__meta">2018 – 2019</p>
                                 <ul class="job__points">
-                                    <li><span data-i18n="expEarly1">Lloyd Hardy Enterprises: built and maintained a proprietary CMS end to end in Laravel and MySQL, covering the backend, REST API, admin and client-facing pages.</span></li>
-                                    <li><span data-i18n="expEarly2">Tribefire: built the core interface of a streaming platform in Vue, including the Stripe donation checkout and real-time donation alerts.</span></li>
+                                    <li><span data-i18n="expEarly1">Lloyd Hardy Enterprises: built and maintained a proprietary CMS end to end in Laravel and MySQL (backend logic, REST API, admin features and client-facing pages), plus interactive, responsive frontend modules.</span></li>
+                                    <li><span data-i18n="expEarly2">Tribefire: built the core interface of a streamer platform in Vue, with reactive components for live-data broadcasting, a Stripe donation checkout and real-time donation alerts.</span></li>
                                 </ul>
                             </article>
                         </div>
@@ -315,6 +338,7 @@
                                     <li>Vue 3</li>
                                     <li>Nuxt</li>
                                     <li>TanStack Query / Table / Virtual</li>
+                                    <li>Zod</li>
                                     <li>Zustand</li>
                                     <li>MobX</li>
                                     <li>Redux Toolkit</li>
@@ -325,6 +349,8 @@
                                     <li>Canvas API</li>
                                     <li>Web Audio / AudioWorklet</li>
                                     <li>WebAssembly (Rust)</li>
+                                    <li>Web Workers</li>
+                                    <li>PWA</li>
                                 </ul>
                             </div>
                             <div class="skill-group">
@@ -352,6 +378,8 @@
                                     <li>Vite</li>
                                     <li>Webpack</li>
                                     <li>Nx</li>
+                                    <li>Turborepo</li>
+                                    <li>Storybook</li>
                                     <li>Docker</li>
                                     <li>GitHub Actions</li>
                                     <li>GitLab CI</li>
@@ -367,6 +395,8 @@
                                 <ul class="tags">
                                     <li><span data-i18n="skillsA11y">Accessibility (WCAG)</span></li>
                                     <li><span data-i18n="skillsI18n">Internationalization, incl. RTL</span></li>
+                                    <li><span data-i18n="skillsSecurity">Security (CSP, OAuth2, JWT)</span></li>
+                                    <li>SEO</li>
                                     <li><span data-i18n="skillsPerf">Performance (Core Web Vitals)</span></li>
                                     <li><span data-i18n="skillsDesignSystems">Design systems &amp; tokens</span></li>
                                     <li><span data-i18n="skillsArchitecture">Frontend architecture</span></li>
@@ -392,13 +422,30 @@
                                 <p><span data-i18n="projWtText">A PWA for musicians: tuner, metronome, beat machine and ear-training games. Low-latency audio runs on a dedicated audio thread.</span></p>
                                 <p class="project__stack">Next.js · React 19 · TypeScript · Zustand · Zod · Web Audio API · AudioWorklet · WebAssembly (Rust)</p>
                             </article>
+                            <article class="project">
+                                <div class="project__header">
+                                    <h3>JobScraper</h3>
+                                    <span class="project__status"><span data-i18n="projJsStatus">In progress</span></span>
+                                </div>
+                                <p><span data-i18n="projJsText">A job-aggregation tool that collects listings from multiple international and Serbian job boards, with keyword, location and work-type filters.</span></p>
+                            </article>
                         </div>
                     </div>
                     <!-- i18n-group-ghosts -->
                 </div>
             </section>
         </main>
-        <footer class="footer">MK – 2026</footer>
+        <footer class="footer">
+            <p>MK – 2026</p>
+            <ul class="footer__links">
+                <li><a href="mailto:mkworkingman@gmail.com">mkworkingman@gmail.com</a></li>
+                <li><a href="https://www.linkedin.com/in/mkworkingman" rel="noopener noreferrer" target="_blank">LinkedIn</a></li>
+                <li><a href="https://github.com/mkworkingman" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+                <li>
+                    <a href="/Maksim-Kalinin-CV.pdf" download hreflang="en" type="application/pdf"><span data-i18n="footerCv">CV (PDF)</span></a>
+                </li>
+            </ul>
+        </footer>
 
         <dialog class="contact-modal" aria-labelledby="contact-modal-title">
             <div class="contact-modal__background"></div>

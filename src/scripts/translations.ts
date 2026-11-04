@@ -11,7 +11,7 @@ import type { FormStatus, Language, TextKey } from './values'
 // TODO: Make it JSON? Load those texts on click? If English is default language, what's the point of having ru and sr in the memory because not everyone will click to switch language
 export const translations: Record<Language, Record<TextKey, string>> = {
     en: {
-        pageTitle: 'Maksim Kalinin — Frontend Developer',
+        pageTitle: 'Maksim Kalinin — Frontend-Focused Fullstack Developer',
         skipLink: 'Skip to content',
 
         navHome: 'Home',
@@ -23,15 +23,17 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         navMenu: 'Menu',
         langLabel: 'Language:',
 
-        heroEyebrow: 'Frontend developer · Belgrade',
+        heroEyebrow: 'Frontend-focused fullstack developer · Belgrade',
         heroSubtitle:
-            'I build data-dense, high-traffic interfaces in React, Vue and TypeScript, and the APIs behind them when a feature needs it.',
+            'I build data-dense, real-time interfaces in React, Vue and TypeScript, and the APIs and data contracts behind them.',
+        heroCv: 'Download CV',
+        heroEmail: 'Email',
 
         aboutHeading: 'About',
         aboutP1:
-            'I’m a frontend developer with 7+ years of experience building production web apps for gaming, fintech and edtech. My core is React (Next.js), Vue (Nuxt) and TypeScript: real-time data, large tables, complex state, and interfaces that stay smooth under load.',
+            'I’m a frontend-focused fullstack developer with 7+ years of experience building production web apps for gaming, fintech and edtech. My core is React (Next.js), Vue (Nuxt) and TypeScript: data-dense and real-time UIs, animation, i18n (up to 29 languages, incl. RTL), accessibility and Core Web Vitals performance.',
         aboutP2:
-            'I’m fullstack enough to own a feature end to end: when the UI needs it, I write the API too, in Node.js, Django or Laravel, and shape the data contract around what the interface has to show. That’s how I worked at Wargaming on the World of Tanks 2.0 Hangar and its live-ops events.',
+            'On the backend I build APIs and data contracts in Node.js (Express, NestJS), Python (Django) and PHP (Laravel). I own features end to end, from the data model to the interface, and ship high-traffic features to fixed deadlines. That’s how I worked at Wargaming on the World of Tanks 2.0 Hangar and its live-ops events.',
         aboutP3:
             'I care about the parts users feel but rarely notice: accessibility, localization (16 languages and RTL at Libertex, 29 at Wargaming) and motion. I live in Belgrade and speak English, Russian and Serbian, the same three languages this site is in.',
 
@@ -40,15 +42,15 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         expIndRole: 'Independent developer',
         expIndText:
             'Building my own products, WizardTuner and JobScraper. More about them under Projects.',
-        expWgRole: 'FE-focused fullstack developer',
-        expWg1: 'Rebuilt the World of Tanks 2.0 Hangar, the game’s main navigation screen, used by 5,800+ concurrent players (10,000+ at peak) in 29 languages.',
-        expWg2: 'Shipped live-ops and clan features to fixed launch dates together with game designers, UX/UI, backend and QA: Pet System, Holiday Ops 24/25 and 25/26, Strongholds Event, Clan Supply, Tournaments, Clan Winter Event.',
-        expWg3: 'Built the Django endpoints behind my features, with data-aggregation logic, and defined the backend–frontend data contracts around the game client’s UI constraints.',
+        expWgRole: 'Frontend-focused fullstack developer',
+        expWg1: 'Rebuilt the World of Tanks 2.0 Hangar, the game’s main navigation screen (main page, vehicle carousel, central vehicle button), used by 5,800+ concurrent players (10,000+ at peak) in 29 languages.',
+        expWg2: 'Built in-game event UI for live-ops and clan features shipped to fixed launch dates (Pet System, Holiday Ops 24/25 and 25/26, Strongholds Event, Clan Supply, Tournaments, Clan Winter Event): real-time notifications, live timers and progress bars, leaderboard tables with filtering, pagination, virtualization and expandable rows, animations and mini-games. Worked with game designers, UX/UI, backend and QA on each launch.',
+        expWg3: 'Built Django endpoints with data-aggregation logic and defined the backend–frontend data contracts around the game client’s UI constraints; the changes went through the backend team’s code review.',
         expWg4: 'Reviewed pull requests for a team of 5 frontend and fullstack developers.',
         expLxRole: 'Frontend developer',
-        expLx1: 'Built a real-time trading table streaming prices for 15–20 instruments (stocks, crypto and more) every second without render slowdowns, embedded as widgets in the existing CMS.',
+        expLx1: 'Built a real-time trading table streaming prices for 15–20 instruments (stocks, crypto and more) at ~1-second intervals without render slowdowns, embedded as widgets in the existing CMS.',
         expLx2: 'Led motion and interaction work on the trading UI and wrote the animation guidelines the other 4 frontend developers followed.',
-        expLx3: 'Implemented support for 16 languages, including a full right-to-left layout for Arabic.',
+        expLx3: 'Implemented support for 16 languages, including a full right-to-left layout for Arabic, with per-locale URLs, hreflang and localized meta. Took part in the migration from Drupal to headless Drupal + Nuxt: URLs were kept or 301-redirected, the site stayed fully indexed and key landing pages passed Core Web Vitals.',
         expFlRole: 'Freelance frontend / fullstack developer',
         expFl1: 'Completed 28 Upwork projects with a 4.9/5 rating and 100% Job Success: responsive sites from designs, animation work, a browser lottery game with a backend, and a Flash-to-JavaScript migration.',
         expFl2: 'Integrated real-time feeds from multiple exchange APIs into a crypto exchange aggregator.',
@@ -57,9 +59,9 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         expEd2: 'Built interactive geometry modules (trigonometry, coordinate geometry) for student assessments.',
         expEarlyRole: 'Earlier',
         expEarly1:
-            'Lloyd Hardy Enterprises: built and maintained a proprietary CMS end to end in Laravel and MySQL, covering the backend, REST API, admin and client-facing pages.',
+            'Lloyd Hardy Enterprises: built and maintained a proprietary CMS end to end in Laravel and MySQL (backend logic, REST API, admin features and client-facing pages), plus interactive, responsive frontend modules.',
         expEarly2:
-            'Tribefire: built the core interface of a streaming platform in Vue, including the Stripe donation checkout and real-time donation alerts.',
+            'Tribefire: built the core interface of a streamer platform in Vue, with reactive components for live-data broadcasting, a Stripe donation checkout and real-time donation alerts.',
 
         skillsHeading: 'Skills',
         skillsFrontend: 'Frontend',
@@ -73,11 +75,14 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         skillsArchitecture: 'Frontend architecture',
         skillsReview: 'Code review & mentoring',
         skillsAi: 'Agentic AI development (Claude Code)',
+        skillsSecurity: 'Security (CSP, OAuth2, JWT)',
 
         projectsHeading: 'Projects',
         projWtStatus: 'In progress',
         projWtText:
             'A PWA for musicians: tuner, metronome, beat machine and ear-training games. Low-latency audio runs on a dedicated audio thread.',
+        projJsStatus: 'In progress',
+        projJsText: 'A job-aggregation tool that collects listings from multiple international and Serbian job boards, with keyword, location and work-type filters.',
 
         contactTitle: 'Contact me',
         contactClose: 'Close',
@@ -88,9 +93,10 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         contactFormEmail: 'Your email',
         contactFormMessage: 'Message',
         contactFormSend: 'Send',
+        footerCv: 'CV (PDF)',
     },
     ru: {
-        pageTitle: 'Максим Калинин — фронтенд-разработчик',
+        pageTitle: 'Максим Калинин — fullstack-разработчик с фокусом на фронтенд',
         skipLink: 'Перейти к содержанию',
 
         navHome: 'Главная',
@@ -102,15 +108,17 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         navMenu: 'Меню',
         langLabel: 'Язык:',
 
-        heroEyebrow: 'Фронтенд-разработчик · Белград',
+        heroEyebrow: 'Fullstack-разработчик с фокусом на фронтенд · Белград',
         heroSubtitle:
-            'Создаю интерфейсы с большим объёмом данных для нагруженных продуктов на React, Vue и TypeScript — и API для них, когда этого требует фича.',
+            'Создаю интерфейсы с большим объёмом данных и обновлениями в реальном времени на React, Vue и TypeScript, а также API и контракты данных за ними.',
+        heroCv: 'Скачать CV (EN)',
+        heroEmail: 'Почта',
 
         aboutHeading: 'Обо мне',
         aboutP1:
-            'Я фронтенд-разработчик с опытом более 7 лет: делаю продакшен веб-приложения для геймдева, финтеха и edtech. Моя основа — React (Next.js), Vue (Nuxt) и TypeScript: данные в реальном времени, большие таблицы, сложное состояние и интерфейсы, которые не тормозят под нагрузкой.',
+            'Я fullstack-разработчик с фокусом на фронтенд и опытом более 7 лет: делаю продакшен веб-приложения для геймдева, финтеха и edtech. Моя основа — React (Next.js), Vue (Nuxt) и TypeScript: интерфейсы с большим объёмом данных и данными в реальном времени, анимация, i18n (до 29 языков, включая RTL), доступность и производительность по Core Web Vitals.',
         aboutP2:
-            'При этом я достаточно fullstack, чтобы вести фичу целиком: когда интерфейсу это нужно, сам пишу API на Node.js, Django или Laravel и строю контракт данных под то, что должен показать интерфейс. Так я работал в Wargaming над Ангаром World of Tanks 2.0 и его live-ops событиями.',
+            'На бэкенде пишу API и контракты данных на Node.js (Express, NestJS), Python (Django) и PHP (Laravel). Веду фичи целиком, от модели данных до интерфейса, и выпускаю высоконагруженные фичи к фиксированным срокам. Так я работал в Wargaming над Ангаром World of Tanks 2.0 и его live-ops событиями.',
         aboutP3:
             'Мне важны вещи, которые пользователь чувствует, но редко замечает: доступность, локализация (16 языков и RTL в Libertex, 29 в Wargaming) и анимация. Живу в Белграде и говорю на английском, русском и сербском — на тех же трёх языках, что и этот сайт.',
 
@@ -120,14 +128,14 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         expIndText:
             'Разрабатываю собственные продукты — WizardTuner и JobScraper. Подробнее о них в разделе «Проекты».',
         expWgRole: 'Fullstack-разработчик с фокусом на фронтенд',
-        expWg1: 'Переписал Ангар World of Tanks 2.0 — главный навигационный экран игры: 5 800+ игроков онлайн одновременно (10 000+ в пике), 29 языков.',
-        expWg2: 'Вместе с геймдизайнерами, UX/UI, бэкендом и QA выпускал live-ops и клановые фичи к фиксированным датам запуска: Pet System, Holiday Ops 24/25 и 25/26, Strongholds Event, Clan Supply, турниры, Clan Winter Event.',
-        expWg3: 'Писал эндпоинты на Django для своих фич, с логикой агрегации данных, и проектировал контракты данных между бэкендом и фронтендом с учётом ограничений UI игрового клиента.',
+        expWg1: 'Переписал Ангар World of Tanks 2.0, главный навигационный экран игры (главная страница, карусель техники, центральная кнопка техники): 5 800+ игроков онлайн одновременно (10 000+ в пике), 29 языков.',
+        expWg2: 'Делал внутриигровой UI для live-ops и клановых событий к фиксированным датам запуска (Pet System, Holiday Ops 24/25 и 25/26, Strongholds Event, Clan Supply, турниры, Clan Winter Event): уведомления в реальном времени, живые таймеры и прогресс-бары, таблицы лидеров с фильтрацией, пагинацией, виртуализацией и раскрывающимися строками, анимации и мини-игры. Над каждым запуском работал с геймдизайнерами, UX/UI, бэкендом и QA.',
+        expWg3: 'Писал эндпоинты на Django с логикой агрегации данных и проектировал контракты данных между бэкендом и фронтендом с учётом ограничений UI игрового клиента; изменения проходили код-ревью бэкенд-команды.',
         expWg4: 'Проводил код-ревью для команды из 5 фронтенд- и fullstack-разработчиков.',
         expLxRole: 'Фронтенд-разработчик',
-        expLx1: 'Сделал торговую таблицу реального времени: цены 15–20 инструментов (акции, криптовалюта и др.) обновляются каждую секунду без просадок рендеринга; таблица встроена виджетами в существующую CMS.',
+        expLx1: 'Сделал торговую таблицу реального времени: цены 15–20 инструментов (акции, криптовалюта и др.) обновляются примерно каждую секунду без просадок рендеринга; таблица встроена виджетами в существующую CMS.',
         expLx2: 'Руководил анимациями и интерактивом в торговом интерфейсе и написал гайдлайны по анимации, которым следовали ещё 4 фронтенд-разработчика.',
-        expLx3: 'Реализовал поддержку 16 языков, включая полную RTL-вёрстку для арабского.',
+        expLx3: 'Реализовал поддержку 16 языков, включая полную RTL-вёрстку для арабского, с отдельными URL для каждой локали, hreflang и локализованными мета-тегами. Участвовал в миграции с Drupal на headless Drupal + Nuxt: URL сохранили или перевели на 301-редиректы, сайт остался полностью проиндексирован, а ключевые лендинги прошли Core Web Vitals.',
         expFlRole: 'Фронтенд/fullstack-разработчик на фрилансе',
         expFl1: 'Выполнил 28 проектов на Upwork с рейтингом 4.9/5 и 100% Job Success: адаптивные сайты по макетам, анимации, браузерная лотерея с бэкендом и перенос с Flash на JavaScript.',
         expFl2: 'Подключил потоки данных в реальном времени от API нескольких бирж к агрегатору криптобирж.',
@@ -136,9 +144,9 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         expEd2: 'Сделал интерактивные модули по геометрии (тригонометрия, координатная геометрия) для тестирования учеников.',
         expEarlyRole: 'Ранее',
         expEarly1:
-            'Lloyd Hardy Enterprises: разработал и поддерживал собственную CMS на Laravel и MySQL — бэкенд, REST API, админка и клиентские страницы.',
+            'Lloyd Hardy Enterprises: разработал и поддерживал собственную CMS на Laravel и MySQL (бэкенд, REST API, админка и клиентские страницы), а также интерактивные адаптивные фронтенд-модули.',
         expEarly2:
-            'Tribefire: сделал основной интерфейс стриминговой платформы на Vue, включая оплату донатов через Stripe и уведомления о донатах в реальном времени.',
+            'Tribefire: сделал основной интерфейс стриминговой платформы на Vue: реактивные компоненты для трансляций с живыми данными, оплату донатов через Stripe и уведомления о донатах в реальном времени.',
 
         skillsHeading: 'Навыки',
         skillsFrontend: 'Фронтенд',
@@ -152,11 +160,14 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         skillsArchitecture: 'Архитектура фронтенда',
         skillsReview: 'Код-ревью и менторство',
         skillsAi: 'Разработка с ИИ-агентами (Claude Code)',
+        skillsSecurity: 'Безопасность (CSP, OAuth2, JWT)',
 
         projectsHeading: 'Проекты',
         projWtStatus: 'В разработке',
         projWtText:
             'PWA для музыкантов: тюнер, метроном, драм-машина и игры для тренировки слуха. Звук с низкой задержкой обрабатывается в отдельном аудиопотоке.',
+        projJsStatus: 'В разработке',
+        projJsText: 'Агрегатор вакансий: собирает объявления с нескольких международных и сербских сайтов о работе, с фильтрами по ключевым словам, локации и формату работы.',
 
         contactTitle: 'Связаться со мной',
         contactClose: 'Закрыть',
@@ -167,9 +178,10 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         contactFormEmail: 'Ваш email',
         contactFormMessage: 'Сообщение',
         contactFormSend: 'Отправить',
+        footerCv: 'CV (PDF, англ.)',
     },
     sr: {
-        pageTitle: 'Maksim Kalinin — frontend programer',
+        pageTitle: 'Maksim Kalinin — fullstack programer sa fokusom na frontend',
         skipLink: 'Preskoči na sadržaj',
 
         navHome: 'Početna',
@@ -181,15 +193,17 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         navMenu: 'Meni',
         langLabel: 'Jezik:',
 
-        heroEyebrow: 'Frontend programer · Beograd',
+        heroEyebrow: 'Fullstack programer sa fokusom na frontend · Beograd',
         heroSubtitle:
-            'Pravim interfejse sa mnogo podataka za proizvode sa velikim saobraćajem u React-u, Vue-u i TypeScript-u, a po potrebi i API iza njih.',
+            'Pravim interfejse sa mnogo podataka u realnom vremenu u React-u, Vue-u i TypeScript-u, kao i API-je i ugovore podataka iza njih.',
+        heroCv: 'Preuzmi CV (EN)',
+        heroEmail: 'Imejl',
 
         aboutHeading: 'O meni',
         aboutP1:
-            'Ja sam frontend programer sa više od 7 godina iskustva u izradi produkcijskih veb-aplikacija za gejming, fintech i edtech. Moja osnova su React (Next.js), Vue (Nuxt) i TypeScript: podaci u realnom vremenu, velike tabele, složeno stanje i interfejsi koji ostaju glatki pod opterećenjem.',
+            'Ja sam fullstack programer sa fokusom na frontend i više od 7 godina iskustva u izradi produkcijskih veb-aplikacija za gejming, fintech i edtech. Moja osnova su React (Next.js), Vue (Nuxt) i TypeScript: interfejsi sa mnogo podataka i podacima u realnom vremenu, animacije, i18n (do 29 jezika, uključujući RTL), pristupačnost i performanse po Core Web Vitals metrikama.',
         aboutP2:
-            'Pritom sam dovoljno fullstack da funkcionalnost vodim od početka do kraja: kada interfejsu zatreba, sam pišem i API u Node.js-u, Django-u ili Laravel-u i oblikujem ugovor podataka prema onome što interfejs treba da prikaže. Tako sam u Wargaming-u radio na Hangaru u World of Tanks 2.0 i njegovim live-ops događajima.',
+            'Na bekendu pravim API-je i ugovore podataka u Node.js-u (Express, NestJS), Python-u (Django) i PHP-u (Laravel). Funkcionalnosti vodim od početka do kraja, od modela podataka do interfejsa, i isporučujem ih za proizvode sa velikim saobraćajem u fiksnim rokovima. Tako sam u Wargaming-u radio na Hangaru u World of Tanks 2.0 i njegovim live-ops događajima.',
         aboutP3:
             'Stalo mi je do stvari koje korisnici osete, a retko primete: pristupačnost, lokalizacija (16 jezika i RTL u Libertex-u, 29 u Wargaming-u) i animacije. Živim u Beogradu i govorim engleski, ruski i srpski, upravo jezike na kojima je i ovaj sajt.',
 
@@ -199,14 +213,14 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         expIndText:
             'Razvijam sopstvene proizvode, WizardTuner i JobScraper. Više o njima u odeljku „Projekti“.',
         expWgRole: 'Fullstack programer sa fokusom na frontend',
-        expWg1: 'Ponovo sam napravio Hangar u World of Tanks 2.0, glavni navigacioni ekran igre, koji koristi 5.800+ igrača istovremeno (10.000+ u vršnim trenucima) na 29 jezika.',
-        expWg2: 'Sa gejm dizajnerima, UX/UI, bekend i QA timom isporučivao sam live-ops i klanske funkcionalnosti za fiksne datume lansiranja: Pet System, Holiday Ops 24/25 i 25/26, Strongholds Event, Clan Supply, turniri, Clan Winter Event.',
-        expWg3: 'Pisao sam Django endpointe za svoje funkcionalnosti, sa logikom agregacije podataka, i definisao ugovore podataka između bekenda i frontenda u skladu sa ograničenjima UI-ja klijenta igre.',
+        expWg1: 'Ponovo sam napravio Hangar u World of Tanks 2.0, glavni navigacioni ekran igre (glavna stranica, karusel vozila, centralno dugme vozila), koji koristi 5.800+ igrača istovremeno (10.000+ u vršnim trenucima) na 29 jezika.',
+        expWg2: 'Pravio sam UI za događaje u igri za live-ops i klanske funkcionalnosti isporučene za fiksne datume lansiranja (Pet System, Holiday Ops 24/25 i 25/26, Strongholds Event, Clan Supply, turniri, Clan Winter Event): obaveštenja u realnom vremenu, tajmeri i trake napretka uživo, rang-liste sa filtriranjem, paginacijom, virtualizacijom i redovima koji se proširuju, animacije i mini-igre. Na svakom lansiranju radio sam sa gejm dizajnerima, UX/UI, bekend i QA timom.',
+        expWg3: 'Pisao sam Django endpointe sa logikom agregacije podataka i definisao ugovore podataka između bekenda i frontenda u skladu sa ograničenjima UI-ja klijenta igre; izmene su prolazile code review bekend tima.',
         expWg4: 'Radio sam code review za tim od 5 frontend i fullstack programera.',
         expLxRole: 'Frontend programer',
-        expLx1: 'Napravio sam trgovačku tabelu u realnom vremenu koja svake sekunde prikazuje cene 15–20 instrumenata (akcije, kriptovalute i drugo) bez usporavanja renderovanja, ugrađenu kao vidžeti u postojeći CMS.',
+        expLx1: 'Napravio sam trgovačku tabelu u realnom vremenu koja otprilike svake sekunde prikazuje cene 15–20 instrumenata (akcije, kriptovalute i drugo) bez usporavanja renderovanja, ugrađenu kao vidžeti u postojeći CMS.',
         expLx2: 'Vodio sam animacije i interakcije u trgovačkom interfejsu i napisao smernice za animaciju koje su pratila još 4 frontend programera.',
-        expLx3: 'Implementirao sam podršku za 16 jezika, uključujući kompletan raspored zdesna nalevo za arapski.',
+        expLx3: 'Implementirao sam podršku za 16 jezika, uključujući kompletan raspored zdesna nalevo za arapski, sa posebnim URL-ovima po lokalu, hreflang oznakama i lokalizovanim meta podacima. Učestvovao sam u migraciji sa Drupal-a na headless Drupal + Nuxt: URL-ovi su zadržani ili preusmereni sa 301, sajt je ostao potpuno indeksiran, a ključne odredišne stranice su prošle Core Web Vitals.',
         expFlRole: 'Frontend / fullstack programer, frilens',
         expFl1: 'Završio sam 28 projekata na Upwork-u sa ocenom 4,9/5 i 100% Job Success: responzivni sajtovi po dizajnu, animacije, lutrijska igra u pregledaču sa bekendom i migracija sa Flash-a na JavaScript.',
         expFl2: 'Integrisao sam podatke u realnom vremenu sa API-ja više berzi u agregator kripto berzi.',
@@ -215,9 +229,9 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         expEd2: 'Napravio sam interaktivne module iz geometrije (trigonometrija, analitička geometrija) za testiranje učenika.',
         expEarlyRole: 'Ranije',
         expEarly1:
-            'Lloyd Hardy Enterprises: razvio sam i održavao sopstveni CMS u Laravel-u i MySQL-u, uključujući bekend, REST API, administraciju i stranice za klijente.',
+            'Lloyd Hardy Enterprises: razvio sam i održavao sopstveni CMS u Laravel-u i MySQL-u (bekend, REST API, administracija i stranice za klijente), kao i interaktivne, responzivne frontend module.',
         expEarly2:
-            'Tribefire: napravio sam glavni interfejs platforme za striming u Vue-u, uključujući plaćanje donacija preko Stripe-a i obaveštenja o donacijama u realnom vremenu.',
+            'Tribefire: napravio sam glavni interfejs platforme za striming u Vue-u, sa reaktivnim komponentama za prenos podataka uživo, plaćanjem donacija preko Stripe-a i obaveštenjima o donacijama u realnom vremenu.',
 
         skillsHeading: 'Veštine',
         skillsFrontend: 'Frontend',
@@ -231,11 +245,14 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         skillsArchitecture: 'Arhitektura frontenda',
         skillsReview: 'Code review i mentorstvo',
         skillsAi: 'Razvoj uz AI agente (Claude Code)',
+        skillsSecurity: 'Bezbednost (CSP, OAuth2, JWT)',
 
         projectsHeading: 'Projekti',
         projWtStatus: 'U izradi',
         projWtText:
             'PWA za muzičare: štimer, metronom, ritam mašina i igre za vežbanje sluha. Zvuk sa malim kašnjenjem radi na posebnoj audio niti.',
+        projJsStatus: 'U izradi',
+        projJsText: 'Alat za agregaciju oglasa za posao koji prikuplja oglase sa više međunarodnih i srpskih sajtova za zapošljavanje, sa filterima po ključnim rečima, lokaciji i načinu rada.',
 
         contactTitle: 'Kontaktirajte me',
         contactClose: 'Zatvori',
@@ -246,6 +263,7 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         contactFormEmail: 'Vaš imejl',
         contactFormMessage: 'Poruka',
         contactFormSend: 'Pošalji',
+        footerCv: 'CV (PDF, engl.)',
     },
 }
 
@@ -257,9 +275,9 @@ export const OG_LOCALE: Record<Language, string> = { en: 'en_US', ru: 'ru_RU', s
 
 /** `<meta name="description">` and `og:description`. Head-only, so outside TEXT_KEYS. */
 export const metaDescriptions: Record<Language, string> = {
-    en: 'Frontend developer and FE-focused fullstack engineer with 7+ years building data-dense, high-traffic web apps in React, Vue and TypeScript for gaming, fintech and edtech.',
-    ru: 'Фронтенд-разработчик и фулстек-инженер с упором на фронтенд, 7+ лет опыта: высоконагруженные веб-приложения с большим объёмом данных на React, Vue и TypeScript для геймдева, финтеха и edtech.',
-    sr: 'Frontend programer i fullstack inženjer sa fokusom na frontend, 7+ godina iskustva u izradi veb-aplikacija sa mnogo podataka i velikim saobraćajem u React-u, Vue-u i TypeScript-u za gejming, fintech i edtech.',
+    en: 'Frontend-focused fullstack developer with 7+ years building data-dense, real-time web apps in React, Vue and TypeScript for gaming, fintech and edtech, and the APIs behind them.',
+    ru: 'Fullstack-разработчик с фокусом на фронтенд и опытом 7+ лет: веб-приложения с большим объёмом данных и данными в реальном времени на React, Vue и TypeScript для геймдева, финтеха и edtech, а также API для них.',
+    sr: 'Fullstack programer sa fokusom na frontend i 7+ godina iskustva u izradi veb-aplikacija sa mnogo podataka u realnom vremenu u React-u, Vue-u i TypeScript-u za gejming, fintech i edtech, kao i API-ja iza njih.',
 }
 
 /** Contact form status messages, set at runtime by contactForm.ts. */

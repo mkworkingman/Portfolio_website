@@ -171,7 +171,7 @@ describe('Runtime', () => {
         renderLanguage(doc, 'sr')
 
         expect(doc.documentElement.lang).toBe('sr-Latn')
-        expect(doc.title).toBe('Maksim Kalinin — frontend programer')
+        expect(doc.title).toBe('Maksim Kalinin — fullstack programer sa fokusom na frontend')
         expect(doc.querySelector('[data-i18n="navHome"]')?.textContent).toBe('Početna')
         expect(doc.querySelector('link[rel="canonical"]')?.getAttribute('href')).toBe(
             'https://mkalinin-portfolio.vercel.app/sr/',

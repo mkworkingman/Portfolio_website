@@ -200,23 +200,28 @@ button {
 // ghosts of all three languages share one grid cell, so the cell is as wide and as tall
 // as the longest translation at the current width and switching language moves nothing
 // around it. The live text is excluded from sizing (0 + min 100%) and fills the cell.
+// From md up only, like .i18n-group below: on a phone the longest translation wraps to
+// more lines (the hero subtitle: two more in Russian), leaving an empty band under the
+// English text. There the text takes its own height and scroll anchoring handles a switch.
 .i18n-stack {
-    display: grid;
+    @include md {
+        display: grid;
 
-    > * {
-        grid-area: 1 / 1;
-    }
+        > * {
+            grid-area: 1 / 1;
+        }
 
-    > .i18n-reserve__ghost {
-        display: block;
-    }
+        > .i18n-reserve__ghost {
+            display: block;
+        }
 
-    > :not(.i18n-reserve__ghost) {
-        width: 0;
-        min-width: 100%;
-        height: 0;
-        min-height: 100%;
-        overflow: clip;
+        > :not(.i18n-reserve__ghost) {
+            width: 0;
+            min-width: 100%;
+            height: 0;
+            min-height: 100%;
+            overflow: clip;
+        }
     }
 }
 

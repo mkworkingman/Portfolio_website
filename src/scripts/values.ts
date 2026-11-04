@@ -32,6 +32,8 @@ export const TEXT_KEYS = [
     // Hero
     'heroEyebrow',
     'heroSubtitle',
+    'heroCv',
+    'heroEmail',
 
     // About
     'aboutHeading',
@@ -76,11 +78,14 @@ export const TEXT_KEYS = [
     'skillsArchitecture',
     'skillsReview',
     'skillsAi',
+    'skillsSecurity',
 
     // Projects
     'projectsHeading',
     'projWtStatus',
     'projWtText',
+    'projJsStatus',
+    'projJsText',
 
     // Contact modal
     'contactTitle',
@@ -92,6 +97,9 @@ export const TEXT_KEYS = [
     'contactFormEmail',
     'contactFormMessage',
     'contactFormSend',
+
+    // Footer
+    'footerCv',
 ] as const
 
 // Runtime-only texts (not in the HTML, so they live outside TEXT_KEYS).

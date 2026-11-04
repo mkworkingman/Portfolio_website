@@ -1,7 +1,30 @@
 @use '../tokens' as *;
 
 .footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: space(2) space(6);
+    align-items: center;
+    justify-content: space-between;
     padding: space(4) space(5);
     color: color(text-inverse-muted);
     background-color: color(surface);
+}
+
+.footer__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 space(5);
+
+    // At least 24px tall (WCAG 2.5.8): these sit in a row, not inside a sentence.
+    a {
+        display: inline-flex;
+        align-items: center;
+        min-height: space(6);
+        text-underline-offset: space(1);
+
+        &:hover {
+            color: color(text-inverse);
+        }
+    }
 }

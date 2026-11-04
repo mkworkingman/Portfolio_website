@@ -34,12 +34,19 @@
     // Wide enough for the subtitle to wrap to three lines.
     --hero-text-width: #{space(130)};
 
+    // Depth of the slanted bottom edge: 20% of the minimum height, fixed rather than
+    // 20% of the actual height, so a taller hero (long translations, the contact row on
+    // phones) doesn't cut deeper into its own content. The bottom padding clears it.
+    --hero-slant: calc(var(--hero-min-height) * 0.2);
+    --hero-padding-bottom: #{space(8)};
+
     position: relative;
     display: flex;
     flex-direction: column;
     gap: space(8);
     justify-content: center;
     min-height: var(--hero-min-height);
+    padding-bottom: calc(var(--hero-padding-bottom) + var(--hero-slant));
     color: color(text-inverse);
     background-color: color(surface);
 
@@ -48,18 +55,18 @@
         linear-gradient(color(grid-line) $border-width, transparent $border-width),
         linear-gradient(90deg, color(grid-line) $border-width, transparent $border-width);
     background-size: space(10) space(10);
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - var(--hero-slant)));
 
     &::after {
         position: absolute;
         right: 0;
         bottom: 0;
         left: 0;
-        height: 40%;
+        height: calc(var(--hero-slant) * 2);
         pointer-events: none;
         content: '';
         background: linear-gradient(
-            atan2(calc(var(--hero-min-height) * 0.2), 100cqw),
+            atan2(var(--hero-slant), 100cqw),
             color(inner-shadow) 0%,
             color(inner-shadow) 40%,
             transparent 60%
@@ -70,6 +77,7 @@
     // Text beside the canvas once there is room for both.
     @include md {
         --hero-min-height: #{space(80)};
+        --hero-padding-bottom: #{space(16)};
 
         flex-direction: row;
     }
@@ -149,5 +157,51 @@
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+// CV download and contact links under the hero text, so they are visible without
+// opening the contact dialog.
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: space(4) space(6);
+    align-items: center;
+    margin-top: space(6);
+}
+
+// The same amber as the header's Contact button: the page's two primary actions.
+.hero-actions__cv {
+    display: inline-flex;
+    gap: space(2);
+    align-items: center;
+    padding: space(2) space(4);
+    font-weight: font-weight(bold);
+    color: color(surface);
+    white-space: nowrap;
+    text-decoration: none;
+    background-color: color(accent);
+    border-radius: radius(sm);
+}
+
+.hero-actions__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: space(2) space(5);
+}
+
+// WCAG 2.5.8 target size, see .header-nav__link.
+.hero-actions__link {
+    display: inline-flex;
+    gap: space(2);
+    align-items: center;
+    min-height: space(6);
+    color: color(text-inverse-muted);
+    text-decoration: none;
+
+    &:hover {
+        color: color(text-inverse);
+        text-decoration: underline;
+        text-underline-offset: space(1);
     }
 }
