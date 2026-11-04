@@ -1,0 +1,64 @@
+@use '../tokens' as *;
+
+// The message form inside the contact modal.
+.contact-form {
+    display: grid;
+    gap: space(4);
+    margin-top: space(6);
+
+    &__honeypot {
+        display: none;
+    }
+
+    &__field {
+        display: grid;
+        gap: space(1);
+        font-size: font-size(sm);
+        font-weight: font-weight(bold);
+    }
+
+    &__input {
+        width: 100%;
+        padding: space(2) space(3);
+        font-size: font-size(base);
+        font-weight: font-weight(regular);
+        line-height: line-height(normal);
+        color: color(text);
+        background-color: transparent;
+
+        // text-muted, not border: input edges need 3:1 contrast against the card.
+        border: $border-width solid color(text-muted);
+        border-radius: radius(sm);
+    }
+
+    &__textarea {
+        min-height: space(30);
+        resize: vertical;
+    }
+
+    &__submit {
+        justify-self: start;
+        padding: space(2) space(6);
+        font-weight: font-weight(bold);
+        color: color(surface);
+        background-color: color(accent);
+        border-radius: radius(sm);
+
+        &[aria-disabled='true'] {
+            cursor: progress;
+            opacity: 0.7;
+        }
+    }
+
+    &__status {
+        font-size: font-size(sm);
+
+        &:empty {
+            display: none;
+        }
+
+        &[data-status='error'] {
+            color: color(danger);
+        }
+    }
+}

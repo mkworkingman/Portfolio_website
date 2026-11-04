@@ -104,6 +104,8 @@ function csp() {
                     "default-src 'self'",
                     `script-src 'self' ${inline('script').join(' ')}`,
                     `style-src 'self' ${inline('style').join(' ')}`,
+                    // The contact form posts to Web3Forms with fetch().
+                    "connect-src 'self' https://api.web3forms.com",
                     "object-src 'none'",
                     "base-uri 'self'",
                     "form-action 'self'",

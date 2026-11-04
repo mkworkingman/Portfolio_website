@@ -72,11 +72,23 @@ export const TEXT_KEYS = [
     'contactClose',
     'contactText',
     'contactEmail',
+    'contactFormName',
+    'contactFormEmail',
+    'contactFormMessage',
+    'contactFormSend',
 ] as const
+
+// Runtime-only texts (not in the HTML, so they live outside TEXT_KEYS).
+export const FORM_STATUSES = ['sending', 'success', 'error'] as const
+export type FormStatus = (typeof FORM_STATUSES)[number]
 
 export type Language = (typeof LANGUAGES)[number]
 export type TextKey = (typeof TEXT_KEYS)[number]
 
 export function isLanguage(value: unknown): value is Language {
     return LANGUAGES.includes(value as Language)
+}
+
+export function isFormStatus(value: unknown): value is FormStatus {
+    return FORM_STATUSES.includes(value as FormStatus)
 }

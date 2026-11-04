@@ -398,9 +398,37 @@
                         </svg>
                     </button>
                 </div>
+                <!-- Outside the i18n-group: its ghost copies would duplicate the inputs. -->
+                <form class="contact-form">
+                    <!-- Web3Forms access key: public by design, safe in client code. -->
+                    <input type="hidden" name="access_key" value="83a9c715-d52b-4262-99ab-1d7293619887" />
+                    <input type="hidden" name="subject" value="New message from the portfolio website" />
+                    <input type="hidden" name="from_name" value="Portfolio website" />
+                    <!-- Honeypot: hidden from people, bots tick it and Web3Forms drops the submission. -->
+                    <input class="contact-form__honeypot" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" />
+                    <label class="contact-form__field">
+                        <span data-i18n="contactFormName">Your name</span>
+                        <input class="contact-form__input" type="text" name="name" autocomplete="name" maxlength="100" required />
+                    </label>
+                    <label class="contact-form__field">
+                        <span data-i18n="contactFormEmail">Your email</span>
+                        <input class="contact-form__input" type="email" name="email" autocomplete="email" maxlength="200" required />
+                    </label>
+                    <label class="contact-form__field">
+                        <span data-i18n="contactFormMessage">Message</span>
+                        <textarea class="contact-form__input contact-form__textarea" name="message" rows="5" maxlength="5000" required></textarea>
+                    </label>
+                    <button class="contact-form__submit" type="submit">
+                        <span class="i18n-reserve">
+                            <span data-i18n="contactFormSend">Send</span>
+                            <!-- i18n-reserve:contactFormSend -->
+                        </span>
+                    </button>
+                    <p class="contact-form__status" role="status"></p>
+                </form>
                 <div class="i18n-group">
                     <div class="i18n-group__live">
-                        <p class="contact-modal__text"><span data-i18n="contactText">Email is the best way to reach me.</span></p>
+                        <p class="contact-modal__text"><span data-i18n="contactText">Or reach me directly:</span></p>
                         <dl class="contact-modal__links">
                             <div>
                                 <dt><span data-i18n="contactEmail">Email</span></dt>

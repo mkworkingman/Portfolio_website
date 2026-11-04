@@ -1,4 +1,4 @@
-import type { Language, TextKey } from './values'
+import type { FormStatus, Language, TextKey } from './values'
 
 // Plain data with no DOM access, so vite.config.js can import it too (see the
 // i18n-reserve plugin there).
@@ -84,8 +84,12 @@ export const translations: Record<Language, Record<TextKey, string>> = {
 
         contactTitle: 'Contact me',
         contactClose: 'Close',
-        contactText: 'Email is the best way to reach me.',
+        contactText: 'Or reach me directly:',
         contactEmail: 'Email',
+        contactFormName: 'Your name',
+        contactFormEmail: 'Your email',
+        contactFormMessage: 'Message',
+        contactFormSend: 'Send',
     },
     ru: {
         navHome: 'Главная',
@@ -161,8 +165,12 @@ export const translations: Record<Language, Record<TextKey, string>> = {
 
         contactTitle: 'Связаться со мной',
         contactClose: 'Закрыть',
-        contactText: 'Быстрее всего со мной связаться по почте.',
+        contactText: 'Или свяжитесь со мной напрямую:',
         contactEmail: 'Почта',
+        contactFormName: 'Ваше имя',
+        contactFormEmail: 'Ваш email',
+        contactFormMessage: 'Сообщение',
+        contactFormSend: 'Отправить',
     },
     sr: {
         navHome: 'Početna',
@@ -238,10 +246,33 @@ export const translations: Record<Language, Record<TextKey, string>> = {
 
         contactTitle: 'Kontaktirajte me',
         contactClose: 'Zatvori',
-        contactText: 'Najbrže ćete me dobiti putem mejla.',
+        contactText: 'Ili me kontaktirajte direktno:',
         contactEmail: 'Imejl',
+        contactFormName: 'Vaše ime',
+        contactFormEmail: 'Vaš imejl',
+        contactFormMessage: 'Poruka',
+        contactFormSend: 'Pošalji',
     },
 }
 
 /** Value for `<html lang>`. The Serbian copy is written in Latin script. */
 export const HTML_LANG: Record<Language, string> = { en: 'en', ru: 'ru', sr: 'sr-Latn' }
+
+/** Contact form status messages, set at runtime by contactForm.ts. */
+export const formStatusTexts: Record<Language, Record<FormStatus, string>> = {
+    en: {
+        sending: 'Sending…',
+        success: 'Thanks! Your message has been sent.',
+        error: 'Something went wrong. Please try again or email me directly.',
+    },
+    ru: {
+        sending: 'Отправка…',
+        success: 'Спасибо! Сообщение отправлено.',
+        error: 'Что-то пошло не так. Попробуйте ещё раз или напишите мне на почту.',
+    },
+    sr: {
+        sending: 'Slanje…',
+        success: 'Hvala! Poruka je poslata.',
+        error: 'Nešto nije u redu. Pokušajte ponovo ili mi pišite na imejl.',
+    },
+}

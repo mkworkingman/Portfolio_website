@@ -10,6 +10,7 @@ $-slate-600: #4b5768;
 $-navy-800: #1b2432;
 $-navy-950: #080c12;
 $-amber-400: #f2a93b;
+$-red-700: #b42318;
 
 // Semantic: what components use. 60-30-10 rule:
 // 60% base (page ground), 30% surface (header, hero, footer, text), 10% accent.
@@ -19,6 +20,7 @@ $-colors: (
     accent: $-amber-400,
     text: $-navy-800,
     text-muted: $-slate-600, // secondary text on base (dates, stacks)
+    danger: $-red-700, // error messages on base
     border: $-slate-400, // hairlines on base (tags, cards)
     text-inverse: $-slate-50, // text on surface
     text-inverse-soft: $-slate-300, // large headings on surface

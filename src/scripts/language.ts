@@ -1,7 +1,11 @@
-import { HTML_LANG, translations } from './translations'
-import { isLanguage, type Language } from './values'
+import { formStatusTexts, HTML_LANG, translations } from './translations'
+import { isFormStatus, isLanguage, type Language } from './values'
 
 const STORAGE_KEY = 'lang'
+
+let currentLanguage: Language = 'en'
+
+export const getLanguage = (): Language => currentLanguage
 
 /** Saved choice first, then the browser's preferred languages, then English. */
 function detectLanguage(): Language {
@@ -21,6 +25,7 @@ function detectLanguage(): Language {
 }
 
 function applyLanguage(lang: Language) {
+    currentLanguage = lang
     document.documentElement.lang = HTML_LANG[lang]
 
     document.querySelectorAll<HTMLElement>('[data-i18n]').forEach((el) => {
@@ -35,6 +40,11 @@ function applyLanguage(lang: Language) {
         const key = el.dataset.i18nLabel
         if (key) el.setAttribute('aria-label', translations[lang][key])
     })
+
+    // A contact form message on screen follows the switch too.
+    const formStatus = document.querySelector<HTMLElement>('.contact-form__status')
+    const status = formStatus?.dataset.status
+    if (formStatus && isFormStatus(status)) formStatus.textContent = formStatusTexts[lang][status]
 
     document.querySelectorAll<HTMLElement>('.lang__option').forEach((el) => {
         if (el.dataset.lang === lang) el.setAttribute('aria-current', 'true')
