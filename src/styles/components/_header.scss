@@ -97,6 +97,11 @@
     &:hover {
         color: color(text-inverse);
     }
+
+    // The section currently in view, set by navHighlight.ts.
+    &[aria-current='location'] {
+        color: color(accent);
+    }
 }
 
 .lang {

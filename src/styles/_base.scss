@@ -58,11 +58,13 @@ $font-weights: 400, 700;
 }
 
 html {
-    text-size-adjust: none;
-
     // Reserves the scrollbar's space so locking scroll doesn't shift the layout.
     scrollbar-gutter: stable;
+
+    // Animates nav link jumps; the reduced-motion block below turns it off.
+    scroll-behavior: smooth;
     scroll-padding-top: var(--header-height);
+    text-size-adjust: none;
 
     // <dialog> doesn't lock page scroll on its own.
     &:has(.contact-modal[open]) {
