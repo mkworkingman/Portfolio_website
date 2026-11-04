@@ -145,7 +145,7 @@ $-logo-char-count: 10; // characters in "MKalinin /"
     border-bottom: $border-width solid color(edge-highlight);
 
     &.is-open {
-        z-index: z(raised); // above .under-construction, which comes later in the header
+        z-index: z(raised);
         display: block;
     }
 

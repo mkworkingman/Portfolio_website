@@ -8,26 +8,3 @@
 @use './components/projects';
 @use './components/footer';
 @use './components/contact';
-
-.under-construction {
-    position: fixed;
-
-    // Bottom of the screen on phones: under the header it covered the hero's first line.
-    bottom: space(4);
-    left: 50%;
-    padding: space(1) space(3);
-    font-size: font-size(sm);
-    font-weight: font-weight(bold);
-    color: color(surface);
-    white-space: nowrap;
-    pointer-events: none; // never blocks clicks on the content underneath
-    background-color: color(accent);
-    border-radius: radius(sm);
-    box-shadow: shadow(header);
-    transform: translateX(-50%);
-
-    @include md {
-        top: calc(var(--header-height) + #{space(2)});
-        bottom: auto;
-    }
-}

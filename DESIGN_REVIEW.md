@@ -196,7 +196,7 @@ other two should visibly recede.
       Escape handling, and returning focus to the trigger is a better foundation
       than most hand-rolled modals.)
 - [ ] Remove the two `<div style="margin-bottom: 1000px">` spacers
-- [ ] Remove `.under-construction` from `index.scss` and the markup
+- [x] Remove `.under-construction` from `index.scss` and the markup
 
 ### Motion
 
