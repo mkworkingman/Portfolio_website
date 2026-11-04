@@ -37,7 +37,39 @@
             type="font/woff2"
             crossorigin
         />
-        <!-- The subset each non-English language needs is preloaded by the inline script below, only for that language's visitors. -->
+        <!--
+            Every visitor needs latin-ext and cyrillic too: the hidden RU/SR width-reserving
+            copies (i18n-reserve) render in them, so the browser fetches them anyway. Loading
+            them late let the copies grow on swap and shift the header on load.
+        -->
+        <link
+            rel="preload"
+            href="/fonts/montserrat-cyrillic-400-normal.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+        />
+        <link
+            rel="preload"
+            href="/fonts/montserrat-cyrillic-700-normal.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+        />
+        <link
+            rel="preload"
+            href="/fonts/montserrat-latin-ext-400-normal.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+        />
+        <link
+            rel="preload"
+            href="/fonts/montserrat-latin-ext-700-normal.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+        />
         <!--
             Critical, render-blocking: hide translatable text until initLanguage() swaps it,
             so non-English visitors don't see an English flash. Mirrors detectLanguage() in
@@ -68,17 +100,6 @@
                     }
                 }
                 if (lang === 'en') return
-                // Russian needs the cyrillic subset, Serbian (Latin script) the latin-ext one.
-                var subset = lang === 'ru' ? 'cyrillic' : 'latin-ext'
-                ;['400', '700'].forEach(function (weight) {
-                    var link = document.createElement('link')
-                    link.rel = 'preload'
-                    link.as = 'font'
-                    link.type = 'font/woff2'
-                    link.crossOrigin = 'anonymous'
-                    link.href = '/fonts/montserrat-' + subset + '-' + weight + '-normal.woff2'
-                    document.head.appendChild(link)
-                })
                 var root = document.documentElement
                 root.classList.add('i18n-pending')
                 setTimeout(function () {

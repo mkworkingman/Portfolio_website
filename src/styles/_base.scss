@@ -12,10 +12,10 @@ $font-subsets: (
 );
 $font-weights: 400, 700;
 
-// latin is preloaded, so `optional` avoids any swap. latin-ext/cyrillic are preloaded
-// only when the saved or browser language is RU/SR (inline script in index.html);
-// otherwise they load once RU/SR text is on the page (often after a language switch).
-// Either way they can arrive late, so they need `swap` - with `optional` they would miss the ~100ms window and stay Arial.
+// All subsets are preloaded in index.html (the hidden RU/SR width-reserving copies need
+// latin-ext and cyrillic for every visitor). latin uses `optional` to rule out any swap.
+// latin-ext/cyrillic keep `swap`: on a slow connection they can still miss the ~100ms
+// `optional` window, and then RU/SR text would stay Arial for the whole visit.
 @each $subset, $range in $font-subsets {
     $display: swap;
 

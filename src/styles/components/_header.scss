@@ -162,9 +162,13 @@ $-logo-char-count: 10; // characters in "MKalinin /"
     display: grid;
     gap: space(3);
 
+    // Equal columns: each link already reserves its longest translation, and 1fr
+    // tracks in a shrink-to-fit grid all grow to the widest of those, so every link
+    // is as wide as the widest link in any language.
     @include lg {
-        display: flex;
-        gap: space(5);
+        grid-auto-columns: 1fr;
+        grid-auto-flow: column;
+        gap: space(1.5);
     }
 }
 
@@ -185,14 +189,36 @@ $-logo-char-count: 10; // characters in "MKalinin /"
     color: color(text-inverse-muted);
     text-decoration: none;
 
+    // The border colours below only show from lg up, where the border is drawn.
     &:hover {
         color: color(text-inverse);
+        border-color: color(text-inverse-muted);
     }
 
-    // The section currently in view, set by navHighlight.ts. The underline is the
-    // non-colour cue (WCAG 1.4.1); bold would change the width and shift the row.
+    // The section currently in view, set by navHighlight.ts. Below lg the underline is
+    // the non-colour cue (WCAG 1.4.1); bold would change the width and shift the row.
     &[aria-current='location'] {
         @include current-marker;
+
+        border-color: color(accent);
+    }
+
+    // In the row: equal outlined boxes, so the rhythm comes from the boxes rather than
+    // from the uneven gaps between labels of different lengths. Same radius and
+    // outline idea as the burger toggle.
+    @include lg {
+        justify-content: center;
+        width: 100%;
+        padding: space(2) space(2.5);
+        border: $border-width solid color(edge-highlight);
+        border-radius: radius(sm);
+
+        // The boxes carry "current" here: a doubled border replaces the underline as
+        // the non-colour cue (WCAG 1.4.1). Inset shadow, so the box doesn't change size.
+        &[aria-current='location'] {
+            text-decoration: none;
+            box-shadow: inset 0 0 0 $border-width color(accent);
+        }
     }
 }
 
