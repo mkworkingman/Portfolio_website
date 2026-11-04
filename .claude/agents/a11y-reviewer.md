@@ -6,7 +6,7 @@ model: sonnet
 effort: high
 ---
 
-You review accessibility for a vanilla TS + Vite single-page portfolio (`index.html`, `src/scripts/`, `src/styles/`). Read `A11Y.md` first: it is the project's checklist.
+You review accessibility for a vanilla TS + Vite single-page portfolio (`index.html`, `src/scripts/`, `src/styles/`). Read `.claude/rules/a11y.md` first: it is the project's checklist.
 
 Scope: the files from `git diff --name-only main` plus uncommitted changes (`git status --porcelain`). If nothing UI-related changed, review the whole page.
 

@@ -28,5 +28,8 @@ Look up config/APIs with context7 before writing them; don't rely on memory for 
 ## Reference docs
 
 - `src/styles/tokens/README.md`: token API
-- `A11Y.md`: accessibility checklist and tooling
-- `DESIGN_REVIEW.md`: open design decisions and priorities
+
+## Open design decisions
+
+- Hero visual: the canvas still orbits planets around a framework logo (TODO in `index.html`). Options: a live data-dense UI demo, or the `<MKalinin />` monogram at the centre with tech logos in orbit.
+- Typeface: whether Montserrat stays. A replacement needs latin, latin-ext and Cyrillic (e.g. Onest, Golos Text, Commissioner); the subset/preload pipeline in `_base.scss` and `index.html` works for any face.
