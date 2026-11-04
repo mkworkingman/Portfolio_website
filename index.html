@@ -97,7 +97,7 @@
             <a class="header-logo" href="#home" aria-label="Maksim Kalinin">
                 <span class="header-logo__bracket">&lt;</span><span class="header-logo__name"><span>M</span><span>K</span><span>a</span><span>l</span><span>i</span><span>n</span><span>i</span><span>n</span><span> </span><span>/</span></span><span class="header-logo__bracket">&gt;</span>
             </a>
-            <button class="header-contact" aria-haspopup="dialog">
+            <button type="button" class="header-contact" aria-haspopup="dialog">
                 <!-- Phones get the icon; the label is still read by screen readers. -->
                 <svg class="icon header-contact__icon" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M4 6h16v12H4zM4 7l8 6 8-6" />
@@ -108,7 +108,7 @@
                 </span>
             </button>
             <div class="lang">
-                <button class="lang__switcher" aria-expanded="false" aria-controls="lang-list">
+                <button type="button" class="lang__switcher" aria-expanded="false" aria-controls="lang-list">
                     <span class="visually-hidden" data-i18n="langLabel">Language:</span>
                     <!-- Codes rather than translation keys, so the ghosts are written out here. -->
                     <span class="i18n-reserve">
@@ -120,13 +120,14 @@
                 </button>
                 <ul class="lang__list" id="lang-list">
                     <li>
-                        <button class="lang__option" data-lang="en" aria-current="true">EN</button>
+                        <button type="button" class="lang__option" data-lang="en" aria-current="true">EN</button>
                     </li>
-                    <li><button class="lang__option" data-lang="ru">RU</button></li>
-                    <li><button class="lang__option" data-lang="sr">SR</button></li>
+                    <li><button type="button" class="lang__option" data-lang="ru">RU</button></li>
+                    <li><button type="button" class="lang__option" data-lang="sr">SR</button></li>
                 </ul>
             </div>
             <button
+                type="button"
                 class="header-nav-toggle"
                 aria-expanded="false"
                 aria-controls="header-nav"
@@ -373,6 +374,7 @@
                     <h2 id="contact-modal-title"><span class="i18n-stack"><span data-i18n="contactTitle">Contact me</span><!-- i18n-reserve:contactTitle --></span></h2>
                     <!-- autofocus: showModal() focuses it on open. -->
                     <button
+                        type="button"
                         class="contact-modal__close"
                         aria-label="Close"
                         data-i18n-label="contactClose"
@@ -390,6 +392,7 @@
                     <input type="hidden" name="subject" value="New message from the portfolio website" />
                     <input type="hidden" name="from_name" value="Portfolio website" />
                     <!-- Honeypot: hidden from people, bots tick it and Web3Forms drops the submission. -->
+                    <!-- eslint-disable-next-line @html-eslint/require-input-label -- honeypot, intentionally unlabeled -->
                     <input class="contact-form__honeypot" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" />
                     <label class="contact-form__field">
                         <span data-i18n="contactFormName">Your name</span>
