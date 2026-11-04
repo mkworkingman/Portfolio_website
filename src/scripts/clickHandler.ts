@@ -45,10 +45,9 @@ export function initClickHandler() {
     }
 
     // showModal() makes the rest of the page inert, focuses the [autofocus]
-    // input, closes on Escape and returns focus to the opener on close.
+    // close button, closes on Escape and returns focus to the opener on close.
     function handleShowContactMeModal() {
         contactModal?.showModal()
-        // TODO: save the state of the inputs
     }
 
     function handleCloseContactMeModal() {
@@ -109,9 +108,9 @@ export function initClickHandler() {
     // so it isn't still open when the layout goes back to mobile.
     // The breakpoint comes from the SCSS tokens; it is empty when no stylesheet is
     // loaded (the jsdom tests, which also lack matchMedia), so skip it then.
-    const md = getComputedStyle(document.documentElement).getPropertyValue('--breakpoint-md').trim()
-    if (md) {
-        matchMedia(`(min-width: ${md})`).addEventListener('change', (e) => {
+    const lg = getComputedStyle(document.documentElement).getPropertyValue('--breakpoint-lg').trim()
+    if (lg) {
+        matchMedia(`(min-width: ${lg})`).addEventListener('change', (e) => {
             if (e.matches) setNavOpen(false)
         })
     }

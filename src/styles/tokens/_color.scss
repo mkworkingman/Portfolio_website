@@ -6,6 +6,7 @@ $-slate-50: #e7ebf1;
 $-slate-100: #dfe4eb;
 $-slate-300: #c3ccd8;
 $-slate-400: #9aa6b8;
+$-slate-600: #4b5768;
 $-navy-800: #1b2432;
 $-navy-950: #080c12;
 $-amber-400: #f2a93b;
@@ -17,6 +18,8 @@ $-colors: (
     surface: $-navy-800,
     accent: $-amber-400,
     text: $-navy-800,
+    text-muted: $-slate-600, // secondary text on base (dates, stacks)
+    border: $-slate-400, // hairlines on base (tags, cards)
     text-inverse: $-slate-50, // text on surface
     text-inverse-soft: $-slate-300, // large headings on surface
     text-inverse-muted: $-slate-400,

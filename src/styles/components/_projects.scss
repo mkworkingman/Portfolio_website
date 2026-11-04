@@ -1,0 +1,44 @@
+@use '../tokens' as *;
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, space(80)), 1fr));
+    gap: space(6);
+}
+
+.project {
+    display: flex;
+    flex-direction: column;
+    gap: space(3);
+    padding: space(6);
+    border: $border-width solid color(border);
+    border-top: $border-width-accent solid color(accent);
+    border-radius: radius(md);
+
+    .project__stack {
+        margin-top: auto; // pins the stack line to the bottom of cards in the same row
+        font-size: font-size(sm);
+        color: color(text-muted);
+    }
+}
+
+.project__header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: space(2) space(3);
+    align-items: center;
+
+    h3 {
+        margin: 0;
+        font-size: font-size(xl);
+    }
+}
+
+.project__status {
+    padding: space(0.5) space(2);
+    font-size: font-size(xs);
+    font-weight: font-weight(bold);
+    color: color(surface);
+    background-color: color(accent);
+    border-radius: radius(pill);
+}

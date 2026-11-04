@@ -1,0 +1,38 @@
+@use '../tokens' as *;
+
+.jobs {
+    display: grid;
+    gap: space(10);
+    max-width: $measure;
+}
+
+// An accent rule down the left ties each entry's title, meta and points together.
+.job {
+    padding-inline-start: space(4);
+    border-inline-start: $border-width-accent solid color(accent);
+
+    .job__title {
+        margin-block: 0;
+        font-size: font-size(xl);
+        line-height: line-height(snug);
+    }
+}
+
+.job__meta {
+    margin-block: space(1) space(3);
+    font-size: font-size(sm);
+    color: color(text-muted);
+}
+
+.job__points {
+    display: grid;
+    gap: space(2);
+    padding-inline-start: space(5);
+    list-style: disc;
+}
+
+.job__stack {
+    margin-top: space(3);
+    font-size: font-size(sm);
+    color: color(text-muted);
+}

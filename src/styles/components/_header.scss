@@ -76,7 +76,8 @@ $-logo-char-count: 10; // characters in "MKalinin /"
     border-radius: radius(sm);
 }
 
-// Navigation:
+// Navigation: a burger menu below lg; five links don't fit in a row next to the
+// logo, Contact button and language switcher at md widths.
 .header-nav-toggle {
     display: grid;
     place-items: center;
@@ -90,7 +91,7 @@ $-logo-char-count: 10; // characters in "MKalinin /"
         border-color: color(accent);
     }
 
-    @include md {
+    @include lg {
         display: none;
     }
 }
@@ -112,7 +113,7 @@ $-logo-char-count: 10; // characters in "MKalinin /"
         display: block;
     }
 
-    @include md {
+    @include lg {
         position: static;
         display: block;
         padding: 0;
@@ -125,7 +126,7 @@ $-logo-char-count: 10; // characters in "MKalinin /"
     display: grid;
     gap: space(3);
 
-    @include md {
+    @include lg {
         display: flex;
         gap: space(5);
     }

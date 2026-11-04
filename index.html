@@ -5,21 +5,20 @@
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <title>Maksim Kalinin — Senior Fullstack &amp; Frontend Developer</title>
+        <title>Maksim Kalinin — Fullstack Engineer</title>
         <meta
             name="description"
-            content="Senior Fullstack/Frontend developer with 7+ years building data-intensive production web apps in React, Vue and TypeScript for gaming, fintech and edtech."
+            content="Fullstack engineer with 7+ years building high-traffic, data-dense web apps in React, Vue, TypeScript, Node.js and Django for gaming, fintech and edtech."
         />
+        <link rel="canonical" href="https://mkalinin-portfolio.vercel.app/" />
 
-        <!-- TODO: add og:image (1200x630 PNG) and og:url once the site has a domain -->
+        <!-- TODO: add og:image (1200x630 PNG) -->
         <meta property="og:type" content="website" />
-        <meta
-            property="og:title"
-            content="Maksim Kalinin — Senior Fullstack &amp; Frontend Developer"
-        />
+        <meta property="og:url" content="https://mkalinin-portfolio.vercel.app/" />
+        <meta property="og:title" content="Maksim Kalinin — Fullstack Engineer" />
         <meta
             property="og:description"
-            content="Senior Fullstack/Frontend developer with 7+ years building data-intensive production web apps in React, Vue and TypeScript for gaming, fintech and edtech."
+            content="Fullstack engineer with 7+ years building high-traffic, data-dense web apps in React, Vue, TypeScript, Node.js and Django for gaming, fintech and edtech."
         />
         <meta property="og:locale" content="en_US" />
         <meta name="twitter:card" content="summary" />
@@ -100,7 +99,7 @@
             </a>
             <button class="header-contact" aria-haspopup="dialog">
                 <span class="i18n-reserve i18n-reserve--always">
-                    <span data-i18n="navContact">Contact Me</span>
+                    <span data-i18n="navContact">Contact me</span>
                     <!-- i18n-reserve:navContact -->
                 </span>
             </button>
@@ -138,7 +137,7 @@
                 <ul class="header-nav__links">
                     <li>
                         <a class="header-nav__link" href="#home">
-                            <span class="i18n-reserve">
+                            <span class="i18n-reserve i18n-reserve--lg">
                                 <span data-i18n="navHome">Home</span>
                                 <!-- i18n-reserve:navHome -->
                             </span>
@@ -146,15 +145,23 @@
                     </li>
                     <li>
                         <a class="header-nav__link" href="#about">
-                            <span class="i18n-reserve">
+                            <span class="i18n-reserve i18n-reserve--lg">
                                 <span data-i18n="navAbout">About</span>
                                 <!-- i18n-reserve:navAbout -->
                             </span>
                         </a>
                     </li>
                     <li>
+                        <a class="header-nav__link" href="#experience">
+                            <span class="i18n-reserve i18n-reserve--lg">
+                                <span data-i18n="navExperience">Experience</span>
+                                <!-- i18n-reserve:navExperience -->
+                            </span>
+                        </a>
+                    </li>
+                    <li>
                         <a class="header-nav__link" href="#skills">
-                            <span class="i18n-reserve">
+                            <span class="i18n-reserve i18n-reserve--lg">
                                 <span data-i18n="navSkills">Skills</span>
                                 <!-- i18n-reserve:navSkills -->
                             </span>
@@ -162,7 +169,7 @@
                     </li>
                     <li>
                         <a class="header-nav__link" href="#projects">
-                            <span class="i18n-reserve">
+                            <span class="i18n-reserve i18n-reserve--lg">
                                 <span data-i18n="navProjects">Projects</span>
                                 <!-- i18n-reserve:navProjects -->
                             </span>
@@ -175,75 +182,218 @@
         <main class="main">
             <section id="home" aria-labelledby="hero-heading">
                 <div class="hero-greeting">
-                    <p class="hello">Hello, I am</p>
+                    <!-- The span carries the text so .hello's animation can't override the i18n-pending hide. -->
+                    <p class="hello"><span data-i18n="heroEyebrow">Fullstack engineer · Belgrade</span></p>
                     <h1 id="hero-heading">Maksim Kalinin</h1>
-                    <p class="hero-subtitle">Senior Fullstack/Frontend Developer</p>
+                    <p class="hero-subtitle" data-i18n="heroSubtitle">I build high-traffic, data-dense web apps end to end, from the data model to the interface.</p>
                 </div>
                 <!-- TODO: swap the planets for technology logos, add particles -->
                 <canvas class="hero-canvas" aria-hidden="true"></canvas>
-                <!-- <ul>
-                    <li>Frontend: React, Next.js, Vue, Nuxt, TypeScript</li>
-                    <li>Backend: PHP (Laravel), Node (Express), Python (Django)</li>
-                </ul> -->
             </section>
             <section id="about" aria-labelledby="about-heading">
-                <h2 id="about-heading">About</h2>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-                <p>
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                    doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.
-                </p>
+                <h2 id="about-heading" data-i18n="aboutHeading">About</h2>
+                <!-- Each translated text stays on one line: it must match translations.ts exactly. -->
+                <p data-i18n="aboutP1">I’m a fullstack engineer with 7+ years of experience building production web apps for gaming, fintech and edtech. On the frontend I work with React (Next.js), Vue (Nuxt) and TypeScript; on the backend with Node.js, Django and Laravel.</p>
+                <p data-i18n="aboutP2">I own features end to end, from the data model and API contract to the interface, and I do my best work on data-dense UIs that have to ship on a fixed date: live trading tables, real-time grading, a game’s main screen.</p>
+                <p data-i18n="aboutP3">I live in Belgrade and speak English, Russian and Serbian, the same three languages this site is in.</p>
+            </section>
+            <section id="experience" aria-labelledby="experience-heading">
+                <h2 id="experience-heading" data-i18n="expHeading">Experience</h2>
+                <div class="jobs">
+                    <article class="job">
+                        <h3 class="job__title" data-i18n="expIndRole">Independent developer</h3>
+                        <p class="job__meta">2026 – <span data-i18n="expPresent">present</span></p>
+                        <p data-i18n="expIndText">Building my own products, WizardTuner and JobScraper. More about them under Projects.</p>
+                    </article>
+                    <article class="job">
+                        <h3 class="job__title">Wargaming</h3>
+                        <p class="job__meta"><span data-i18n="expWgRole">Fullstack developer</span> · 2022 – 2026</p>
+                        <ul class="job__points">
+                            <li data-i18n="expWg1">Rebuilt the World of Tanks 2.0 Hangar, the game’s main navigation screen, used by 5,800+ concurrent players (10,000+ at peak) in 29 languages.</li>
+                            <li data-i18n="expWg2">Shipped live-ops and clan features to fixed launch dates together with game designers, UX/UI, backend and QA: Pet System, Holiday Ops 24/25 and 25/26, Strongholds Event, Clan Supply, Tournaments, Clan Winter Event.</li>
+                            <li data-i18n="expWg3">Built Django endpoints with data-aggregation logic and defined the backend–frontend data contracts around the game client’s UI constraints.</li>
+                            <li data-i18n="expWg4">Reviewed pull requests for a team of 5 frontend and fullstack developers.</li>
+                        </ul>
+                        <p class="job__stack">React · MobX · Next.js · TypeScript · Python · Django · Redis · Docker</p>
+                    </article>
+                    <article class="job">
+                        <h3 class="job__title">Libertex</h3>
+                        <p class="job__meta"><span data-i18n="expLxRole">Frontend developer</span> · 2021 – 2022</p>
+                        <ul class="job__points">
+                            <li data-i18n="expLx1">Built a real-time trading table streaming prices for 15–20 instruments (stocks, crypto and more) every second without render slowdowns, embedded as widgets in the existing CMS.</li>
+                            <li data-i18n="expLx2">Led motion and interaction work on the trading UI and wrote the animation guidelines the other 4 frontend developers followed.</li>
+                            <li data-i18n="expLx3">Implemented support for 16 languages, including a full right-to-left layout for Arabic.</li>
+                        </ul>
+                        <p class="job__stack">Vue · Nuxt · JavaScript · SSE · Drupal · PHP · Twig · Sass · Docker</p>
+                    </article>
+                    <article class="job">
+                        <h3 class="job__title">Upwork</h3>
+                        <p class="job__meta"><span data-i18n="expFlRole">Freelance fullstack developer</span> · 2020 – 2021</p>
+                        <ul class="job__points">
+                            <li data-i18n="expFl1">Completed 28 Upwork projects with a 4.9/5 rating and 100% Job Success: responsive sites from designs, animation work, a browser lottery game with a backend, and a Flash-to-JavaScript migration.</li>
+                            <li data-i18n="expFl2">Integrated real-time feeds from multiple exchange APIs into a crypto exchange aggregator.</li>
+                        </ul>
+                        <p class="job__stack">Vue · Node.js · Express · PHP · Laravel · WebGL · SVG · WebSockets</p>
+                    </article>
+                    <article class="job">
+                        <h3 class="job__title">Edulastic</h3>
+                        <p class="job__meta"><span data-i18n="expEdRole">Fullstack engineer</span> · 2019 – 2020</p>
+                        <ul class="job__points">
+                            <li data-i18n="expEd1">Owned the custom graphing engine of an assessment platform used by school districts across Alaska, from client-side rendering to the data contracts behind real-time auto-grading, and kept it stable under continuous input during live tests.</li>
+                            <li data-i18n="expEd2">Built interactive geometry modules (trigonometry, coordinate geometry) for student assessments.</li>
+                        </ul>
+                        <p class="job__stack">React · Redux · Canvas API · Node.js · Express</p>
+                    </article>
+                    <article class="job">
+                        <h3 class="job__title" data-i18n="expEarlyRole">Earlier</h3>
+                        <p class="job__meta">2018 – 2019</p>
+                        <ul class="job__points">
+                            <li data-i18n="expEarly1">Lloyd Hardy Enterprises: built and maintained a proprietary CMS end to end in Laravel and MySQL, covering the backend, REST API, admin and client-facing pages.</li>
+                            <li data-i18n="expEarly2">Tribefire: built the core interface of a streaming platform in Vue, including the Stripe donation checkout and real-time donation alerts.</li>
+                        </ul>
+                    </article>
+                </div>
             </section>
             <section id="skills" aria-labelledby="skills-heading">
-                <h2 id="skills-heading">Skills</h2>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua.
-                </p>
+                <h2 id="skills-heading" data-i18n="skillsHeading">Skills</h2>
+                <div class="skill-groups">
+                    <div class="skill-group">
+                        <h3 data-i18n="skillsFrontend">Frontend</h3>
+                        <ul class="tags">
+                            <li>TypeScript</li>
+                            <li>React 19</li>
+                            <li>Next.js</li>
+                            <li>Vue 3</li>
+                            <li>Nuxt</li>
+                            <li>TanStack Query / Table / Virtual</li>
+                            <li>Zustand</li>
+                            <li>MobX</li>
+                            <li>Redux Toolkit</li>
+                            <li>Pinia</li>
+                            <li>Tailwind CSS</li>
+                            <li>SCSS</li>
+                            <li>GSAP</li>
+                            <li>Canvas API</li>
+                            <li>Web Audio / AudioWorklet</li>
+                            <li>WebAssembly (Rust)</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <h3 data-i18n="skillsBackend">Backend &amp; data</h3>
+                        <ul class="tags">
+                            <li>Node.js</li>
+                            <li>NestJS</li>
+                            <li>Express</li>
+                            <li>Python / Django</li>
+                            <li>PHP / Laravel</li>
+                            <li>PostgreSQL</li>
+                            <li>MySQL</li>
+                            <li>MongoDB</li>
+                            <li>Redis</li>
+                            <li>Prisma</li>
+                            <li>REST</li>
+                            <li>GraphQL</li>
+                            <li>WebSockets</li>
+                            <li>SSE</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <h3 data-i18n="skillsTooling">Tooling &amp; testing</h3>
+                        <ul class="tags">
+                            <li>Vite</li>
+                            <li>Webpack</li>
+                            <li>Nx</li>
+                            <li>Docker</li>
+                            <li>GitHub Actions</li>
+                            <li>GitLab CI</li>
+                            <li>Vitest</li>
+                            <li>Jest</li>
+                            <li>Testing Library</li>
+                            <li>Playwright</li>
+                            <li>Cypress</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <h3 data-i18n="skillsPractices">Practices</h3>
+                        <ul class="tags">
+                            <li data-i18n="skillsA11y">Accessibility (WCAG)</li>
+                            <li data-i18n="skillsI18n">Internationalization, incl. RTL</li>
+                            <li data-i18n="skillsPerf">Performance (Core Web Vitals)</li>
+                            <li data-i18n="skillsDesignSystems">Design systems &amp; tokens</li>
+                            <li data-i18n="skillsArchitecture">Frontend architecture</li>
+                            <li data-i18n="skillsReview">Code review &amp; mentoring</li>
+                            <li data-i18n="skillsAi">Agentic AI development (Claude Code)</li>
+                        </ul>
+                    </div>
+                </div>
             </section>
             <section id="projects" aria-labelledby="projects-heading">
-                <h2 id="projects-heading">Projects</h2>
-                <p>To be added</p>
+                <h2 id="projects-heading" data-i18n="projectsHeading">Projects</h2>
+                <div class="projects">
+                    <article class="project">
+                        <div class="project__header">
+                            <h3>WizardTuner</h3>
+                            <span class="project__status" data-i18n="projWtStatus">In progress</span>
+                        </div>
+                        <p data-i18n="projWtText">A PWA for musicians: tuner, metronome, beat machine and ear-training games. Low-latency audio runs on a dedicated audio thread.</p>
+                        <p class="project__stack">Next.js · React 19 · TypeScript · Zustand · Zod · Web Audio API · AudioWorklet · WebAssembly (Rust)</p>
+                    </article>
+                    <article class="project">
+                        <div class="project__header">
+                            <h3>JobScraper</h3>
+                            <span class="project__status" data-i18n="projJsStatus">In progress</span>
+                        </div>
+                        <p data-i18n="projJsText">A job aggregator that collects listings from international and Serbian job boards, with keyword, location and work-type filters.</p>
+                        <p class="project__stack">Node.js · NestJS · TypeScript</p>
+                    </article>
+                    <article class="project">
+                        <div class="project__header">
+                            <h3 data-i18n="projSiteName">This site</h3>
+                        </div>
+                        <p data-i18n="projSiteText">Vanilla TypeScript and Vite with no framework, an SCSS design-token system, three languages that switch without layout shift, and a strict Content Security Policy.</p>
+                        <p class="project__stack">TypeScript · Vite · SCSS · GSAP · Vitest</p>
+                    </article>
+                </div>
             </section>
         </main>
-        <footer class="footer">MK - 2026</footer>
+        <footer class="footer">MK – 2026</footer>
 
-        <!-- TODO: Adds url parameters? And if they are here, then if it load the page with them, it is already open? -->
         <dialog class="contact-modal" aria-labelledby="contact-modal-title">
             <div class="contact-modal__background"></div>
             <div class="contact-modal__card">
                 <div class="contact-modal__header">
-                    <h2 id="contact-modal-title">Contact me</h2>
+                    <h2 id="contact-modal-title" data-i18n="contactTitle">Contact me</h2>
+                    <!-- autofocus: showModal() focuses it on open. -->
                     <button
                         class="contact-modal__close"
                         aria-label="Close"
                         data-i18n-label="contactClose"
+                        autofocus
                     >
                         <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
                             <path d="M6 6l12 12M18 6L6 18" />
                         </svg>
                     </button>
                 </div>
-                <!-- No <form> yet: with a single input, Enter would submit and reload the page. -->
-                <div class="contact-modal__field">
-                    <label for="contact-name" data-i18n="contactName">Your name</label>
-                    <!-- showModal() focuses the [autofocus] descendant on open. -->
-                    <input
-                        class="contact-modal__input"
-                        id="contact-name"
-                        name="name"
-                        type="text"
-                        autocomplete="name"
-                        autofocus
-                    />
-                </div>
+                <p class="contact-modal__text" data-i18n="contactText">Email is the best way to reach me.</p>
+                <dl class="contact-modal__links">
+                    <div>
+                        <dt data-i18n="contactEmail">Email</dt>
+                        <dd><a href="mailto:mkworkingman@gmail.com">mkworkingman@gmail.com</a></dd>
+                    </div>
+                    <div>
+                        <dt>LinkedIn</dt>
+                        <dd>
+                            <a href="https://www.linkedin.com/in/mkworkingman" rel="noopener noreferrer" target="_blank">linkedin.com/in/mkworkingman</a>
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>GitHub</dt>
+                        <dd>
+                            <a href="https://github.com/mkworkingman" rel="noopener noreferrer" target="_blank">github.com/mkworkingman</a>
+                        </dd>
+                    </div>
+                </dl>
             </div>
         </dialog>
     </body>

@@ -1,0 +1,27 @@
+@use '../tokens' as *;
+
+.skill-groups {
+    display: grid;
+    gap: space(8);
+
+    @include lg {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.skill-group h3 {
+    margin-top: 0;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: space(2);
+
+    li {
+        padding: space(1) space(3);
+        font-size: font-size(sm);
+        border: $border-width solid color(border);
+        border-radius: radius(pill);
+    }
+}

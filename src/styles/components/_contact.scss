@@ -26,7 +26,7 @@
     &__card {
         z-index: z(raised);
         width: min(space(100), calc(100% - space(8)));
-        height: min(space(125), calc(100% - space(16)));
+        max-height: calc(100% - space(16));
         padding: space(6);
         overflow-y: auto;
         color: color(text);
@@ -50,19 +50,29 @@
         border-radius: radius(sm);
     }
 
-    &__field {
-        display: grid;
-        gap: space(1);
-        margin-top: space(6);
+    &__text {
+        margin-top: space(4);
     }
 
-    &__input {
-        padding: space(2) space(3);
-        font-size: inherit;
-        color: inherit;
-        background-color: transparent;
-        border: $border-width solid color(text);
-        border-radius: radius(sm);
+    &__links {
+        display: grid;
+        gap: space(4);
+        margin-top: space(6);
+
+        dt {
+            font-size: font-size(sm);
+            color: color(text-muted);
+        }
+
+        dd {
+            overflow-wrap: anywhere; // long addresses wrap instead of overflowing on phones
+        }
+
+        a {
+            font-weight: font-weight(bold);
+            text-decoration-color: color(accent);
+            text-underline-offset: space(1);
+        }
     }
 
     &[open] {

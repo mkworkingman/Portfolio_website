@@ -1,14 +1,77 @@
 export const LANGUAGES = ['en', 'ru', 'sr'] as const
 export const TEXT_KEYS = [
+    // Header
     'navHome',
     'navAbout',
+    'navExperience',
     'navSkills',
     'navProjects',
     'navContact',
     'navMenu',
     'langLabel',
+
+    // Hero
+    'heroEyebrow',
+    'heroSubtitle',
+
+    // About
+    'aboutHeading',
+    'aboutP1',
+    'aboutP2',
+    'aboutP3',
+
+    // Experience
+    'expHeading',
+    'expPresent',
+    'expIndRole',
+    'expIndText',
+    'expWgRole',
+    'expWg1',
+    'expWg2',
+    'expWg3',
+    'expWg4',
+    'expLxRole',
+    'expLx1',
+    'expLx2',
+    'expLx3',
+    'expFlRole',
+    'expFl1',
+    'expFl2',
+    'expEdRole',
+    'expEd1',
+    'expEd2',
+    'expEarlyRole',
+    'expEarly1',
+    'expEarly2',
+
+    // Skills
+    'skillsHeading',
+    'skillsFrontend',
+    'skillsBackend',
+    'skillsTooling',
+    'skillsPractices',
+    'skillsA11y',
+    'skillsI18n',
+    'skillsPerf',
+    'skillsDesignSystems',
+    'skillsArchitecture',
+    'skillsReview',
+    'skillsAi',
+
+    // Projects
+    'projectsHeading',
+    'projWtStatus',
+    'projWtText',
+    'projJsStatus',
+    'projJsText',
+    'projSiteName',
+    'projSiteText',
+
+    // Contact modal
+    'contactTitle',
     'contactClose',
-    'contactName',
+    'contactText',
+    'contactEmail',
 ] as const
 
 export type Language = (typeof LANGUAGES)[number]
