@@ -1,8 +1,8 @@
 import { describe, it, expect, beforeAll, afterEach } from 'vitest'
 import fs from 'fs'
 import path from 'path'
-import { setLanguage } from '../src/scripts/language'
-import { LANGUAGES, TEXT_KEYS } from '../src/scripts/values'
+import { renderLanguage, setLanguage } from '../src/scripts/language'
+import { LANGUAGE_PATH, LANGUAGES, languageFromPath, TEXT_KEYS } from '../src/scripts/values'
 
 const html = fs.readFileSync(path.resolve(__dirname, '../index.html'), 'utf8')
 
@@ -64,6 +64,28 @@ describe('HTML', () => {
 
     it('has exactly one h1', () => {
         expect(document.querySelectorAll('h1')).toHaveLength(1)
+    })
+
+    it('lists an hreflang alternate for every language URL, plus x-default', () => {
+        const alternates = [
+            ...document.querySelectorAll<HTMLLinkElement>('link[rel="alternate"][hreflang]'),
+        ].map((link) => [link.hreflang, new URL(link.href).pathname])
+
+        expect(alternates).toEqual(
+            expect.arrayContaining([
+                ...LANGUAGES.map((lang) => [expect.any(String), LANGUAGE_PATH[lang]]),
+                ['x-default', '/'],
+            ]),
+        )
+        expect(alternates).toHaveLength(LANGUAGES.length + 1)
+    })
+
+    it('maps URL paths to languages', () => {
+        expect(languageFromPath('/')).toBe('en')
+        expect(languageFromPath('/ru/')).toBe('ru')
+        expect(languageFromPath('/sr')).toBe('sr')
+        expect(languageFromPath('/en/')).toBe('en')
+        expect(languageFromPath('/de/')).toBe('en')
     })
 
     it('has no duplicate ids', () => {
@@ -132,6 +154,29 @@ describe('Runtime', () => {
 
         document.querySelector<HTMLElement>('[data-lang="en"]')?.click()
         expect(document.documentElement.lang).toBe('en')
+    })
+
+    it('moves the address bar to the language URL and keeps the section hash', () => {
+        history.replaceState(null, '', '/#skills')
+
+        document.querySelector<HTMLElement>('[data-lang="ru"]')?.click()
+        expect(location.pathname + location.hash).toBe('/ru/#skills')
+
+        document.querySelector<HTMLElement>('[data-lang="en"]')?.click()
+        expect(location.pathname + location.hash).toBe('/#skills')
+    })
+
+    it('pre-renders a language page with its head tags (used by the build)', () => {
+        const doc = new DOMParser().parseFromString(html, 'text/html')
+        renderLanguage(doc, 'sr')
+
+        expect(doc.documentElement.lang).toBe('sr-Latn')
+        expect(doc.title).toBe('Maksim Kalinin — frontend programer')
+        expect(doc.querySelector('[data-i18n="navHome"]')?.textContent).toBe('Početna')
+        expect(doc.querySelector('link[rel="canonical"]')?.getAttribute('href')).toBe(
+            'https://mkalinin-portfolio.vercel.app/sr/',
+        )
+        expect(doc.querySelector('meta[property="og:locale"]')?.getAttribute('content')).toBe('sr_RS')
     })
 
     it('reflects the open state of the toggles in aria-expanded', () => {

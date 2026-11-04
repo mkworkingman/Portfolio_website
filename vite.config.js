@@ -1,8 +1,10 @@
 import { createHash } from 'node:crypto'
 import { defineConfig } from 'vite'
 import { ViteMinifyPlugin } from 'vite-plugin-minify'
+import { JSDOM } from 'jsdom'
+import { renderLanguage } from './src/scripts/language'
 import { HTML_LANG, translations } from './src/scripts/translations'
-import { LANGUAGES } from './src/scripts/values'
+import { LANGUAGE_PATH, LANGUAGES } from './src/scripts/values'
 
 const escapeHtml = (text) =>
     text
@@ -78,6 +80,68 @@ function i18nGroups() {
     }
 }
 
+/**
+ * Writes one pre-translated page per language (index.html, ru/index.html, sr/index.html)
+ * from the finished index.html, so each URL serves its own language in the HTML with the
+ * right <html lang>, title, description and canonical, instead of English swapped by JS.
+ * Runs renderLanguage() from language.ts, the same code as a switch in the browser.
+ * Also emits sitemap.xml with the hreflang alternates. Runs after the minifier and the
+ * CSP plugin; the inline <script>/<style> are left untouched, so their hashes still hold.
+ */
+function i18nPages() {
+    return {
+        name: 'i18n-pages',
+        apply: 'build',
+        enforce: 'post',
+        generateBundle(_, bundle) {
+            const page = bundle['index.html']
+            if (page?.type !== 'asset') throw new Error('i18n-pages: index.html not in the bundle')
+            const source = String(page.source)
+
+            let origin
+            for (const lang of LANGUAGES) {
+                const dom = new JSDOM(source)
+                const doc = dom.window.document
+                origin ??= new URL(doc.querySelector('link[rel="canonical"]').href).origin
+
+                const alternates = [...doc.querySelectorAll('link[rel="alternate"][hreflang]')]
+                    .map((link) => `${link.hreflang} ${new URL(link.href).pathname}`)
+                    .sort()
+                const expected = [
+                    ...LANGUAGES.map((l) => `${HTML_LANG[l]} ${LANGUAGE_PATH[l]}`),
+                    `x-default ${LANGUAGE_PATH.en}`,
+                ].sort()
+                if (alternates.join() !== expected.join()) {
+                    throw new Error(`i18n-pages: hreflang links in index.html should be: ${expected.join(', ')}`)
+                }
+
+                renderLanguage(doc, lang)
+                const html = dom.serialize()
+
+                if (lang === 'en') page.source = html
+                else this.emitFile({ type: 'asset', fileName: `${lang}/index.html`, source: html })
+            }
+
+            const links = LANGUAGES.map(
+                (l) => `<xhtml:link rel="alternate" hreflang="${HTML_LANG[l]}" href="${origin}${LANGUAGE_PATH[l]}"/>`,
+            ).join('')
+            const urls = LANGUAGES.map(
+                (lang) =>
+                    `<url><loc>${origin}${LANGUAGE_PATH[lang]}</loc>${links}` +
+                    `<xhtml:link rel="alternate" hreflang="x-default" href="${origin}/"/></url>`,
+            ).join('')
+            this.emitFile({
+                type: 'asset',
+                fileName: 'sitemap.xml',
+                source:
+                    '<?xml version="1.0" encoding="UTF-8"?>' +
+                    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">' +
+                    `${urls}</urlset>`,
+            })
+        },
+    }
+}
+
 const sha256 =(text) => `'sha256-${createHash('sha256').update(text).digest('base64')}'`
 
 /**
@@ -122,7 +186,7 @@ function csp() {
 }
 
 export default defineConfig({
-    plugins: [i18nGroups(), i18nReserve(),ViteMinifyPlugin({}), csp()],
+    plugins: [i18nGroups(), i18nReserve(), ViteMinifyPlugin({}), csp(), i18nPages()],
     test: {
         environment: 'jsdom',
     },

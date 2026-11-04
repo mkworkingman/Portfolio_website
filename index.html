@@ -11,6 +11,11 @@
             content="Frontend developer and FE-focused fullstack engineer with 7+ years building data-dense, high-traffic web apps in React, Vue and TypeScript for gaming, fintech and edtech."
         />
         <link rel="canonical" href="https://mkalinin-portfolio.vercel.app/" />
+        <!-- The same on every language page; canonical, og:* and the text are rewritten per page by the build. -->
+        <link rel="alternate" hreflang="en" href="https://mkalinin-portfolio.vercel.app/" />
+        <link rel="alternate" hreflang="ru" href="https://mkalinin-portfolio.vercel.app/ru/" />
+        <link rel="alternate" hreflang="sr-Latn" href="https://mkalinin-portfolio.vercel.app/sr/" />
+        <link rel="alternate" hreflang="x-default" href="https://mkalinin-portfolio.vercel.app/" />
 
         <!-- TODO: add og:image (1200x630 PNG) -->
         <meta property="og:type" content="website" />
@@ -72,8 +77,11 @@
         />
         <!--
             Critical, render-blocking: hide translatable text until initLanguage() swaps it,
-            so non-English visitors don't see an English flash. Mirrors detectLanguage() in
-            src/scripts/language.ts. The timeout un-hides the text if the module never runs.
+            so a visitor whose language differs from the page's (a saved RU choice opening
+            the English root) doesn't see a flash. Mirrors detectLanguage() in
+            src/scripts/language.ts. /ru/ and /sr/ are built pre-translated, so there
+            <html lang> already matches and nothing is hidden. The timeout un-hides the
+            text if the module never runs.
         -->
         <style>
             .i18n-pending [data-i18n],
@@ -84,10 +92,13 @@
         <script>
             ;(function () {
                 var langs = ['en', 'ru', 'sr']
-                var lang
-                try {
-                    lang = localStorage.getItem('lang')
-                } catch (e) {}
+                var root = document.documentElement
+                var lang = location.pathname.split('/')[1]
+                if (lang === 'en' || langs.indexOf(lang) === -1) {
+                    try {
+                        lang = localStorage.getItem('lang')
+                    } catch (e) {}
+                }
                 if (langs.indexOf(lang) === -1) {
                     lang = 'en'
                     var tags = navigator.languages || []
@@ -99,16 +110,16 @@
                         }
                     }
                 }
-                if (lang === 'en') return
-                var root = document.documentElement
+                if (root.lang.split('-')[0] === lang) return
                 root.classList.add('i18n-pending')
                 setTimeout(function () {
                     root.classList.remove('i18n-pending')
                 }, 3000)
             })()
         </script>
-        <link rel="stylesheet" href="./src/styles/index.scss" />
-        <script type="module" src="./src/scripts/index.ts"></script>
+        <!-- Root-relative, so the dev server's /ru/ and /sr/ load them too. -->
+        <link rel="stylesheet" href="/src/styles/index.scss" />
+        <script type="module" src="/src/scripts/index.ts"></script>
     </head>
     <body>
         <!-- First tab stop: jumps past the header controls (WCAG 2.4.1). Off screen until focused. -->

@@ -249,8 +249,18 @@ export const translations: Record<Language, Record<TextKey, string>> = {
     },
 }
 
-/** Value for `<html lang>`. The Serbian copy is written in Latin script. */
+/** Value for `<html lang>` and `hreflang`. The Serbian copy is written in Latin script. */
 export const HTML_LANG: Record<Language, string> = { en: 'en', ru: 'ru', sr: 'sr-Latn' }
+
+/** `og:locale` for link previews. */
+export const OG_LOCALE: Record<Language, string> = { en: 'en_US', ru: 'ru_RU', sr: 'sr_RS' }
+
+/** `<meta name="description">` and `og:description`. Head-only, so outside TEXT_KEYS. */
+export const metaDescriptions: Record<Language, string> = {
+    en: 'Frontend developer and FE-focused fullstack engineer with 7+ years building data-dense, high-traffic web apps in React, Vue and TypeScript for gaming, fintech and edtech.',
+    ru: 'Фронтенд-разработчик и фулстек-инженер с упором на фронтенд, 7+ лет опыта: высоконагруженные веб-приложения с большим объёмом данных на React, Vue и TypeScript для геймдева, финтеха и edtech.',
+    sr: 'Frontend programer i fullstack inženjer sa fokusom na frontend, 7+ godina iskustva u izradi veb-aplikacija sa mnogo podataka i velikim saobraćajem u React-u, Vue-u i TypeScript-u za gejming, fintech i edtech.',
+}
 
 /** Contact form status messages, set at runtime by contactForm.ts. */
 export const formStatusTexts: Record<Language, Record<FormStatus, string>> = {

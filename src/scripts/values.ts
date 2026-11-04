@@ -1,4 +1,19 @@
 export const LANGUAGES = ['en', 'ru', 'sr'] as const
+
+/**
+ * Each language's own URL. English stays at the root (also the x-default); the build
+ * writes a pre-translated page for the others (i18nPages in vite.config.js).
+ */
+export const LANGUAGE_PATH = { en: '/', ru: '/ru/', sr: '/sr/' } as const satisfies Record<
+    (typeof LANGUAGES)[number],
+    string
+>
+
+/** The language a URL path belongs to: /ru and /ru/... are Russian, everything else English. */
+export function languageFromPath(pathname: string): Language {
+    const segment = pathname.split('/')[1]
+    return segment !== 'en' && isLanguage(segment) ? segment : 'en'
+}
 export const TEXT_KEYS = [
     // <title>, so the tab name follows the language too
     'pageTitle',
