@@ -13,7 +13,7 @@ Every style value comes from here. Components get all tokens through `@use '../t
 | `_radius.scss`      | `radius(sm \| md \| lg \| pill)`                            | rem       |
 | `_shadow.scss`      | `shadow(header)`                                            | —         |
 | `_z-index.scss`     | `z(behind \| raised \| header \| modal)`                    | —         |
-| `_motion.scss`      | `duration(fast \| base \| slow)`, `ease(out \| in-out)`     | ms        |
+| `_motion.scss`      | `duration(fast \| base \| slow \| keystroke)`, `ease(out \| in-out)`     | ms        |
 
 ## Rules
 

@@ -4,6 +4,8 @@ $-durations: (
     fast: 150ms,
     base: 250ms,
     slow: 600ms,
+    // One typed character, e.g. the header logo's typing animation.
+    keystroke: 50ms,
 );
 $-easings: (
     out: ease-out,

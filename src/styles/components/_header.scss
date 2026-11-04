@@ -15,13 +15,54 @@
     box-shadow: shadow(header);
 }
 
+// Logo intro: a moment of empty space, then "<>" fades in, then "MKalinin /" is
+// typed between the brackets one character at a time. Pure CSS, so the full logo
+// never flashes before JS loads. The reduced-motion block in _base.scss zeroes the
+// delays and durations, so those visitors get the finished logo straight away.
+// Timeline, 0.8s in total: empty 0-150ms, "<>" fades in 150-300ms, typing
+// 350-800ms (the last of the 10 characters appears at exactly 800ms).
+$-logo-pause: duration(fast);
+$-logo-bracket-fade: duration(fast);
+$-logo-typing-start: $-logo-pause + $-logo-bracket-fade + duration(keystroke);
+$-logo-char-count: 10; // characters in "MKalinin /"
+
 .header-logo {
     margin-inline-end: auto;
     color: color(accent);
     text-decoration: none;
+}
 
-    span {
-        color: color(text-inverse);
+.header-logo__bracket {
+    animation: header-logo-appear $-logo-bracket-fade ease(out) $-logo-pause backwards;
+}
+
+.header-logo__name {
+    color: color(text-inverse);
+
+    // Each character is hidden during its delay (`backwards` applies the keyframe),
+    // then pops in. font-size: 0 collapses it to zero width, so the closing bracket
+    // starts next to the opening one and gets pushed along as the name is typed.
+    > span {
+        animation: header-logo-type 0s $-logo-typing-start backwards;
+    }
+
+    @for $i from 2 through $-logo-char-count {
+        > span:nth-child(#{$i}) {
+            animation-delay: $-logo-typing-start + duration(keystroke) * ($i - 1);
+        }
+    }
+}
+
+@keyframes header-logo-appear {
+    from {
+        opacity: 0;
+    }
+}
+
+@keyframes header-logo-type {
+    from,
+    to {
+        font-size: 0;
     }
 }
 
