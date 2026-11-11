@@ -55,6 +55,8 @@ export const TEXT_KEYS = [
     'expLx1',
     'expLx2',
     'expLx3',
+    'expLx4',
+    'expLx5',
     'expFlRole',
     'expFl1',
     'expFl2',
