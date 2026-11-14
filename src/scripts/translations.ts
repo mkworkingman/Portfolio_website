@@ -26,7 +26,6 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         heroEyebrow: 'Frontend-focused fullstack developer · Belgrade',
         heroSubtitle:
             'I build data-dense, real-time interfaces in React, Vue and TypeScript, and the APIs and data contracts behind them.',
-        heroCv: 'Download CV',
         heroEmail: 'Email',
 
         aboutHeading: 'About',
@@ -95,7 +94,6 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         contactFormEmail: 'Your email',
         contactFormMessage: 'Message',
         contactFormSend: 'Send',
-        footerCv: 'CV (PDF)',
     },
     ru: {
         pageTitle: 'Максим Калинин — fullstack-разработчик с фокусом на фронтенд',
@@ -113,7 +111,6 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         heroEyebrow: 'Fullstack-разработчик с фокусом на фронтенд · Белград',
         heroSubtitle:
             'Создаю интерфейсы с большим объёмом данных и обновлениями в реальном времени на React, Vue и TypeScript, а также API и контракты данных за ними.',
-        heroCv: 'Скачать CV (EN)',
         heroEmail: 'Почта',
 
         aboutHeading: 'Обо мне',
@@ -182,7 +179,6 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         contactFormEmail: 'Ваш email',
         contactFormMessage: 'Сообщение',
         contactFormSend: 'Отправить',
-        footerCv: 'CV (PDF, англ.)',
     },
     sr: {
         pageTitle: 'Maksim Kalinin — fullstack programer sa fokusom na frontend',
@@ -200,7 +196,6 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         heroEyebrow: 'Fullstack programer sa fokusom na frontend · Beograd',
         heroSubtitle:
             'Pravim interfejse sa mnogo podataka u realnom vremenu u React-u, Vue-u i TypeScript-u, kao i API-je i ugovore podataka iza njih.',
-        heroCv: 'Preuzmi CV (EN)',
         heroEmail: 'Imejl',
 
         aboutHeading: 'O meni',
@@ -269,7 +264,6 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         contactFormEmail: 'Vaš imejl',
         contactFormMessage: 'Poruka',
         contactFormSend: 'Pošalji',
-        footerCv: 'CV (PDF, engl.)',
     },
 }
 

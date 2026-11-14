@@ -32,7 +32,6 @@ export const TEXT_KEYS = [
     // Hero
     'heroEyebrow',
     'heroSubtitle',
-    'heroCv',
     'heroEmail',
 
     // About
@@ -101,7 +100,6 @@ export const TEXT_KEYS = [
     'contactFormSend',
 
     // Footer
-    'footerCv',
 ] as const
 
 // Runtime-only texts (not in the HTML, so they live outside TEXT_KEYS).
