@@ -11,7 +11,7 @@ import type { FormStatus, Language, TextKey } from './values'
 // TODO: Make it JSON? Load those texts on click? If English is default language, what's the point of having ru and sr in the memory because not everyone will click to switch language
 export const translations: Record<Language, Record<TextKey, string>> = {
     en: {
-        pageTitle: 'Maksim Kalinin — Frontend-Focused Fullstack Developer',
+        pageTitle: 'Maksim Kalinin — Fullstack Developer',
         skipLink: 'Skip to content',
 
         navHome: 'Home',
@@ -23,16 +23,16 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         navMenu: 'Menu',
         langLabel: 'Language:',
 
-        heroEyebrow: 'Frontend-focused fullstack developer · Belgrade',
+        heroEyebrow: 'Fullstack developer · Belgrade',
         heroSubtitle:
-            'I build data-dense, real-time interfaces in React, Vue and TypeScript, and the APIs and data contracts behind them.',
+            'I build real-time web apps end to end: React, Vue and TypeScript interfaces, and the Node.js, Django and Laravel APIs, data models and contracts behind them.',
         heroEmail: 'Email',
 
         aboutHeading: 'About',
         aboutP1:
-            'I’m a frontend-focused fullstack developer with 7+ years of experience building production web apps for gaming, fintech and edtech. My core is React (Next.js), Vue (Nuxt) and TypeScript: data-dense and real-time UIs, animation, i18n (up to 29 languages, incl. RTL), accessibility and Core Web Vitals performance.',
+            'I’m a fullstack developer with 7+ years of experience building production web apps for gaming, fintech and edtech, from the database and API to the interface. On the frontend I work in React (Next.js), Vue (Nuxt) and TypeScript: data-dense and real-time UIs, animation, i18n (up to 29 languages, incl. RTL), accessibility and Core Web Vitals performance.',
         aboutP2:
-            'On the backend I build APIs and data contracts in Node.js (Express, NestJS), Python (Django) and PHP (Laravel). I own features end to end, from the data model to the interface, and ship high-traffic features to fixed deadlines. That’s how I worked at Wargaming on the World of Tanks 2.0 Hangar and its live-ops events.',
+            'On the backend I build APIs and data contracts in Node.js (Express, NestJS), Python (Django) and PHP (Laravel), with PostgreSQL, MySQL, MongoDB and Redis behind them. I own features end to end, from the data model to the interface, and ship high-traffic features to fixed deadlines. That’s how I worked at Wargaming on the World of Tanks 2.0 Hangar and its live-ops events.',
         aboutP3:
             'I care about the parts users feel but rarely notice: accessibility, localization (16 languages and RTL at Libertex, 29 at Wargaming) and motion. I live in Belgrade and speak English, Russian and Serbian, the same three languages this site is in.',
 
@@ -41,7 +41,7 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         expIndRole: 'Independent developer',
         expIndText:
             'Building my own products, WizardTuner and JobScraper. More about them under Projects.',
-        expWgRole: 'Frontend-focused fullstack developer',
+        expWgRole: 'Fullstack developer',
         expWg1: 'Rebuilt the World of Tanks 2.0 Hangar, the game’s main navigation screen (main page, vehicle carousel, central vehicle button), used by 5,800+ concurrent players (10,000+ at peak) in 29 languages.',
         expWg2: 'Built in-game event UI for live-ops and clan features shipped to fixed launch dates (Pet System, Holiday Ops 24/25 and 25/26, Strongholds Event, Clan Supply, Tournaments, Clan Winter Event): real-time notifications, live timers and progress bars, leaderboard tables with filtering, pagination, virtualization and expandable rows, animations and mini-games. Worked with game designers, UX/UI, backend and QA on each launch.',
         expWg3: 'Built Django endpoints with data-aggregation logic and defined the backend–frontend data contracts around the game client’s UI constraints; the changes went through the backend team’s code review.',
@@ -52,7 +52,7 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         expLx3: 'Created and maintained animations across the Libertex site and built some features in Vue.',
         expLx4: 'StormGain (crypto trading platform): worked on the Drupal site with multi-language support and full right-to-left layout for Arabic. Took part in the migration from plain Drupal to headless Drupal with a Nuxt frontend, keeping URLs or adding 301 redirects so pages stayed fully indexed.',
         expLx5: 'Led motion and interaction implementation for the trading UI and set animation guidelines.',
-        expFlRole: 'Freelance frontend / fullstack developer',
+        expFlRole: 'Freelance fullstack developer',
         expFl1: 'Completed 28 Upwork projects with a 4.9/5 rating and 100% Job Success: responsive sites from designs, animation work, a browser lottery game with a backend, and a Flash-to-JavaScript migration.',
         expFl2: 'Integrated real-time feeds from multiple exchange APIs into a crypto exchange aggregator.',
         expEdRole: 'Fullstack engineer',
@@ -73,7 +73,7 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         skillsI18n: 'Internationalization, incl. RTL',
         skillsPerf: 'Performance (Core Web Vitals)',
         skillsDesignSystems: 'Design systems & tokens',
-        skillsArchitecture: 'Frontend architecture',
+        skillsArchitecture: 'Application architecture',
         skillsReview: 'Code review & mentoring',
         skillsAi: 'Agentic AI development (Claude Code)',
         skillsSecurity: 'Security (CSP, OAuth2, JWT)',
@@ -96,7 +96,7 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         contactFormSend: 'Send',
     },
     ru: {
-        pageTitle: 'Максим Калинин — fullstack-разработчик с фокусом на фронтенд',
+        pageTitle: 'Максим Калинин — fullstack-разработчик',
         skipLink: 'Перейти к содержанию',
 
         navHome: 'Главная',
@@ -108,16 +108,16 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         navMenu: 'Меню',
         langLabel: 'Язык:',
 
-        heroEyebrow: 'Fullstack-разработчик с фокусом на фронтенд · Белград',
+        heroEyebrow: 'Fullstack-разработчик · Белград',
         heroSubtitle:
-            'Создаю интерфейсы с большим объёмом данных и обновлениями в реальном времени на React, Vue и TypeScript, а также API и контракты данных за ними.',
+            'Делаю веб-приложения с данными в реальном времени от начала до конца: интерфейсы на React, Vue и TypeScript, а также API на Node.js, Django и Laravel, модели данных и контракты за ними.',
         heroEmail: 'Почта',
 
         aboutHeading: 'Обо мне',
         aboutP1:
-            'Я fullstack-разработчик с фокусом на фронтенд и опытом более 7 лет: делаю продакшен веб-приложения для геймдева, финтеха и edtech. Моя основа — React (Next.js), Vue (Nuxt) и TypeScript: интерфейсы с большим объёмом данных и данными в реальном времени, анимация, i18n (до 29 языков, включая RTL), доступность и производительность по Core Web Vitals.',
+            'Я fullstack-разработчик с опытом более 7 лет: делаю продакшен веб-приложения для геймдева, финтеха и edtech, от базы данных и API до интерфейса. На фронтенде работаю с React (Next.js), Vue (Nuxt) и TypeScript: интерфейсы с большим объёмом данных и данными в реальном времени, анимация, i18n (до 29 языков, включая RTL), доступность и производительность по Core Web Vitals.',
         aboutP2:
-            'На бэкенде пишу API и контракты данных на Node.js (Express, NestJS), Python (Django) и PHP (Laravel). Веду фичи целиком, от модели данных до интерфейса, и выпускаю высоконагруженные фичи к фиксированным срокам. Так я работал в Wargaming над Ангаром World of Tanks 2.0 и его live-ops событиями.',
+            'На бэкенде пишу API и контракты данных на Node.js (Express, NestJS), Python (Django) и PHP (Laravel), с PostgreSQL, MySQL, MongoDB и Redis за ними. Веду фичи целиком, от модели данных до интерфейса, и выпускаю высоконагруженные фичи к фиксированным срокам. Так я работал в Wargaming над Ангаром World of Tanks 2.0 и его live-ops событиями.',
         aboutP3:
             'Мне важны вещи, которые пользователь чувствует, но редко замечает: доступность, локализация (16 языков и RTL в Libertex, 29 в Wargaming) и анимация. Живу в Белграде и говорю на английском, русском и сербском — на тех же трёх языках, что и этот сайт.',
 
@@ -126,7 +126,7 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         expIndRole: 'Независимый разработчик',
         expIndText:
             'Разрабатываю собственные продукты — WizardTuner и JobScraper. Подробнее о них в разделе «Проекты».',
-        expWgRole: 'Fullstack-разработчик с фокусом на фронтенд',
+        expWgRole: 'Fullstack-разработчик',
         expWg1: 'Переписал Ангар World of Tanks 2.0, главный навигационный экран игры (главная страница, карусель техники, центральная кнопка техники): 5 800+ игроков онлайн одновременно (10 000+ в пике), 29 языков.',
         expWg2: 'Делал внутриигровой UI для live-ops и клановых событий к фиксированным датам запуска (Pet System, Holiday Ops 24/25 и 25/26, Strongholds Event, Clan Supply, турниры, Clan Winter Event): уведомления в реальном времени, живые таймеры и прогресс-бары, таблицы лидеров с фильтрацией, пагинацией, виртуализацией и раскрывающимися строками, анимации и мини-игры. Над каждым запуском работал с геймдизайнерами, UX/UI, бэкендом и QA.',
         expWg3: 'Писал эндпоинты на Django с логикой агрегации данных и проектировал контракты данных между бэкендом и фронтендом с учётом ограничений UI игрового клиента; изменения проходили код-ревью бэкенд-команды.',
@@ -137,7 +137,7 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         expLx3: 'Создавал и поддерживал анимации на сайте Libertex и делал часть функциональности на Vue.',
         expLx4: 'StormGain (платформа для торговли криптовалютой): работал над сайтом на Drupal с поддержкой нескольких языков и полной RTL-вёрсткой для арабского. Участвовал в миграции с обычного Drupal на headless Drupal с фронтендом на Nuxt: URL сохраняли или добавляли 301-редиректы, чтобы страницы оставались полностью проиндексированными.',
         expLx5: 'Руководил реализацией анимаций и интерактива в торговом интерфейсе и задал гайдлайны по анимации.',
-        expFlRole: 'Фронтенд/fullstack-разработчик на фрилансе',
+        expFlRole: 'Fullstack-разработчик на фрилансе',
         expFl1: 'Выполнил 28 проектов на Upwork с рейтингом 4.9/5 и 100% Job Success: адаптивные сайты по макетам, анимации, браузерная лотерея с бэкендом и перенос с Flash на JavaScript.',
         expFl2: 'Подключил потоки данных в реальном времени от API нескольких бирж к агрегатору криптобирж.',
         expEdRole: 'Fullstack-инженер',
@@ -158,7 +158,7 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         skillsI18n: 'Интернационализация, включая RTL',
         skillsPerf: 'Производительность (Core Web Vitals)',
         skillsDesignSystems: 'Дизайн-системы и токены',
-        skillsArchitecture: 'Архитектура фронтенда',
+        skillsArchitecture: 'Архитектура приложений',
         skillsReview: 'Код-ревью и менторство',
         skillsAi: 'Разработка с ИИ-агентами (Claude Code)',
         skillsSecurity: 'Безопасность (CSP, OAuth2, JWT)',
@@ -181,7 +181,7 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         contactFormSend: 'Отправить',
     },
     sr: {
-        pageTitle: 'Maksim Kalinin — fullstack programer sa fokusom na frontend',
+        pageTitle: 'Maksim Kalinin — fullstack programer',
         skipLink: 'Preskoči na sadržaj',
 
         navHome: 'Početna',
@@ -193,16 +193,16 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         navMenu: 'Meni',
         langLabel: 'Jezik:',
 
-        heroEyebrow: 'Fullstack programer sa fokusom na frontend · Beograd',
+        heroEyebrow: 'Fullstack programer · Beograd',
         heroSubtitle:
-            'Pravim interfejse sa mnogo podataka u realnom vremenu u React-u, Vue-u i TypeScript-u, kao i API-je i ugovore podataka iza njih.',
+            'Pravim veb-aplikacije sa podacima u realnom vremenu od početka do kraja: interfejse u React-u, Vue-u i TypeScript-u, kao i API-je u Node.js-u, Django-u i Laravel-u, modele podataka i ugovore iza njih.',
         heroEmail: 'Imejl',
 
         aboutHeading: 'O meni',
         aboutP1:
-            'Ja sam fullstack programer sa fokusom na frontend i više od 7 godina iskustva u izradi produkcijskih veb-aplikacija za gejming, fintech i edtech. Moja osnova su React (Next.js), Vue (Nuxt) i TypeScript: interfejsi sa mnogo podataka i podacima u realnom vremenu, animacije, i18n (do 29 jezika, uključujući RTL), pristupačnost i performanse po Core Web Vitals metrikama.',
+            'Ja sam fullstack programer sa više od 7 godina iskustva u izradi produkcijskih veb-aplikacija za gejming, fintech i edtech, od baze podataka i API-ja do interfejsa. Na frontendu radim u React-u (Next.js), Vue-u (Nuxt) i TypeScript-u: interfejsi sa mnogo podataka i podacima u realnom vremenu, animacije, i18n (do 29 jezika, uključujući RTL), pristupačnost i performanse po Core Web Vitals metrikama.',
         aboutP2:
-            'Na bekendu pravim API-je i ugovore podataka u Node.js-u (Express, NestJS), Python-u (Django) i PHP-u (Laravel). Funkcionalnosti vodim od početka do kraja, od modela podataka do interfejsa, i isporučujem ih za proizvode sa velikim saobraćajem u fiksnim rokovima. Tako sam u Wargaming-u radio na Hangaru u World of Tanks 2.0 i njegovim live-ops događajima.',
+            'Na bekendu pravim API-je i ugovore podataka u Node.js-u (Express, NestJS), Python-u (Django) i PHP-u (Laravel), uz PostgreSQL, MySQL, MongoDB i Redis iza njih. Funkcionalnosti vodim od početka do kraja, od modela podataka do interfejsa, i isporučujem ih za proizvode sa velikim saobraćajem u fiksnim rokovima. Tako sam u Wargaming-u radio na Hangaru u World of Tanks 2.0 i njegovim live-ops događajima.',
         aboutP3:
             'Stalo mi je do stvari koje korisnici osete, a retko primete: pristupačnost, lokalizacija (16 jezika i RTL u Libertex-u, 29 u Wargaming-u) i animacije. Živim u Beogradu i govorim engleski, ruski i srpski, upravo jezike na kojima je i ovaj sajt.',
 
@@ -211,7 +211,7 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         expIndRole: 'Samostalni programer',
         expIndText:
             'Razvijam sopstvene proizvode, WizardTuner i JobScraper. Više o njima u odeljku „Projekti“.',
-        expWgRole: 'Fullstack programer sa fokusom na frontend',
+        expWgRole: 'Fullstack programer',
         expWg1: 'Ponovo sam napravio Hangar u World of Tanks 2.0, glavni navigacioni ekran igre (glavna stranica, karusel vozila, centralno dugme vozila), koji koristi 5.800+ igrača istovremeno (10.000+ u vršnim trenucima) na 29 jezika.',
         expWg2: 'Pravio sam UI za događaje u igri za live-ops i klanske funkcionalnosti isporučene za fiksne datume lansiranja (Pet System, Holiday Ops 24/25 i 25/26, Strongholds Event, Clan Supply, turniri, Clan Winter Event): obaveštenja u realnom vremenu, tajmeri i trake napretka uživo, rang-liste sa filtriranjem, paginacijom, virtualizacijom i redovima koji se proširuju, animacije i mini-igre. Na svakom lansiranju radio sam sa gejm dizajnerima, UX/UI, bekend i QA timom.',
         expWg3: 'Pisao sam Django endpointe sa logikom agregacije podataka i definisao ugovore podataka između bekenda i frontenda u skladu sa ograničenjima UI-ja klijenta igre; izmene su prolazile code review bekend tima.',
@@ -222,7 +222,7 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         expLx3: 'Pravio sam i održavao animacije na Libertex sajtu i razvio deo funkcionalnosti u Vue-u.',
         expLx4: 'StormGain (platforma za trgovinu kriptovalutama): radio sam na Drupal sajtu sa podrškom za više jezika i kompletnim rasporedom zdesna nalevo za arapski. Učestvovao sam u migraciji sa običnog Drupal-a na headless Drupal sa Nuxt frontendom, uz zadržavanje URL-ova ili dodavanje 301 preusmerenja da stranice ostanu potpuno indeksirane.',
         expLx5: 'Vodio sam implementaciju animacija i interakcija u trgovačkom interfejsu i postavio smernice za animaciju.',
-        expFlRole: 'Frontend / fullstack programer, frilens',
+        expFlRole: 'Fullstack programer, frilens',
         expFl1: 'Završio sam 28 projekata na Upwork-u sa ocenom 4,9/5 i 100% Job Success: responzivni sajtovi po dizajnu, animacije, lutrijska igra u pregledaču sa bekendom i migracija sa Flash-a na JavaScript.',
         expFl2: 'Integrisao sam podatke u realnom vremenu sa API-ja više berzi u agregator kripto berzi.',
         expEdRole: 'Fullstack inženjer',
@@ -243,7 +243,7 @@ export const translations: Record<Language, Record<TextKey, string>> = {
         skillsI18n: 'Internacionalizacija, uključujući RTL',
         skillsPerf: 'Performanse (Core Web Vitals)',
         skillsDesignSystems: 'Dizajn sistemi i tokeni',
-        skillsArchitecture: 'Arhitektura frontenda',
+        skillsArchitecture: 'Arhitektura aplikacija',
         skillsReview: 'Code review i mentorstvo',
         skillsAi: 'Razvoj uz AI agente (Claude Code)',
         skillsSecurity: 'Bezbednost (CSP, OAuth2, JWT)',
@@ -275,9 +275,9 @@ export const OG_LOCALE: Record<Language, string> = { en: 'en_US', ru: 'ru_RU', s
 
 /** `<meta name="description">` and `og:description`. Head-only, so outside TEXT_KEYS. */
 export const metaDescriptions: Record<Language, string> = {
-    en: 'Frontend-focused fullstack developer with 7+ years building data-dense, real-time web apps in React, Vue and TypeScript for gaming, fintech and edtech, and the APIs behind them.',
-    ru: 'Fullstack-разработчик с фокусом на фронтенд и опытом 7+ лет: веб-приложения с большим объёмом данных и данными в реальном времени на React, Vue и TypeScript для геймдева, финтеха и edtech, а также API для них.',
-    sr: 'Fullstack programer sa fokusom na frontend i 7+ godina iskustva u izradi veb-aplikacija sa mnogo podataka u realnom vremenu u React-u, Vue-u i TypeScript-u za gejming, fintech i edtech, kao i API-ja iza njih.',
+    en: 'Fullstack developer with 7+ years building data-dense, real-time web apps for gaming, fintech and edtech: React, Vue and TypeScript on the frontend, Node.js, Django and PHP APIs behind them.',
+    ru: 'Fullstack-разработчик с опытом 7+ лет: веб-приложения с большим объёмом данных и данными в реальном времени для геймдева, финтеха и edtech. React, Vue и TypeScript на фронтенде, API на Node.js, Django и PHP за ними.',
+    sr: 'Fullstack programer sa 7+ godina iskustva u izradi veb-aplikacija sa mnogo podataka u realnom vremenu za gejming, fintech i edtech. React, Vue i TypeScript na frontendu, API-ji u Node.js-u, Django-u i PHP-u iza njih.',
 }
 
 /** Contact form status messages, set at runtime by contactForm.ts. */
